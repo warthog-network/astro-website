@@ -1,0 +1,72 @@
+---
+import Planet from '../BalkyImages/upcomingFeatureimgs/Icon.svg'
+import Screen from '../BalkyImages/upcomingFeatureimgs/Icon (1).svg'
+import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
+---
+
+<style>
+    img{
+        padding: 1rem;
+    }
+    section{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-style: solid;
+        border-width: .1rem;
+        padding: 1rem;
+    }
+   .upcoming{
+    padding: 1rem;
+    background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+        justify-content: center;
+    color: white;
+}
+ 
+ 
+ @media screen and (max-width: 1064px){
+    
+ }
+ </style>
+
+<div class="upcoming">
+    <p>upcoming</p>
+    <h1>Revalutinary Features</h1>
+<section class="flex">
+    <img src={Planet.src}/>
+    <div>
+    <h2>P2P browser nodes</h2>
+    <p>Using bleeding edge technology like OPFS and SQLite's recent 
+        support for it, we are the world's first cryptocurrency which 
+        successfully ported full nodes to the browser - including chain 
+        store! Chain is not deleted when you close the browser.</p>
+    </div>
+</section>
+<section  class="flex">
+    <img src={Screen.src}/>
+    <div>
+    <h2>Hard-coded DeFi</h2>
+    <p>Up to now DeFi uses smart contracts, nodes don't natively understand 
+        DeFi. In contrast, we will hard-code latest DeFi wisdom into the 
+        nodes leading to less vulnerabilities, less fees and more convenience 
+        and protection against scam techniques like hidden trading fees or 
+        supply inflation!</p>
+    </div>
+    </section>
+
+<section class="flex">
+    <img src={Burger.src}/>
+    <div>
+    <h2>Solving DeFi's biggest problem</h2>
+    <p>DeFi is plagued by sandwich attacks and there is no real solution 
+        to it - yet. Embedding DeFi as a first-class-citizen allows us to 
+        design a custom matching engine in which transaction order does 
+        not play a role. This solves DeFi's sandwich problem.</p>
+    </div>
+    </section>
+
+
+</div>

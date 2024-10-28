@@ -7,6 +7,7 @@ import WhatsNew from '../components/WhatsNew.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import UniqueFeatures from "../components/UniqueFeatures.astro";
 import RevolutionaryFeatures from "../components/RevolutionaryFeatures.astro";
+import UpcomingFeatures from "../components/UpcomingFeatures.astro";
 const title ="Warthog Network"
 ---
 
@@ -33,8 +34,9 @@ const title ="Warthog Network"
   backgroundTailwind="bg-[url('../Images/Parallax/WarthogParallaxBGcolor640.jpg')] md:bg-[url('../Images/Parallax/WarthogParallaxBGcolor768.jpg')] lg:bg-[url('../Images/Parallax/WarthogParallaxBGcolor.jpg')]"
   scrollSpeed="1">
   <RevolutionaryFeatures/>
+ 
 </ParallaxLayout>
-
+<UpcomingFeatures/>
 <section class=" bg-black">
     <div class="wartSectionHeading text-white text-left w-9/12">WartHog Network Chart</div>
     <MarketData></MarketData>
