@@ -5,25 +5,76 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
 ---
 
 <style>
-    .one{max-width: 70rem;}
+    .center{
+        justify-content: center;
+        align-items: center;
+    }
+    .one{
+        max-width: 70rem;
+        margin-left: 3rem;
+  
+    }
+    .onediv{
+        opacity: 50%;
+        height: 1rem;
+        margin-left: 3rem;
+        margin-top: .1rem;
+        max-width: 70rem;
+        border-left-width: .1rem ;
+        border-right-width: .1rem ;
+        border-bottom-width: .1rem ;
+border-style: solid;
+border-bottom-left-radius: .5rem;
+border-bottom-right-radius: .5rem;
+    }
     .two{
-        margin-left: 1.5rem;
+        margin-left: 6rem;
         max-width: 70rem;
     }
-    .three{margin-left: 3rem;
+    .twodiv{
+        opacity: 50%;
+        height: 1rem;
+        margin-left: 6rem;
+        margin-top: .1rem;
+        max-width: 70rem;
+        border-left-width: .1rem ;
+        border-right-width: .1rem ;
+        border-bottom-width: .1rem ;
+border-style: solid;
+border-bottom-left-radius: .5rem;
+border-bottom-right-radius: .5rem;
+    }
+   
+    .three{margin-left: 9rem;
         max-width: 70rem; }
+        .threediv{
+            opacity: 50%;
+            border-bottom-left-radius: .5rem;
+            border-bottom-right-radius: .5rem;
+        height: 1rem;
+        margin-left: 9rem;
+        margin-top: .1rem;
+        max-width: 70rem;
+        border-left-width: .1rem ;
+        border-right-width: .1rem ;
+        border-bottom-width: .1rem ;
+border-style: solid;
+    }
     img{
         padding: 1rem;
     }
     section{
-        margin-top: 1rem;
-        margin-bottom: 1rem;
+        border-radius: .4rem;
+        margin-top: 2rem;
+      
         border-style: solid;
         border-width: .1rem;
         padding: 1rem;
     }
    .upcoming{
-    padding: 1rem;
+    justify-content: center;
+  align-items: center;
+    padding: 3rem;
     background: radial-gradient(
             circle at 24.1% 68.8%,
             rgb(50, 50, 50) 0%,
@@ -33,7 +84,69 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
     color: white;
 }
  
- 
+ h1{
+    font-size: 5rem;
+ }
+ @media screen and (max-width: 824px){
+    section{
+        
+        display: block;
+        grid-template-columns: 1fn;
+      
+    }
+    .upcoming{
+    justify-content: center;
+    align-items: center;
+    padding: 3rem;
+    background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+   
+    color: white;
+}
+    .two{
+        margin-left: 3rem;
+        max-width: 70rem;
+    }
+    .twodiv{
+        opacity: 50%;
+        height: 1rem;
+        margin-left: 3rem;
+        margin-top: .1rem;
+        max-width: 70rem;
+        border-left-width: .1rem ;
+        border-right-width: .1rem ;
+        border-bottom-width: .1rem ;
+border-style: solid;
+border-bottom-left-radius: .5rem;
+border-bottom-right-radius: .5rem;
+    }
+    .three{
+        margin-left: 3rem;
+        max-width: 70rem;
+    }
+    .threediv{
+        opacity: 50%;
+        height: 1rem;
+        margin-left: 3rem;
+        margin-top: .1rem;
+        max-width: 70rem;
+        border-left-width: .1rem ;
+        border-right-width: .1rem ;
+        border-bottom-width: .1rem ;
+border-style: solid;
+border-bottom-left-radius: .5rem;
+border-bottom-right-radius: .5rem;
+    }
+    h1{
+    font-size: 2rem;
+ }
+
+
+
+ }
  @media screen and (max-width: 424px){
     p{
         font-size: .8rem;
@@ -44,12 +157,13 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
     }
     section{
         margin-top: 1rem;
-        margin-bottom: 1rem;
+       
         border-style: solid;
         border-width: .1rem;
         padding: 1rem;
     }
    .upcoming{
+   
     padding: 1rem;
     background: radial-gradient(
             circle at 24.1% 68.8%,
@@ -62,10 +176,11 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
  
  }
  </style>
-
+<div class="center"> 
 <div class="upcoming">
     <p>upcoming</p>
     <h1>Revalutinary Features</h1>
+    <div>
 <section class="flex one">
     <img src={Planet.src}/>
     <div>
@@ -75,8 +190,13 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
         successfully ported full nodes to the browser - including chain 
         store! Chain is not deleted when you close the browser.</p>
     </div>
+   
 </section>
+<div class="onediv"></div>
+<div class="onediv"></div>
+<div class="onediv"></div>
 <section  class="flex two">
+    <div></div>
     <img src={Screen.src}/>
     <div>
     <h2>Hard-coded DeFi</h2>
@@ -87,7 +207,9 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
         supply inflation!</p>
     </div>
     </section>
-
+    <div class="twodiv"></div>
+    <div class="twodiv"></div>
+    <div class="twodiv"></div>
 <section class="flex three">
     <img src={Burger.src}/>
     <div>
@@ -98,6 +220,10 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
         not play a role. This solves DeFi's sandwich problem.</p>
     </div>
     </section>
+    <div class="threediv"></div>
+<div class="threediv"></div>
+<div class="threediv"></div>
+</div>
 
-
+</div>
 </div>
