@@ -5,6 +5,13 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
 ---
 
 <style>
+    .one{max-width: 70rem;}
+    .two{
+        margin-left: 1.5rem;
+        max-width: 70rem;
+    }
+    .three{margin-left: 3rem;
+        max-width: 70rem; }
     img{
         padding: 1rem;
     }
@@ -27,15 +34,39 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
 }
  
  
- @media screen and (max-width: 1064px){
-    
+ @media screen and (max-width: 424px){
+    p{
+        font-size: .8rem;
+    }
+    img{
+        width: 5rem;
+        padding: 1rem;
+    }
+    section{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+        border-style: solid;
+        border-width: .1rem;
+        padding: 1rem;
+    }
+   .upcoming{
+    padding: 1rem;
+    background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+        justify-content: center;
+    color: white;
+}
+ 
  }
  </style>
 
 <div class="upcoming">
     <p>upcoming</p>
     <h1>Revalutinary Features</h1>
-<section class="flex">
+<section class="flex one">
     <img src={Planet.src}/>
     <div>
     <h2>P2P browser nodes</h2>
@@ -45,7 +76,7 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
         store! Chain is not deleted when you close the browser.</p>
     </div>
 </section>
-<section  class="flex">
+<section  class="flex two">
     <img src={Screen.src}/>
     <div>
     <h2>Hard-coded DeFi</h2>
@@ -57,7 +88,7 @@ import Burger from '../BalkyImages/upcomingFeatureimgs/Icon (2).svg'
     </div>
     </section>
 
-<section class="flex">
+<section class="flex three">
     <img src={Burger.src}/>
     <div>
     <h2>Solving DeFi's biggest problem</h2>
