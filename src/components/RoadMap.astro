@@ -1,0 +1,105 @@
+---
+---
+
+<style>
+    .road{
+        flex: 1 0 ;
+    flex-shrink: 0;
+    flex-grow: 1;
+ 
+     
+    padding-top: 0;
+    max-height: 100%;
+  object-fit: scale-down;
+    margin-bottom: 1rem;
+    max-width: 100%;
+    }
+    .blanket{
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+           color: white;
+    }
+    .RoadMap{
+      
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 1rem;
+
+  justify-content: space-around;
+        background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+        color: white;
+    }
+    section{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 3rem;
+    }
+li{
+    padding: 1rem;
+    max-width: 20rem;
+    min-width: 15rem;
+}
+
+</style>
+<div class="blanket">
+<h1>Road Map</h1>
+<div class="RoadMap">
+   
+    <section class="road">
+        <div>
+       <h1>"Q1 2024"</h1>
+            <li>
+                Develop world's first PoBW algo
+            </li>
+            <li>
+                Develop stratum pool
+            </li>
+            <li>
+                Listing on Exbitron
+            </li>
+            <li>
+                Listing on Xeggex
+            </li>
+        </div>
+        <div>
+<h1>"Q2 2024"</h1>
+        <li>Refactor Networking code to support multiple transports</li>
+        <li>Research on in-browser node support in-browser nodes (unique in the crypto world)</li>
+    </div>
+    <div>
+        <h1>
+            Q3 2024
+        </h1>
+        <li>Support P2P browser communication using WebRTC</li>
+        <li>Add Token support</li>
+        <li>Create demo of custom matching engine</li>
+    </div>
+    
+    </section>
+    <section>
+        <div>
+        <h1>
+            Q4 2024
+        </h1>
+        <li>Add lightweight hard-coded DeFi support.</li>
+        </div>
+        <div>
+        <h1>
+            2025
+        </h1>
+        <li>Research on atomic swaps and assess feasibility of implementation in Warthog</li>
+        </div>
+    </section>
+
+
+</div>
+</div>
