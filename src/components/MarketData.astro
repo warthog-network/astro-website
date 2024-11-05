@@ -381,7 +381,49 @@ import { createChart } from 'lightweight-charts';
 
   
   customElements.define('market-data', MarketDataComponent);
+
 </script>
+
+
+<style>
+  
+.wartChart {
+  width: 100%;
+  height: 400px;
+}
+.wartSectionHeading {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 61px;
+}
+.wartSectionHeading {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 50px;
+  line-height: 61px;
+}
+.wartWhereToBuyBlock {
+  width: 150px;
+  height: 205px;
+  @apply md:mx-[40px] mx-4;
+}
+.wartWhereToBuyBlockText {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 20px;
+}
+.chartSelected {
+  background-color: darkslategray;
+}
+.percentage {
+  margin-left: auto;
+}
+</style>
 
 <market-data class="sm:w-full md:w-9/12 h-128">
   <div>

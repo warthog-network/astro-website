@@ -9,7 +9,23 @@ const articles = [
 import NEWS from '../BalkyImages/NEWS.png';
 
 ---
+<style>
+    .NEWS{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+@media screen and (min-width: 1024px) {
+    .NEWS{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  }
 
+}
+
+</style>
 <h1 class=" p-2">Whats New</h1>
 <section class="NEWS">
     
