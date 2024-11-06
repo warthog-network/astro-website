@@ -40,12 +40,26 @@ socials{
 socials > a {
    padding: .8rem;
 }
+.thedottedline{
+    border-bottom-style: dotted;
+    border-bottom-width: .1rem;
+    max-width: 38rem;
+    margin-left: 2rem;
+}
+
 .footernav{
+  
     align-items: center;
     max-width: 40rem;
     justify-content: space-between;
 }
 @media (max-width:40rem) {
+    .thedottedline{
+    border-bottom-style: dotted;
+    border-bottom-width: .1rem;
+    max-width: 25rem;
+    margin-left: 2rem;
+}
     .footernav{
         display: block;
         justify-content: space-between;
@@ -55,6 +69,7 @@ socials > a {
 }
 }
 .socials{ 
+    
     margin: 1rem;
     display: block;}
 .logo{
@@ -66,6 +81,7 @@ socials > a {
 
 <div class="footer">
     <section class="footernav"><img class="logo" src={"/Images/Warthog_2024_Full Logo.svg"}/><a href='/getstarted' >Get started</a><a href='/news' >News</a><a href='https://www.warthog.network/docs/' target='_blank'> Tech stuff </a><a href='/faqs'>FAQs</a><a href='https://wartscan.io/' target='_blank'>Explorer</a></section>
+    <div class="thedottedline"></div>
     <section class="socials"><p>Join our community!</p><socials><a href='https://discord.com/invite/QMDV8bGTdQ'><img src={Discord.src}/></a><a  href='https://t.me/warthognetwork'><img src={Telegram.src}/></a><a href='https://github.com/warthog-network'><img src={Github.src}/></a><a href='https://x.com/warthognetwork'><img src={Twitter.src}/></a></socials></section>
     <section><p>Copyright © Warthog 2024 Website Design by Losthymns TheFunVampire Logo by BalkyBot.</p>
     </section>
