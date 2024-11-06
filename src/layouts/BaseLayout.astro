@@ -3,6 +3,7 @@ import '../styles.css';
 import BaseHead from '../components/BaseHead.astro';
 const {title} = Astro.props;
 import MarketData from '../components/MarketData.astro';
+import Footer from "../components/Footer.astro";
 
 ---
 
@@ -21,7 +22,8 @@ import MarketData from '../components/MarketData.astro';
             <script>
                 import "../scripts/menu.js";
               </script>
-            <p><small>2024 Warthog site test.</small></p>
+              <Footer/>
+           
         </footer>
 	</body>
 </html>
