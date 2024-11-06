@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Get Started'
+import '../styles.css';
+import Arrow from '../BalkyImages/Arrow 2.svg';
+import Wallet from'../BalkyImages/getstartedimgs/wallet.svg';
+---
+<style>
+
+  .section-grids {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fn 1fn ;
+    grid-template-areas: 
+    'descriptions list';
+  }
+  @media (max-width:40rem) {
+    .section-grids {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fn ;
+    grid-template-areas: 
+    'descriptions' 
+    'list';
+  }
+  .descriptions{
+        margin-right: .5rem;
+        justify-content: center;
+        border-color: black;
+        border-bottom-style: line;
+        border-bottom-width: .13rem;
+        border-right-style: none;
+        border-right-width: none;
+        max-width: 30rem;
+        grid-area: descriptions;
+        padding: 1rem;
+    }
+  }
+  .descriptions{
+        border-color: black;
+        border-right-style: line;
+        border-right-width: .13rem;
+        max-width: 30rem;
+        grid-area: descriptions;
+        padding: 1rem;
+    }
+.list{
+    padding: 1rem;
+    font-size: 1.5rem;
+  justify-content: start;
+  grid-area: list;
+}
+    header{
+        background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+        color: white;
+        font-size: 2rem;
+    }
+    header > section{
+        padding: .5rem;
+        display: flex;
+    }
+    header> section> img {
+        padding-left: 1rem;
+    }
+    .wallets{
+        padding-top: 5rem;
+        padding-left: 5rem;
+    }
+  
+    p{ 
+        max-width: 30rem;}
+    .headers{
+        
+        padding: 1rem;
+        display: flex;
+        }
+        .headers > img{
+            padding-left: 1rem;
+        }
+</style>
+
+<BaseLayout title={title}>
+   
+<div>
+<header>
+<section><h3>Get started</h3><img src={Arrow.src}/></section>
+<section><h1>WALLETS</h1><img src={Arrow.src}/></section>
+<section><h1>NODE</h1><img src={Arrow.src}/></section>
+<section><h1>MINING</h1><img src={Arrow.src}/></section>
+<section><h1>BUYING</h1><img src={Arrow.src}/></section>
+
+</header>
+<section class="wallets section-grids ">
+    <div class="leftside descriptions">
+       
+            <div class=" headers">
+                <h2>Wart dapp (GUI)</h2><img src={Wallet.src}/>
+            </div>
+            <div>
+                 <p>To get started with Warthog network, you need first to create your wallet. 
+                     You can currently choose between 3 wallet solutions. 
+                        Each of them need an instance of the node, local or public</p>
+                         <p>
+                            WART DAPP is a GUI wallet working on Windows and Linux. 
+                            It works with a node. You can connect it with one click to a 
+                            public node, or manually type your node IP.
+                        </p>
+             </div>
+    </div>
+
+    <div class="list">
+        <li><a href="https://github.com/warthog-network/wart-dapp/releases">Download</a></li>
+        <li><a href="https://warthog.network/docs/guides/wart-dapp/">Guide</a></li>
+    
+    </div>
+</section>
+<section></section>
+<section></section>
+<section></section>
+<section></section>
+</div>
+</BaseLayout>
