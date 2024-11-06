@@ -15,6 +15,7 @@ const networks = [
     { imgSrc: 'twitter.svg', href: 'https://x.com/warthognetwork'},    
 ];
 ---
+
 <style>
 @keyframes fadeIn {
   0% {
@@ -35,13 +36,16 @@ const networks = [
 .expanded {
   display: unset;
 }
+
 .logo{
     height: 5rem;
     min-height: 3rem;
   }
+
 .navlink{
     height: 2.5rem;
   }
+
 .animate-fadeIn {
   animation: fadeIn .25s ease-out forwards;
 }
@@ -59,6 +63,7 @@ const networks = [
     border-radius: 4rem;
     position: relative;
   }
+
   .underlineText2:after {
     
     content: '';
@@ -69,12 +74,6 @@ const networks = [
    bottom: 0;
    background:yellow;
   }
-  .drawline::after{
-    transform: scale(0,1);
-    transition: transform 0.3s ease;
-    transform-origin: 0% 100%;
-  }
-
 
   .drawline::after{
     transform: scale(0,1);
@@ -82,10 +81,16 @@ const networks = [
     transform-origin: 0% 100%;
   }
 
- 
+  .drawline::after{
+    transform: scale(0,1);
+    transition: transform 0.3s ease;
+    transform-origin: 0% 100%;
+  }
+
   .drawline:hover::after{
    transform: scale(1,1);
   }
+
   .expanded {
   display: unset;
 }
