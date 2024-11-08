@@ -4,6 +4,10 @@ const title = 'Get Started'
 import '../styles.css';
 import Arrow from '../BalkyImages/Arrow 2.svg';
 import Wallet from'../BalkyImages/getstartedimgs/wallet.svg';
+import Nodes from'../BalkyImages/getstartedimgs/blockchain_nodes.svg';
+import GPU from'../BalkyImages/getstartedimgs/gpu.svg';
+import Pool from'../BalkyImages/getstartedimgs/pool.svg';
+
 ---
 <style>
 h1{
@@ -12,7 +16,10 @@ h1{
 h3{
     font-size: .8rem;
 }
+
   .section-grids {
+    height: 30rem;
+    align-items: center;
     position: relative;
     display: grid;
     grid-template-columns: 1fn 1fn ;
@@ -79,8 +86,9 @@ h3{
     p{ 
         max-width: 30rem;}
     .headers{
-        
-        padding: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-right: 1rem;
         display: flex;
         }
         .headers > img{
@@ -90,7 +98,22 @@ h3{
             font-weight: bold;
             font-size: 1.5rem;
         }
-
+        .MiningPool{
+            gap: 4rem;
+            align-items: center;
+            height: 30rem;
+            margin-left: 1rem;
+            padding: 1rem;
+            display: flex;
+            justify-content: left;
+        }
+        .MiningPool-text {
+            margin-right: 1rem;
+            font-size: .8rem;
+        }
+        .bggrey{
+            background-color: rgb(209, 209, 209);
+        }
 </style>
 
 <BaseLayout title={title}>
@@ -104,8 +127,8 @@ h3{
 <section><h1>BUYING</h1><img src={Arrow.src}/></section>
 
 </header>
-<section class="wallets section-grids ">
-    <div class="leftside descriptions">
+<section class=" section-grids ">
+    <div class="descriptions">
        
             <div class=" headers">
                 <h2>Wart dapp (GUI)</h2><img src={Wallet.src}/>
@@ -128,9 +151,93 @@ h3{
     
     </div>
 </section>
-<section></section>
-<section></section>
-<section></section>
-<section></section>
+<section class=" section-grids bggrey">
+    <div class="descriptions">
+       
+            <div class=" headers">
+                <h2>Wart-Wallet (GUI)</h2><img src={Wallet.src}/>
+            </div>
+            <div>
+                 <p>WART WALLET is also GUI wallet working on Windows and Linux. 
+                    It works with a node. You have to manually type your node IP 
+                    (local or public)
+                </p>
+                 
+             </div>
+    </div>
+
+    <div class="list">
+        <li><a href="https://github.com/warthog-network/wart-wallet/releases">Download</a></li>
+        <li><a href="https://github.com/warthog-network/wart-wallet/blob/master/README.md">Guide</a></li>
+    
+    </div>
+</section>
+<section class=" section-grids ">
+    <div class="descriptions">
+       
+            <div class=" headers">
+                <h2>wart-wallet (command-line)</h2><img src={Wallet.src}/>
+            </div>
+            <div>
+                 <p>WART WALLET is also GUI wallet working on Windows and Linux. 
+                    It works with a node. You have to manually type your node IP 
+                    (local or public)
+                </p>
+                 
+             </div>
+    </div>
+
+    <div class="list">
+        <li><a href="https://github.com/warthog-network/Warthog/releases">Download</a></li>
+        <li><a href="https://warthog.network/docs/guides/wart-wallet-cli/">Guide</a></li>
+    
+    </div>
+</section>
+<section class=" section-grids bggrey">
+    <div class="descriptions">
+       
+            <div class=" headers">
+                <h2>NODE</h2><img src={Nodes.src}/>
+            </div>
+            <div>
+                 <p>See here if you want to install your node on your computer 
+                    (to support the blockchain decentralization, to use your wallet with a local node, 
+                    or to mine solo for examples.
+                </p>
+             </div>
+    </div>
+    <div class="list">
+        <li><a href="https://github.com/warthog-network/Warthog/releases">Download</a></li>
+        <li><a href="https://warthog.network/docs/guides/node/">Guide</a></li>
+    
+    </div>
+</section>
+<section class="MiningPool ">
+            <div>
+                <div class="headers">
+                <h2 >Mining</h2><img src={GPU.src}/>
+                </div>
+                <h1>MINING GUIDE</h1>
+                 <p class="MiningPool-text">
+                    See this guide to start mining now :
+                </p>
+                <div class="headers">
+                <a class="MiningPool-text" href="https://warthog.network/docs/guides/mining-quickstart/">ENGLISH</a>
+                <a class="MiningPool-text" href="https://warthog.network/docs/guides/mining-quickstart_fr/">FRENCH</a>
+                 </div>   
+            </div>
+           
+            <div >
+       
+                <div class="headers">
+                <h2>Pool</h2><img src={Pool.src}/>
+                </div>
+                 <p>
+                    See here for a list of pools:
+                </p>
+                <li><a class="MiningPool-text" href="https://miningpoolstats.stream/warthog">Miningpoolstats</a></li><li><a class="MiningPool-text" href="https://warthog.network/docs/links/#pools">DOCS</a></li>
+        </div>    
+   
+</section>
 </div>
 </BaseLayout>
