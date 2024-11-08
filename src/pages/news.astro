@@ -12,14 +12,28 @@ const sortedNewsUpdates = Object.values(newsUpdates).sort(
     }
 );
 ---
-
+<style>
+    h1{
+        margin-left: 1rem;
+    }
+    .blogpostTitle{
+        font-weight: bold;
+    }
+    .blogpostframe{
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+    .blogpostbox{
+        margin-top: 1rem;
+        padding: 1rem;
+    }
+</style>
 <BaseLayout title = {title}>
-    <h1 class="">Latest News</h1>
-    <ul>
+    <h1 class="blogpostTitle">Latest News</h1>
+    <ul class="blogpostframe">
         {sortedNewsUpdates.map((news) => (
-        <li>
-            <h2>{news.frontmatter.title}</h2>
-
+        <li class="blogpostbox">
+            <h2 class="blogpostTitle">{news.frontmatter.title}</h2>
             <p><small>{news.frontmatter.date}</small></p>
             <div set:html={news.compiledContent()}></div>
             
