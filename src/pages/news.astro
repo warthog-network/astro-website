@@ -11,6 +11,7 @@ const sortedNewsUpdates = Object.values(newsUpdates).sort(
         return dateB - dateA;
     }
 );
+import BlogHeader from '../BalkyImages/dune-colorful-fullsize.jpg'
 ---
 <style>
     h1{
@@ -24,11 +25,17 @@ const sortedNewsUpdates = Object.values(newsUpdates).sort(
         padding: 1rem;
     }
     .blogpostbox{
+        border-color: rgb(15, 15, 15);
+        border-width: .13rem;
+        border-style: dotted;
         margin-top: 1rem;
         padding: 1rem;
     }
 </style>
+
+
 <BaseLayout title = {title}>
+    <img src={BlogHeader.src}/>
     <h1 class="blogpostTitle">Latest News</h1>
     <ul class="blogpostframe">
         {sortedNewsUpdates.map((news) => (
