@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'News Blog';
+import BannerTop from "../BalkyImages/highlight.svg";
 const newsUpdates = await Astro.glob('../content/news/*.md');
 
 const sortedNewsUpdates = Object.values(newsUpdates).sort(
@@ -32,7 +33,9 @@ import BlogHeader from '../BalkyImages/dune-colorful-fullsize.jpg'
         padding: 1rem;
     }
     img{
-        object-fit: stretch;
+        object-fit: cover;
+        width:100%;
+        max-height: 25rem;
     }
     .imgdiv{
         background-size: 100% 100%;
@@ -40,14 +43,14 @@ import BlogHeader from '../BalkyImages/dune-colorful-fullsize.jpg'
         background: cover;
         background-repeat: no-repeat;
      
-        background-image: url('../BalkyImages/dune-colorful-fullsize.jpg');
+        background-image: url('../BalkyImages/highlight.svg');
     }
 </style>
 
 
 <BaseLayout title = {title}>
-    <div  class="imgdiv"></div>
-   
+    
+   <img src={BannerTop.src}/>
     <h1 class="blogpostTitle">Latest News</h1>
     <ul class="blogpostframe">
         {sortedNewsUpdates.map((news) => (
