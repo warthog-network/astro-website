@@ -1,35 +1,85 @@
 ---
+import Xeggex from '../BalkyImages/wheretobuyimgs/xeggex.png';
+import Discord from '../BalkyImages/wheretobuyimgs/discord.svg';
+import Exibitron from '../BalkyImages/wheretobuyimgs/exibitron.png';
+import Tradeogre from '../BalkyImages/wheretobuyimgs/tradeogre.png';
+import Caldera from '../BalkyImages/wheretobuyimgs/caldera.png';
+
 ---
 
 
 <style>
+  h1{
+    font-weight: bold;
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  a{
+    margin-bottom: 1rem;
+    text-align: center;
+    color: white;
+    display: block;
+    border-radius: .5rem;
+    width: 7rem;
+    background-color: black;
+    padding: 1rem;
+  }
     .NEWS{
+      height: 60rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 @media screen and (min-width: 1024px) {
     .NEWS{
+      height: 20rem;
+      align-items: center;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
   }
 
 }
+@media screen and (min-width: 1024px) {
+    .NEWS{
+      height: 20rem;
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  }
 
+  a{
+    margin-bottom: 1rem;
+    text-align: center;
+    color: white;
+    display: block;
+    border-radius: .5rem;
+    width: 10rem;
+    background-color: black;
+    padding: 1rem;
+  }
+}
 </style>
-<h1 class=" p-2"><a href="/news">Where to Buy</a></h1>
+<h1 class="">Where to Buy?</h1>
 <section class="NEWS">
     
- <a class="p-10" href='/news'>
-        <p class=""><img class=''  src={NEWS.src} alt="logo" /></p>
+ <a class="p-10" href='https://xeggex.com/market/WART_USDT'>
+        <img class=''  src={Xeggex.src} alt="logo" /><p class="">Xeggex</p>
  </a>
- <a class="p-10" href='/news'>
-    <p class=""><img class=''  src={NEWS.src} alt="logo" /></p>
+ <a class="p-10" href='https://discord.com/login?redirect_to=%2Fchannels%2F1126486458698584107%2F1133081739816861716'>
+   <img class=''  src={Discord.src} alt="logo" /> <p class="">Discord P2P trade</p>
 </a>
 
-<a class="p-10" href='/news'>
-    <p class=""><img class=''  src={NEWS.src} alt="logo" /></p>
+<a class="p-10" href='https://app.exbitron.com/login/?returnUrl=%2Ftrade%2F%3Fmarket%3Dwart-usdt'>
+   <img class=''  src={Exibitron.src} alt="logo" /> <p class="">Exbitron exchange</p>
+</a>
+<a class="p-10" href='https://tradeogre.com/exchange/WART-USDT'>
+  <img class=''  src={Tradeogre.src} alt="logo" /><p class="">Tradeogre exchange</p>
+</a>
+<a class="p-10" href='https://discord.com/channels/1126486458698584107/1205481571109445633'>
+  <img class=''  src={Caldera.src} alt="logo" /><p class="">Discord Caldera bot</p>
 </a>
 </section>

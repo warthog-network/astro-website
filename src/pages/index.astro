@@ -10,6 +10,7 @@ import RevolutionaryFeatures from "../components/RevolutionaryFeatures.astro";
 import UpcomingFeatures from "../components/UpcomingFeatures.astro";
 import RoadMap from "../components/RoadMap.astro";
 import ChainContributors from "../components/ChainContributors.astro";
+import WhereToBuy from "../components/WhereToBuy.astro";
 const title ="Warthog Network"
 ---
 <style>
@@ -48,10 +49,12 @@ const title ="Warthog Network"
  
 </ParallaxLayout>
 <UpcomingFeatures/>
+
 <section class=" bg-black">
     <div class="wartSectionHeading text-white text-left w-9/12">WartHog Network Chart</div>
     <MarketData></MarketData>
   </section>
+  <WhereToBuy/>
 <RoadMap/>
 <ChainContributors/>
 
