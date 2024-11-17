@@ -1,5 +1,6 @@
 ---
 import Dunes from '../BalkyImages/dunes.svg'
+import DunesMobile from '../BalkyImages/dune-colorful-abstract-digital-art-4k-wallpaper-uhdpaper.com-192@1@n 1.png'
 ---
 
 <style>
@@ -61,7 +62,7 @@ import Dunes from '../BalkyImages/dunes.svg'
   color: #1E1E1E;
 }
 .hero-grid-img {
-  
+  max-width: 50rem;
   justify-self: end;
   grid-area: hero-img;
 }
@@ -78,7 +79,11 @@ import Dunes from '../BalkyImages/dunes.svg'
   border-radius: 5px;
   box-shadow: 10px 17px 10px -10px;
 }
-@media (min-width: 1248px) {
+.dunes2{
+  display: none;
+}
+ 
+@media (max-width: 1248px) {
   .hero-img-btn {
     position: absolute;
     bottom: 1rem;
@@ -91,11 +96,15 @@ import Dunes from '../BalkyImages/dunes.svg'
     cursor: pointer;
     border-radius: 5px;
   }
-  
+  .dunes2{
+    margin-top: 2rem;
+    border-radius: 2rem;
+  display: flex;
+}
   .heroCutoutNew {
-    clip-path: path('M817.826 0.616318L13.1628 0.816334C5.89274 0.818396 0 7.40863 0 15.5392V81.9777C0 90.1103 5.89459 96.7026 13.1665 96.7026H58.743C66.0149 96.7026 71.9095 103.295 71.9095 111.428V371.076C71.9095 379.208 77.8041 385.801 85.076 385.801H570.123C577.395 385.801 583.289 379.208 583.289 371.076C583.289 371.076 583.289 326.601 583.289 318.468C583.289 310.335 589.184 303.743 596.456 303.743C603.728 303.743 817.834 303.743 817.834 303.743C825.105 303.743 831 297.151 831 289.018V15.3412C830.994 7.20655 825.098 0.616318 817.826 0.616318Z');
-    border-radius: 10px;
+display: none;
   }
+
 }
 
 
@@ -171,22 +180,17 @@ import Dunes from '../BalkyImages/dunes.svg'
   }
   
   .hero-grid-img img {
-
     width: 100%;            /* Make sure the image scales properly */
-    height: auto;           /* Maintain aspect ratio */
+                            /* Maintain aspect ratio */
   }
   
   .hero-img-btn {
     position: absolute;
-    top: auto;
+  
     right: 50%;
     bottom: 50%;
-    left: auto;
-    margin:auto;
-    width:auto;
-    height: auto;
+
     z-index: 1;
-    padding: 10px 20px;
     background-color: gold;
     color: rgb(0, 0, 0);
     font-size: 26px;
@@ -220,7 +224,8 @@ import Dunes from '../BalkyImages/dunes.svg'
     </div>
  
     <div class="hero-grid-img">
-      <img class="heroCutoutNew" src ={Dunes.src}  />      
+       <img class="heroCutoutNew" src ={Dunes.src}  />  
+       <img class="dunes2" src={DunesMobile.src}/>  
       <button class="hero-img-btn">where to buy</button>
     </div>
    
