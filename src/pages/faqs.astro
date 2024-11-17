@@ -14,10 +14,15 @@ import '../styles.css';
 		padding: 1rem;
 		display: flex;
 	}
+	a{
+		font-weight: bold;
+		color: orange;
+	}
 	h1{
-
+		padding-right: .5rem;
 		font-weight: bold;
 	}
+
 </style>
 <BaseLayout title = {title}>
 	<h1 class="title">faqs</h1>
@@ -25,7 +30,7 @@ import '../styles.css';
 		<h1>Q:</h1><p>What's algorithm used in this project?</p>
 	</section>
 	<section>
-		<h1>A:</h1><p>The new algorithm is called "Janushash". More detailed information you can find here https://www.warthog.network/docs/janushash/</p>
+		<h1>A:</h1><p>The new algorithm is called "Janushash". More detailed information you can find<a href="https://www.warthog.network/docs/janushash/">here</a> </p>
 	</section>	
 	<section>
 		<h1>Q:</h1><p>Can I run mining on GPU or CPU only?</p>
@@ -37,8 +42,8 @@ import '../styles.css';
 		<h1>Q:</h1><p>Where can I find the latest releases of the node+wallet and miner?</p>
 	</section>
 	<section>
-		<h1>A:</h1><p>You can find precompiled binaries of Node+Wallet: https://github.com/warthog-network/Warthog/releases
-			Miner (Linux and HiveOS builds): https://github.com/CoinFuMasterShifu/janusminer/releases
+		<h1>A:</h1><p>You can find precompiled binaries of Node+Wallet:<a href="https://github.com/warthog-network/Warthog/releases">here</a> <br/><br/>
+			Miner (Linux and HiveOS builds):<a href=" https://github.com/CoinFuMasterShifu/janusminer/releases">here</a><br/><br/>
 			See README.md in these repos for usage information.</p>
 	</section>
 	<section>
