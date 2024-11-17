@@ -5,9 +5,77 @@ const title = 'FAQs'
 import '../styles.css';
 
 ---
+<style>
+	.title{
+		font-size: 3rem;
+		text-align: center;
+	}
+	section{
+		padding: 1rem;
+		display: flex;
+	}
+	h1{
 
+		font-weight: bold;
+	}
+</style>
 <BaseLayout title = {title}>
-		<h1>Astro</h1>
-		<h1>faqs</h1>
+	<h1 class="title">faqs</h1>
+	<section>
+		<h1>Q:</h1><p>What's algorithm used in this project?</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>The new algorithm is called "Janushash". More detailed information you can find here https://www.warthog.network/docs/janushash/</p>
+	</section>	
+	<section>
+		<h1>Q:</h1><p>Can I run mining on GPU or CPU only?</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>No, you can't. Miner uses both GPU and CPU.</p>
+	</section>	
+	<section>
+		<h1>Q:</h1><p>Where can I find the latest releases of the node+wallet and miner?</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>You can find precompiled binaries of Node+Wallet: https://github.com/warthog-network/Warthog/releases
+			Miner (Linux and HiveOS builds): https://github.com/CoinFuMasterShifu/janusminer/releases
+			See README.md in these repos for usage information.</p>
+	</section>
+	<section>
+		<h1>Q:</h1><p>I'm getting this error in miner output:<br/>
+			[error] API request failed. Are you running the node with RPC endpoint enabled?
+			[warning] Could not get mining information, retrying in 100 milliseconds...</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>You should run node with `--rpc=0.0.0.0:3000` to accept remote connections from your rigs and prevent this error.
+			Keep in mind that you can only run one node per public IP.</p>
+	</section>
+	<section>
+		<h1>Q:</h1><p>Miner exits with error `custom exiter (exitcode=0), waiting to cooldown a bit`</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>Probably your CPU is too old. The CPU must support these instructions: `'-mpclmul', '-msse4', '-msse4.1', '-msse4.2', '-mssse3', '-mavx', '-maes'`</p>
+	</section>
+	<section>
+		<h1>Q:</h1><p> What does `CPU queue full` and `CPU queue drained` mean?</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>It means that there is an imbalance between CPU and GPU, this can happen sometimes but should not occur often. CPU queue drained can happen more often and is normal on each new block height. It should rebalance itself independent of how many threads you choose. Just look at the CPU load. If it is as specified everything is good. For example if you specify two threads two processor threads should be in use close to 100% . If that happens most of the time, everything is good.</p>
+	</section>
+	<section>
+		<h1>Q:</h1><p> What does `CPU outruns GPU` mean?</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>GPU and CPU compute different hash functions so it can happen if GPU is slow and CPU fast.</p>
+	</section>
+	<section>
+		<h1>Q:</h1><p> My node stuck and won't sync?</p>
+	</section>
+	<section>
+		<h1>A:</h1><p>Make sure you are running the latest version `wart-node-linux --version`. Delete folder with node db files and start the node again. (It locates in home directory `~/.warthog` if you are using Linux and `%AppData%\Local\Warthog` in Windows)</p>
+	</section>
+	
+	
+	
 		<WhereToBuy/>
 </BaseLayout>
