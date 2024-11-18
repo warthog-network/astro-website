@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'News Blog';
 import BannerTop from "../BalkyImages/highlight.svg";
+import BlogImage from '../BalkyImages/Warthog_2024_Full Logo.svg';
 const newsUpdates = await Astro.glob('../content/news/*.md');
 
 const sortedNewsUpdates = Object.values(newsUpdates).sort(
@@ -17,6 +18,36 @@ import Arrow from '../BalkyImages/Arrow 1.png';
 
 import WhereToBuy from '../components/WhereToBuy.astro';
 ---
+
+<BaseLayout title = {title}>
+    <img class="bannerimg" src={BannerTop.src}/>
+    <div class="Bannertext">
+  <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
+  <h1 class="Title">TITLE GOES HERE</h1>
+    <span class="thin">This is not the default kind of project where you see 
+    a disproportionately high allocation<br/></span><span class="thin">of the total supply unfairly reserved 
+    for the team, the advisors and their pockets...</span><br/>
+    <section class="flex">
+    <a href="" class="flex aBanner">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><a href="" class="flex aBanner">SHARE<img class="small" src={Arrow.src}/></a>
+    </section>    
+</div>
+ 
+   
+    <ul class="blogpostframe">
+        {sortedNewsUpdates.map((news) => (
+
+        <li class="blogpostbox">
+            <a href=""><h2 class="blogpostTitle">{news.frontmatter.title}</h2></a>
+            <img class="bannerimg" src={BlogImage.src}/>
+            <p><small>{news.frontmatter.date}</small></p>
+            <div set:html={news.compiledContent()}></div>
+            
+        </li>
+        ))}
+    </ul>
+<WhereToBuy/>
+</BaseLayout>
+
 <style>
     h1{
         margin-left: 1rem;
@@ -58,7 +89,7 @@ import WhereToBuy from '../components/WhereToBuy.astro';
   font-style: normal;
   font-size: 10px;
   font-weight: 300;
-  color: gray;
+  color: rgb(255, 255, 255);
     }
     a{}
     .Latest{
@@ -70,7 +101,7 @@ import WhereToBuy from '../components/WhereToBuy.astro';
         font-size: 2rem;
         color: white;
     }
-    a{
+    .aBanner{
         font-size: .8rem;
         align-items: center;
         padding: .1rem;
@@ -99,30 +130,3 @@ color: gray;
     }
 </style>
 
-
-<BaseLayout title = {title}>
-    <img class="bannerimg" src={BannerTop.src}/>
-    <div class="Bannertext">
-  <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
-  <h1 class="Title">TITLE GOES HERE</h1>
-    <span class="thin">This is not the default kind of project where you see 
-    a disproportionately high allocation<br/></span><span class="thin">of the total supply unfairly reserved 
-    for the team, the advisors and their pockets...</span><br/>
-    <section class="flex">
-    <a href="" class="flex">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><a href="" class="flex">SHARE<img class="small" src={Arrow.src}/></a>
-    </section>    
-</div>
- 
-   
-    <ul class="blogpostframe">
-        {sortedNewsUpdates.map((news) => (
-        <li class="blogpostbox">
-            <h2 class="blogpostTitle">{news.frontmatter.title}</h2>
-            <p><small>{news.frontmatter.date}</small></p>
-            <div set:html={news.compiledContent()}></div>
-            
-        </li>
-        ))}
-    </ul>
-<WhereToBuy/>
-</BaseLayout>
