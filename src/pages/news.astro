@@ -12,7 +12,9 @@ const sortedNewsUpdates = Object.values(newsUpdates).sort(
         return dateB - dateA;
     }
 );
-import BlogHeader from '../BalkyImages/dune-colorful-fullsize.jpg'
+import Littlewart from '../BalkyImages/littlewart.svg';
+import Arrow from '../BalkyImages/Arrow 1.png';
+
 import WhereToBuy from '../components/WhereToBuy.astro';
 ---
 <style>
@@ -33,26 +35,76 @@ import WhereToBuy from '../components/WhereToBuy.astro';
         margin-top: 1rem;
         padding: 1rem;
     }
-    img{
+    .bannerimg{
         object-fit: cover;
         width:100%;
         max-height: 25rem;
     }
-    .imgdiv{
-        background-size: 100% 100%;
-        min-height: 50vh;
-        background: cover;
-        background-repeat: no-repeat;
-     
-        background-image: url('../BalkyImages/highlight.svg');
+
+    .Bannertext{
+        margin-top: -9.5rem;
+    }
+    .bold{
+        font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  color: black;
+    }
+    .thin{
+      
+        margin-left: .5rem;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-size: 10px;
+  font-weight: 300;
+  color: gray;
+    }
+    a{}
+    .Latest{
+        margin-left: .5rem;
+        color: white;
+    }
+   .Title{
+        font-weight: bold;
+        font-size: 2rem;
+        color: white;
+    }
+    a{
+        font-size: .8rem;
+        align-items: center;
+        padding: .1rem;
+        margin-left: 1rem;
+        border-radius: .3rem;
+        background-color: rgb(209, 209, 209);
+    }
+    .small{
+    
+        height: .5rem;
+        width: 2rem;
+    }
+    @media (max-width: 650px) {
+        .Bannertext{
+        margin-top: -11.5rem;
+    }
     }
 </style>
 
 
 <BaseLayout title = {title}>
-    
-   <img src={BannerTop.src}/>
-    <h1 class="blogpostTitle">Latest News</h1>
+    <img class="bannerimg" src={BannerTop.src}/>
+    <div class="Bannertext">
+  <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
+  <h1 class="Title">TITLE GOES HERE</h1>
+    <span class="thin">This is not the default kind of project where you see 
+    a disproportionately high allocation<br/></span><span class="thin">of the total supply unfairly reserved 
+    for the team, the advisors and their pockets...</span><br/>
+    <section class="flex">
+    <a href="" class="flex">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><a href="" class="flex">SHARE<img class="small" src={Arrow.src}/></a>
+    </section>    
+</div>
+ 
+   
     <ul class="blogpostframe">
         {sortedNewsUpdates.map((news) => (
         <li class="blogpostbox">
