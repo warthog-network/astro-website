@@ -38,7 +38,7 @@ import WhereToBuy from '../components/WhereToBuy.astro';
 
         <li class="blogpostbox">
             <a href=""><h2 class="blogpostTitle">{news.frontmatter.title}</h2></a>
-            <img class="bannerimg" src={BlogImage.src}/>
+            <img class="blogimg" src={BlogImage.src}/>
             <p><small>{news.frontmatter.date}</small></p>
             <div set:html={news.compiledContent()}></div>
             
@@ -71,7 +71,14 @@ import WhereToBuy from '../components/WhereToBuy.astro';
         width:100%;
         max-height: 25rem;
     }
-
+    .blogimg{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        object-fit: cover;
+        width:100%;
+        max-width: 30rem;
+    }
     .Bannertext{
         margin-top: -9.5rem;
     }
