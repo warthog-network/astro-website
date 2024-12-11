@@ -1,6 +1,9 @@
 ---
+category: "News Update"
 title: "second update to the site"
-date: "2024-09-30"
+articleID: "second-update-to-the-site-2024-09-30"
+date: "2024-09-2"
+author: "FunVampire"
 ---
 
 Just testing a content update for news page. Hope this looks alright. 

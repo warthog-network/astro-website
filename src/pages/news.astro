@@ -1,4 +1,5 @@
 ---
+import { generateArticalIdentity } from '../scripts/ArticleIdentityGenerator.js';
 import BaseLayout from '../layouts/BaseLayout.astro';
 const title = 'News Blog';
 import BannerTop from "../BalkyImages/highlight.svg";
@@ -7,8 +8,8 @@ const newsUpdates = await Astro.glob('../content/news/*.md');
 
 const sortedNewsUpdates = Object.values(newsUpdates).sort(
     (a, b) => {
-        const dateA = new Date(b.frontmatter.date).getTime();
-        const dateB = new Date(a.frontmatter.date).getTime();
+        const dateA = new Date(a.frontmatter.date).getTime();
+        const dateB = new Date(b.frontmatter.date).getTime();
 
         return dateB - dateA;
     }
@@ -37,7 +38,7 @@ import WhereToBuy from '../components/WhereToBuy.astro';
         {sortedNewsUpdates.map((news) => (
 
         <li class="blogpostbox">
-            <a href=""><h2 class="blogpostTitle">{news.frontmatter.title}</h2></a>
+            <a href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}><h2 class="blogpostTitle">{news.frontmatter.title}</h2></a>
             <img class="blogimg" src={BlogImage.src}/>
             <p><small>{news.frontmatter.date}</small></p>
             <div set:html={news.compiledContent()}></div>

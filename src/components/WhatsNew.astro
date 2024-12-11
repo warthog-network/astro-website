@@ -1,13 +1,32 @@
 ---
 import { Picture } from 'astro:assets';
-const articles = [
-    { imgSrc: 'NEWS.png', href: 'https://github.com/warthog-network'},    
-    { imgSrc: 'NEWS2.png', href: 'https://discord.com/invite/QMDV8bGTdQ'},
-    { imgSrc: 'NEWS3.png', href: 'https://t.me/warthognetwork'},
-  
-];
-import NEWS from '../BalkyImages/NEWS.png';
+import { generateArticalIdentity } from '../scripts/ArticleIdentityGenerator.js';
+import NEWS1 from '../BalkyImages/NEWS IMG1.png';
+import NEWS2 from '../BalkyImages/NEWS IMG2.png';
+import NEWS3 from '../BalkyImages/NEWS IMG3.png';
+const newsUpdates = await Astro.glob('../content/news/*.md');
 
+const sortedArticles = Object.values(newsUpdates).sort(
+    (a, b) => {
+        const dateA = new Date(a.frontmatter.date).getTime();
+        const dateB = new Date(b.frontmatter.date).getTime();
+
+        return dateB - dateA;
+    }
+);
+
+const last3Articles = sortedArticles.slice(0,3);
+
+const GetArticleImage = (category) => {
+  switch (category) {
+    case "Developer Diary":
+      return NEWS1.src;
+    case "News Update":
+      return NEWS2.src;
+    case "Blog Post":
+      return NEWS3.src;
+  }
+};
 ---
 <style>
     .NEWS{
@@ -24,19 +43,18 @@ import NEWS from '../BalkyImages/NEWS.png';
   }
 
 }
-
+.blogpostbox{
+        border-radius: .5rem;
+        margin-top: 1rem;
+    }
 </style>
 <h1 class=" p-2"><a href="/news">Whats New</a></h1>
 <section class="NEWS">
-    
- <a class="p-10" href='/news'>
-        <p class=""><img class=''  src={NEWS.src} alt="logo" /></p>
- </a>
- <a class="p-10" href='/news'>
-    <p class=""><img class=''  src={NEWS.src} alt="logo" /></p>
-</a>
-
-<a class="p-10" href='/news'>
-    <p class=""><img class=''  src={NEWS.src} alt="logo" /></p>
-</a>
+  {last3Articles.map((news) => (
+    <a class="p-10" href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}>
+        <p class="blogpostbox"><img class=''  src={GetArticleImage(news.frontmatter.category)} alt="logo" /></p>
+        <p>{news.frontmatter.category}</p>
+        <p class="font-semibold">{news.frontmatter.title}</p>
+    </a>
+    ))}
 </section>

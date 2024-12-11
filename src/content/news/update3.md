@@ -1,6 +1,9 @@
 ---
+category: "Developer Diary"
 title: "losthymns 1st update to the site"
-date: "2024-09-30"
+articleID: "losthymns-1st-update-to-the-site-2024-09-30"
+date: "2024-09-3"
+author: "Losthymns"
 ---
 
 This is a test for the astrowart blog. 

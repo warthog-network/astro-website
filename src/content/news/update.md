@@ -1,6 +1,9 @@
 ---
+category: "Developer Diary"
 title: "First update to the site"
-date: "2024-09-30"
+articleID: "First-update-to-the-site-2024-09-30"
+date: "2024-09-1"
+author: "FunVampire"
 ---
 
 Just testing a content update for news page. Hope this looks alright. 
