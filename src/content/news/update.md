@@ -1,7 +1,6 @@
 ---
 category: "Developer Diary"
 title: "First update to the site"
-articleID: "First-update-to-the-site-2024-09-30"
 date: "2024-09-1"
 author: "FunVampire"
 ---

@@ -1,7 +1,6 @@
 ---
 category: "Blog Post"
 title: "github added file"
-articleID: "github-added-file-2024-09-30"
 date: "2024-10-4"
 author: "Someone"
 ---

@@ -1,7 +1,6 @@
 ---
 category: "News Update"
 title: "second update to the site"
-articleID: "second-update-to-the-site-2024-09-30"
 date: "2024-09-2"
 author: "FunVampire"
 ---
