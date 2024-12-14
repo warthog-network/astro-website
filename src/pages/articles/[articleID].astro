@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from "astro:content";
 import { generateArticalIdentity } from '../../scripts/ArticleIdentityGenerator.js';
 import { article } from 'framer-motion/client';
+import BannerTop from "../BalkyImages/permissionless.png";
 
 export async function getStaticPaths() {
     const articles = await getCollection('news');
@@ -21,10 +22,30 @@ if (!articles) {
 }
 ---
 
+<style>
+    .article-grid {
+        display: grid;
+        grid-template-columns: 3fn 1fn;
+        grid-template-areas: 'article-content article-latestStories'
+    }
+
+</style>
+
 <BaseLayout title = {articleData.title}>
         <article>
-            <h1>{articleData.title}</h1>
-            <p>{articleData.date}</p>
-            <ArticleContent />
+            <script type="module" src="/scripts/WebShare.js"></script>
+            <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}></div>
+            <div class="article-grid">
+                <div class="article-grid-content">
+                    <h1>{articleData.title}</h1>
+                    <p>{articleData.date}</p>
+                    <ArticleContent />
+                </div>
+                <div class="article-grid-latestStories">
+                    <div class="article-content"></div>
+                    <div class="article-latestStories"></div>
+                </div>
+            </div>
+            
         </article>
 </BaseLayout>
