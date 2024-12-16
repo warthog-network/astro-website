@@ -5,6 +5,9 @@ import { generateArticalIdentity } from '../../scripts/ArticleIdentityGenerator.
 import { article } from 'framer-motion/client';
 import BannerTop from "../../BalkyImages/permissionless.png";
 import Arrow from '../../BalkyImages/Arrow 1.png';
+import NEWS1 from '../../BalkyImages/NEWS IMG1.png';
+import NEWS2 from '../../BalkyImages/NEWS IMG2.png';
+import NEWS3 from '../../BalkyImages/NEWS IMG3.png';
 
 const baseURL = 'https://astrowart.netlify.app';
 
@@ -16,21 +19,54 @@ export async function getStaticPaths() {
 }
 
 const { articleID } = Astro.params;
-const articles = await getCollection('news', ({ data }) => generateArticalIdentity(data.title, data.date, data.author) === articleID)
-const { Content: ArticleContent } = await articles[0].render();
-const articleData = articles[0].data;
+const article = await getCollection('news', ({ data }) => generateArticalIdentity(data.title, data.date, data.author) === articleID);
+const articles = await getCollection('news');
+const sortedArticles = Object.values(articles).sort(
+    (a, b) => {
+        const dateA = new Date(a.data.date).getTime();
+        const dateB = new Date(b.data.date).getTime();
+
+        return dateB - dateA;
+    }
+);
+
+const GetArticleImage = (category) => {
+  switch (category) {
+    case "Developer Diary":
+      return NEWS1.src;
+    case "News Update":
+      return NEWS2.src;
+    case "Blog Post":
+      return NEWS3.src;
+  }
+};
+
+const prev3Articles = sortedArticles.slice(1,4);
+const { Content: ArticleContent } = await article[0].render();
+const articleData = article[0].data;
 const articleRelativeLink = `/articles/${generateArticalIdentity(articleData.title, articleData.date, articleData.author )}`
 
-if (!articles) {
+if (!article) {
     throw new Error(`No article found for ArticleID: ${articleID}`);
 }
 ---
 
 <style>
+    .article-grid .article-grid > * {
+        box-sizing: border-box;   
+    }
     .article-grid {
         display: grid;
-        grid-template-columns: 3fn 1fn;
-        grid-template-areas: 'article-content article-latestStories'
+        grid-template-columns: 3fr 1fr;
+        grid-template-areas: 'article-content article-latestStories';
+        row-gap: 2rem;
+        column-gap: 5rem;
+        padding: 2rem 5rem;
+    }
+    .article-latestStories {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 1rem;
     }
     .bannerBackgroundImage {
         position: relative;
@@ -46,7 +82,7 @@ if (!articles) {
         font-family: Montserrat;
         font-size: 3.21rem;
         font-weight: 600;
-        line-height: 1.188rem;
+        line-height: 3.21rem;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
@@ -73,15 +109,26 @@ if (!articles) {
     .shareButton{
         align-items: center;
         padding: .1rem;
+        padding-right: .6rem;
+        padding-left: .6rem;
+        margin-bottom: 2.2rem;
         height: 2rem;
-        margin-left: 1rem;
         border-radius: .3rem;
         background-color: rgb(209, 209, 209);
+        font-family: Montserrat;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: gray;
     }
     .smallArrow{
         display: inline;
         height: .5rem;
         width: 2rem;
+        margin-top: auto;
+        margin-bottom: auto;
     }
     .content{
         color: rgb(0, 0, 0);
@@ -94,6 +141,59 @@ if (!articles) {
         text-decoration-skip-ink: none;
 
     }
+    .blogpost {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+        max-width: 400px;
+        display: inline-block;
+    }
+    .blogpostbox { 
+        border-radius: .5rem;
+    }
+
+    @media (max-width:850px) {
+    
+        .article-grid {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+            "article-content"
+            "article-latestStories";
+            row-gap: 2rem;
+            padding: 2rem 1rem;
+            
+        }
+        .blogpost {
+            max-width: 300px;
+        }
+        .article-latestStories {
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 1rem;
+        }
+    
+    }
+
+    @media (max-width:650px) {
+    
+    .article-grid {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "article-content"
+        "article-latestStories";
+        row-gap: 2rem;
+        padding: 2rem 1rem;
+        
+    }
+    .blogpost {
+        max-width: 400px;
+    }
+    .article-latestStories {
+        grid-template-columns: 1fr;
+        row-gap: .5rem;
+    }
+
+}
+
 
 </style>
 
@@ -102,21 +202,26 @@ if (!articles) {
             <script type="module" src="/scripts/WebShare.js"></script>
             <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}></div>
             <div class="article-grid">
-                <div class="article-content pt-3 pb-3 pl-[5rem] pr-[5rem]">
-                    <div class="category">{articleData.category} /</div>
-                    <h1 class="title uppercase py-[0.938rem]">{articleData.title}</h1>
-                    <div class="subTitle pb-[0.938rem]">Author:{articleData.author} Released:{articleData.date}</div>
-                    <div class="pb-[2rem]">
-                        <button onclick={`shareContent('${articleData.title}','${`Checkout the latest article from Warthog.Networt! : ${articleData.title}`}','${baseURL}${articleRelativeLink}')`} class="shareButton">SHARE<img class="smallArrow" src={Arrow.src}/></button>
+                <div class="article-content">
+                    <div class="">
+                        <div class="category">{articleData.category} /</div>
+                        <h1 class="title uppercase pt-[.05rem] pb-[1rem]">{articleData.title}</h1>
+                        <div class="subTitle pb-[2rem]">Author:{articleData.author} Released:{articleData.date}</div>
+                        <div class="">
+                            <button onclick={`shareContent('${articleData.title}','${`Checkout the latest article from Warthog.Networt! : ${articleData.title}`}','${baseURL}${articleRelativeLink}')`} class="shareButton">SHARE<img class="smallArrow" src={Arrow.src}/></button>
+                        </div>
+                        <ArticleContent class="content"/>    
                     </div>
-                    <ArticleContent class="content"/>
+                    
                 </div>
-                <div class="article-latestStories px-[2rem]">
-                    <ul>
-                        <li>Story</li>
-                        <li>Story</li>
-                        <li>Story</li>
-                    </ul>
+                <div class="article-latestStories">
+                    {prev3Articles.map((news) => (
+                        <a class="blogpost flex flex-col" href={`/articles/${generateArticalIdentity(news.data.title, news.data.date, news.data.author )}`}>
+                            <img class="blogpostbox"  src={GetArticleImage(news.data.category)} alt="logo" />
+                            <div class="w-fit">{news.data.category}</div>
+                            <div class="w-fit font-semibold">{news.data.title}</div>
+                        </a>
+                        ))}
                 </div>
             </div>
             
