@@ -130,15 +130,15 @@ import WhereToBuy from "../components/WhereToBuy.astro";
     <div>
         <header>
             <section><h3>Get started</h3></section>
-            <section><h1>WALLETS</h1><img src={Arrow.src} /></section>
-            <section><h1>NODE</h1><img src={Arrow.src} /></section>
-            <section><h1>MINING</h1><img src={Arrow.src} /></section>
-            <section><h1>BUYING</h1><img src={Arrow.src} /></section>
+             <section><h1><a href="#wallet">WALLETS</a></h1><img src={Arrow.src} /></section>
+            <section><h1><a href="#node">NODE</a></h1><img src={Arrow.src} /></section>
+            <section><h1><a href="#mining">MINING</a></h1><img src={Arrow.src} /></section>
+            <section><h1><a href="#buying">BUYING</a></h1><img src={Arrow.src} /></section>
         </header>
         <section class="section-grids">
             <div class="descriptions">
                 <div class="headers">
-                    <h2>Wart dapp (GUI)</h2><img src={Wallet.src} />
+                    <h2 id="wallet">Wart dapp (GUI)</h2><img src={Wallet.src} />
                 </div>
                 <div>
                     <p>
@@ -224,7 +224,7 @@ import WhereToBuy from "../components/WhereToBuy.astro";
         <section class="section-grids bggrey">
             <div class="descriptions">
                 <div class="headers">
-                    <h2>NODE</h2><img src={Nodes.src} />
+                    <h2 id="node">NODE</h2><img src={Nodes.src} />
                 </div>
                 <div>
                     <p>
@@ -250,7 +250,7 @@ import WhereToBuy from "../components/WhereToBuy.astro";
         <section class="MiningPool">
             <div>
                 <div class="headers">
-                    <h2>Mining</h2><img src={GPU.src} />
+                    <h2 id="mining">Mining</h2><img src={GPU.src} />
                 </div>
                 <h1>MINING GUIDE</h1>
                 <p class="MiningPool-text">
@@ -287,5 +287,7 @@ import WhereToBuy from "../components/WhereToBuy.astro";
             </div>
         </section>
     </div>
-    <WhereToBuy/>
+    <div id="buying">
+    <WhereToBuy />
+</div>
 </BaseLayout>
