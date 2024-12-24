@@ -26,9 +26,10 @@ import Caldera from '../BalkyImages/wheretobuyimgs/caldera.png';
     height: 11rem;
     background-color: black;
     padding: 1rem;
+    
   }
     .NEWS{
-     
+    
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -39,7 +40,15 @@ import Caldera from '../BalkyImages/wheretobuyimgs/caldera.png';
   text-shadow: 5px 1px 4px  rgb(88, 88, 88);
 }
 
-
+@media screen and (max-width: 624px) {
+    .NEWS{
+      height: 40rem;
+      align-items: center;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+  }
+}
 @media screen and (min-width: 1024px) {
     .NEWS{
       height: 20rem;
