@@ -60,9 +60,11 @@ import Group from '../BalkyImages/Group 5.svg';
     }
     .list1 {
         grid-area: list1;
+       
     }
     .list2 {
         grid-area: list2;
+       
     }
     img {
         padding-left: 1rem;
@@ -107,9 +109,24 @@ import Group from '../BalkyImages/Group 5.svg';
             grid-template-columns: 1fn 2fn;
             grid-template-areas:
                 "tokenomics"
-
                 "features";
         }
+        .list1 {
+        grid-area: list1;
+        line-height: 2rem;
+    }
+    .list1 > h2 {
+        margin-top: .5rem;
+        font-size: 1rem;
+    }
+    .list2 {
+        grid-area: list2;
+        line-height: 2rem;
+    }
+    .list2 > h2 {
+        margin-top: .5rem;
+        font-size: 1rem;
+    }
         .featuresGrid {
         padding: 2rem;
         display: grid;
@@ -146,7 +163,7 @@ import Group from '../BalkyImages/Group 5.svg';
             <features-list class="list1">
          
                 <h2>No Pre-mine <img src={Goal.src} /></h2>
-                <p class="">Project was fairly launched on Bitcointalk</p>
+                <p >Project was fairly launched on Bitcointalk</p>
 
                 <h2>Written from scratch <img src={Sprout.src} /></h2>
                 <p>This project is NOT a fork/copy of anything else</p>
@@ -156,7 +173,7 @@ import Group from '../BalkyImages/Group 5.svg';
                     funds
                 </p>
             </features-list>
-            <features-list>
+            <features-list class="list2">
                 <h2>Modern Codebase <img src={Programming.src} /></h2>
                 <p>Using modern C++20 and tools like clanged, meson, ninja</p>
                 <h2>100% mineable <img src={Trolly.src} /></h2>
