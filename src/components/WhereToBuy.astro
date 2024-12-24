@@ -13,6 +13,7 @@ import Caldera from '../BalkyImages/wheretobuyimgs/caldera.png';
     font-weight: bold;
     font-size: 3rem;
     text-align: center;
+    margin-bottom: 2rem;
   }
 
   a{
@@ -22,25 +23,31 @@ import Caldera from '../BalkyImages/wheretobuyimgs/caldera.png';
     display: block;
     border-radius: .5rem;
     width: 7rem;
+    height: 11rem;
     background-color: black;
     padding: 1rem;
+    
   }
     .NEWS{
-      height: 60rem;
+    
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-around;
   align-items: center;
 }
-@media screen and (min-width: 1024px) {
+.title{
+  text-shadow: 5px 1px 4px  rgb(88, 88, 88);
+}
+
+@media screen and (max-width: 624px) {
     .NEWS{
-      height: 20rem;
+      height: 40rem;
       align-items: center;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
   }
-
 }
 @media screen and (min-width: 1024px) {
     .NEWS{
@@ -58,12 +65,13 @@ import Caldera from '../BalkyImages/wheretobuyimgs/caldera.png';
     display: block;
     border-radius: .5rem;
     width: 10rem;
+    height: 13rem;
     background-color: black;
     padding: 1rem;
   }
 }
 </style>
-<h1 id="wheretobuy" class="">Where to Buy?</h1>
+<h1 id="wheretobuy" class="title">Where to Buy?</h1>
 <section  class="NEWS">
     
  <a class="p-10" href='https://xeggex.com/market/WART_USDT'>
