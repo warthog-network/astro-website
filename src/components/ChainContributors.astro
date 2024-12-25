@@ -6,7 +6,7 @@
     flex-wrap: wrap;
     display: flex;
     justify-content: space-around;
-
+    padding: 1rem;
 }
 p{
     font-weight: 200;
@@ -35,20 +35,37 @@ h1{
 p{
     margin-left: 2rem;
 }
+th {
+        padding: 0.5rem;
+    }
+    td {
+        padding: 0.5rem;
+        outline: 0.5px solid black;
+    }
+    .tableTitle{
+        font-size: 2rem;
+        padding: 1rem;
+    }
 </style>
 
 
 <div class="ChainContributorsGrid">
 
+
 <section>
     <h1>Chain Specs</h1>
-    <ul>COIN UNIT:<p>1 WART</p></ul>
-    <ul>BLOCK TIME:<p>20 SECONDS</p></ul>
-    <ul>REWARD:<p>3 WART</p></ul>
-    <ul>PRECISION:<p>.00000001 WART (8 digits)</p></ul>
-    <ul>HALVING:<p>~ EVERY 2 YEARS</p></ul>
-    <ul>SUPPLY:<p>18921599.68464 (~19M) </p></ul>
-    <ul>WART DIF. ADJUSTMENT:<p>EVERY 8640 BLOCKS (2 days)</p></ul>
+           
+                    <table>
+                      
+                        <tr><td>COIN UNIT</td><td>1 WART</td></tr>
+                        <tr><td>BLOCK TIME</td><td>20 SECONDS</td></tr>
+                        <tr><td>REWARD</td><td>3 WART</td></tr>
+                        <tr><td>PRECISION</td><td>.00000001 WART (8 digits)</td></tr>
+                        <tr><td>HALVING</td><td>~ EVERY 2 YEARS</td></tr>
+                        <tr><td>SUPPLY</td><td>18921599.68464 (~19M)</td></tr>
+                        <tr><td>WART DIF. ADJUSTMENT</td><td>EVERY 8640 BLOCKS (2 days)</td></tr>
+                    </table>
+               
 </section>
 <section >
     <h1>
