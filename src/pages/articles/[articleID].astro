@@ -1,9 +1,9 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayoutMaxWidth.astro';
 import { getCollection } from "astro:content";
 import { generateArticalIdentity } from '../../scripts/ArticleIdentityGenerator.js';
 import { article } from 'framer-motion/client';
-import BannerTop from "../../BalkyImages/permissionless.png";
+import BannerTop from "../../BalkyImages/WarthogTestBanner1.PNG";
 import Arrow from '../../BalkyImages/Arrow 1.png';
 import NEWS1 from '../../BalkyImages/NEWS IMG1.png';
 import NEWS2 from '../../BalkyImages/NEWS IMG2.png';
@@ -52,6 +52,11 @@ if (!article) {
 ---
 
 <style>
+    article {
+        max-width: 1440px;
+        margin: 0 auto;
+        width:100%;
+    }
     .article-grid .article-grid > * {
         box-sizing: border-box;   
     }
@@ -70,8 +75,9 @@ if (!article) {
     }
     .bannerBackgroundImage {
         position: relative;
-        background-size: cover;
-        background-position: center;
+        background-size: 100% auto;
+        background-position: center 30%;
+        background-repeat: no-repeat;
         aspect-ratio: 14/6;
         width: 100%;
         min-height: 20rem;
