@@ -24,13 +24,22 @@ import DropDownMenu from '../components/Menu.astro';
         text-align: center;
     }
 
+    @media screen and (min-width: 1024px) {
+        .siteSidePadding {
+            padding: 0 5rem; 
+        } 
+        .siteHeaderVerticalPadding {
+            padding: .6rem 0;
+        }
+    }
+
     @media screen and (max-width: 1023px) {
         .show {
             display: inline-block;
         }
     }
 </style>
-<div class="w-full max-w-[1440px] mx-auto flex justify-between items-center">
+<div class="siteSidePadding siteHeaderVerticalPadding w-full max-w-[1440px] mx-auto flex justify-between items-center">
     <Astrobar />
     <Hamburger />
 </div>

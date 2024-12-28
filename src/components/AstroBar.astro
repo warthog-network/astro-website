@@ -2,12 +2,7 @@
 import '../styles.css';
 import Menu from '../components/Menu.astro';
 
-const networks = [
-    { imgSrc: 'github.svg', href: 'https://github.com/warthog-network'},    
-    { imgSrc: 'discord.svg', href: 'https://discord.com/invite/QMDV8bGTdQ'},
-    { imgSrc: 'telegram.svg', href: 'https://t.me/warthognetwork'},
-    { imgSrc: 'twitter.svg', href: 'https://x.com/warthognetwork'},    
-];
+
 ---
 
 <style>
@@ -32,8 +27,8 @@ const networks = [
 }
 
 .logo{
-    height: 5rem;
-    min-height: 3rem;
+
+    width: 16.25rem;
   }
 
 .icon{
@@ -49,10 +44,6 @@ const networks = [
 }
 
 @media screen and (min-width: 1024px) {
-
-  .desktopMenu {
-    margin-left: 5em;
-  }
 
   .desktopMenu a {
     display: inline-block;
@@ -77,13 +68,6 @@ const networks = [
     <a  class="logo animate-fadeIn" href="/"><img class="logo animate-fadeIn" src="/Images/Warthog_2024_Full Logo.svg" alt="logo"/></a>
     <section class="lg:flex w-full justify-between items-center desktopMenu">
         <Menu />
-
-        <div class='lg:flex flex justify-center '>
-            {networks.map((network) => (
-                <a href={network.href}>
-                    <p><img class='icon'  src={'/Images/' + network.imgSrc} alt="logo" /></p>
-                </a>
-            ))}
-        </div>
+        
     </section>
 </nav>
