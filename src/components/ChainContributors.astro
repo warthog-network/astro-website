@@ -7,6 +7,25 @@
     display: flex;
     justify-content: space-around;
     padding: 1rem;
+    padding-left: 9rem;
+}
+@media (max-width:1024px) {
+    .ChainContributorsGrid{
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem;
+    padding-left: 1rem;
+}
+.contributorsT{
+    padding-top: 2rem;
+}
+}
+@media (max-width:1324px) {
+
+.contributorsT{
+    padding-top: 2rem;
+}
 }
 p{
     font-weight: 200;
@@ -25,9 +44,10 @@ h1{
     flex-wrap: wrap;
     font-weight: 250;
     font-style: italic;
-    padding-top: 2rem;
+    padding-top: 1rem;
     display: flex;
 }
+
 .youcanhelp{
     max-width: 21rem;
     font-size: .8rem;
@@ -68,7 +88,7 @@ th {
                
 </section>
 <section >
-    <h1>
+    <h1 class="contributorsT">
         Contributors
     </h1>
     <div class="contributors">
