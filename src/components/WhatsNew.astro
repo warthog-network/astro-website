@@ -37,6 +37,7 @@ const GetArticleImage = (category) => {
   align-items: center;
 }
 @media screen and (min-width: 1024px) {
+
     .NEWS{
       padding-left: 5rem;
       display: flex;
@@ -63,7 +64,13 @@ const GetArticleImage = (category) => {
         margin-top: 1rem;
     }
 .articles{
+  padding-left: 2rem;
+}
+@media screen and (min-width: 1024px) {
+
+  .articles{
   padding-left: 12rem;
+}
 }
 </style>
 <h1 class="articles flex"> Articles <a class="seeall flex" href="/news">see all<img class="small" src={Arrow.src}/></a></h1>
