@@ -33,9 +33,9 @@ const sortedArticles = Object.values(articles).sort(
 const GetArticleImage = (category) => {
   switch (category) {
     case "Developer Diary":
-      return NEWS1.src;
-    case "News Update":
       return NEWS2.src;
+    case "News Update":
+      return NEWS1.src;
     case "Blog Post":
       return NEWS3.src;
   }
