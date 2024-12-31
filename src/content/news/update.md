@@ -1,6 +1,6 @@
 ---
 category: "Developer Diary"
-title: "First update to the site"
+title: "Test-First update to the site"
 date: "2024-09-1"
 author: "FunVampire"
 ---

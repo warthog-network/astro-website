@@ -54,17 +54,72 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
     li {
         margin-left: 2rem;
     }
+    .ToC{
+        display: flex;
+        flex-direction: column;
+    }
 </style>
 <BaseLayout>
     <div class="newsApp">
         <div class="App">
             <div class="shadow">
+                {/** 
+                <div class="ToC center">
+                <a href="#Introduction" >I. Introduction ........................................................................................................................................... 4</a>
+                <a href="#History" >I.1. History ................................................................................................................................................ 4</a>
+                <a href="#What is Warthog Network?" >I.2. What is Warthog Network? ................................................................................................ 4</a>
+                <a href="#Revolutionary features" >II. Revolutionary features .................................................................................................................. 5</a>
+                <a href="#Browser nodes" >III. Browser nodes ................................................................................................................................... 5</a>
+                <a href="#WasmFS" >III.1. WasmFS .......................................................................................................................................... 5</a>
+                <a href="#communication over WebRTC" >III.2. P2P communication over WebRTC ............................................................................ 5</a>
+                <a href="#DeFi2" >IV. DeFi2 ........................................................................................................................................................ 5</a>
+                <a href="#Custom Matching engine" >IV.1. Custom Matching engine .................................................................................................. 5</a>
+                <a href="#New DeFi features" >IV.2. New DeFi features .................................................................................................................. 6</a>
+                <a href="#Balance cloning" >Balance cloning ............................................................................................................................. 6</a>
+                <a href="#Paying dividends to holders" >Paying dividends to holders .................................................................................................. 6</a>
+                <a href="#Scriptless airdrops" >Scriptless airdrops ........................................................................................................................ 6</a>
+                <a href="#Orderbook Surface Propagation" >IV.3. Orderbook Surface Propagation (Later) .................................................................. 6</a>
+                <a href="#V. Janushash" >V. Janushash .............................................................................................................................................. 6</a>
+                <a href="#Proof of Balanced Work" >V.1. Proof of Balanced Work ........................................................................................................ 6</a>
+                <a href="#V.1. Introduction" >Introduction ..................................................................................................................................... 6</a>    
+                <a href="#V.2. Janushash" >V.2. Janushash ..................................................................................................................................... 7</a>
+                <a href="#Balancing" >Balancing ........................................................................................................................................... 7</a>
+                <a href="#Hashrate Decentralization" >V.3. Hashrate Decentralization ................................................................................................. 7</a>
+                <a href="#Fighting Farms" >Fighting Farms ............................................................................................................................... 7</a>
+                <a href="#Satoshi’s vision" >Satoshi’s vision ................................................................................................................................ 7</a>
+                <a href="#V.4. ASIC Resistance" >V.4. ASIC Resistance ........................................................................................................................ 8</a>
+                <a href="#Inherited ASIC Resistance" >Inherited ASIC Resistance ...................................................................................................... 8</a>
+                <a href="#Detection of suspicious hashrate" >Detection of suspicious hashrate ...................................................................................... 9</a>
+                <a href="#Simple Algorithm Adaption" >Simple Algorithm Adaption .................................................................................................. 9</a>
+                <a href="#V.5. Other Benefits" >V.5. Other Benefits ............................................................................................................................ 9</a>
+                <a href="#Escaping one-dimensional mining boredom" >Escaping one-dimensional mining boredom .......................................................... 9</a>
+                <a href="#Favoring the little guy" >Favoring the little guy ............................................................................................................. 10</a>    
+                <a href="#Technical Details" >VI. Technical Details ............................................................................................................................ 10</a>
+                <a href="#Retarget Logic" >VI.1. Retarget Logic ......................................................................................................................... 10</a>
+                <a href="#Emission Scheme" >VI.2. Emission Scheme ................................................................................................................. 10</a>
+                <a href="#Coin Precision" >VI.3. Coin Precision ........................................................................................................................... 11</a>
+                <a href="#One-of-a-kind chain descriptor based sync" >VI.4. One-of-a-kind chain descriptor based sync ........................................................ 11</a>
+                <a href="#SQLite backed block store" >VI.5. SQLite backed block store .............................................................................................. 12</a>
+                <a href="#Account based architecture" >VI.6. Account based architecture .......................................................................................... 12</a>
+                <a href="#Fee specification" >VI.7. Fee specification .................................................................................................................... 12</a>
+                <a href="#Roadmap 2024 - 2025" >VII. Roadmap 2024 - 2025 ............................................................................................................... 13</a>
+                <a href="#VIII. Summary" >VIII. Summary .......................................................................................................................................... 13</a>
+                <a href="#Appendix A. Block Structure" >Appendix A. Block Structure ........................................................................................................ 13</a>
+                <a href="#Mining section" >A.1. Mining section .......................................................................................................................... 14</a>    
+                <a href="#New address section" >A.2. New address section ........................................................................................................... 14</a>
+                <a href="#Reward section" >A.3. Reward section ........................................................................................................................ 14</a>
+                <a href="#Transfer section" >A.4. Transfer section ....................................................................................................................... 15</a>
+                <a href="#Appendix B. Link Collection" >Appendix B. Link Collection .......................................................................................................... 16</a>
+                <a href="#Bibliography" >Bibliography ............................................................................................................................................. 16</a>    
+               
+            </div>
+            */}
                 <header class="center">
                     <h1>Warthog Network</h1>
                     <h1 class="center">Rethinking the Blockchain</h1>
                     <p>2024-10-29</p>
-                    <h2>I. Introduction</h2>
-                    <h2>I.1. History</h2>
+                    <h2 id="Introduction">I. Introduction</h2>
+                    <h2 id="History">I.1. History</h2>
                 </header>
                 <p class="parawhite">
                     Originally, Warthog was written as a fun and experimental
@@ -82,7 +137,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     started to grow up and is still growing today.
                 </p>
 
-                <h2>I.2. What is Warthog Network?</h2>
+                <h2 id="What is Warthog Network?">I.2. What is Warthog Network?</h2>
                 <p>
                     Warthog is the first Proof-of-Balanced-Work (PoBW) Layer 1
                     network trying to push the boundary of what is technically
@@ -140,17 +195,17 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     volunteers. If you think you can help, please let us know!
                 </p>
 
-                <h2>II. Revolutionary features</h2>
+                <h2 id="Revolutionary features">II. Revolutionary features</h2>
                 <p>
                     There are several noatable features that are exclusive to
                     Warthog across the industry. Section V.
                 </p>
-                <h2>III. Browser nodes</h2>
+                <h2 id="Browser nodes">III. Browser nodes</h2>
                 <p>TODO</p>
-                <h2>III.1. WasmFS</h2>
+                <h2 id="WasmFS">III.1. WasmFS</h2>
                 <p>TODO</p>
 
-                <h2>III.2. P2P communication over WebRTC</h2>
+                <h2 id="P2P communication over WebRTC">III.2. P2P communication over WebRTC</h2>
                 <p>
                     P2P communication between Browsers is possible via the
                     WebRTC protocol. This protocol has to be signaled on
@@ -160,7 +215,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     external services will be necessary apart from being
                     connected to the Warthog network.
                 </p>
-                <h2>IV. DeFi2</h2>
+                <h2 id="DeFi2">IV. DeFi2</h2>
                 <p>
                     We will hard-code DeFi within Warthog nodes. On the one hand
                     this puts additional burden on core developers because DeFi
@@ -194,7 +249,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     We call this concept and its extended capabilities DeFi2.0.
                 </p>
 
-                <h2>IV.1. Custom Matching engine</h2>
+                <h2 id="Custom Matching engine">IV.1. Custom Matching engine</h2>
                 <p>
                     A matching engine that determines a single price for all buy
                     and sell orders within a block will invalidate front and
