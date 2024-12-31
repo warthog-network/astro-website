@@ -1,5 +1,5 @@
 ---
-category: "Blog Post"
+category: "News Update"
 title: "Rafiki's Happy New Year!"
 date: "2024-12-31"
 author: "Rafiki"
