@@ -13,7 +13,7 @@ The year 2024 is coming to an end and it is time to recap the great achievements
 
 ===================
 
-Shifu's great Proof-of-Balanced-Work (PoBW) invention and his Janushash algorithm specifically resulted from hard work and a long a continuous refinement process. For weeks I remember we had discussions about how to improve the algorithm and to find a balance for the parameters for CPU and GPU efficiency.
+Shifu's great Proof-of-Balanced-Work (PoBW) invention and his Janushash algorithm specifically resulted from hard work and a long continuous refinement process. For weeks I remember we had discussions about how to improve the algorithm and to find a balance for the parameters for CPU and GPU efficiency.
 
 <br/><br/>
 <h1>First Listings</h1>
