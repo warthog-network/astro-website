@@ -1,6 +1,6 @@
 ---
 category: "Blog Post"
-title: "Rafik's Happy New Year!"
+title: "Rafiki's Happy New Year!"
 date: "2024-12-31"
 author: "Rafiki"
 ---
