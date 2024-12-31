@@ -13,7 +13,7 @@ The year 2024 is coming to an end and it is time to recap the great achievements
 
 ===================
 
-Shifu's great Proof-of-Balanced-Work (PoBW) invention and his Janushash algorithm specifically resulted from hard work and a long a continuous refinement process. For weeks I remember we had discussions about how to improve the algorithm and to find a balance for the parameters for CPU and GPU efficiency.
+Shifu's great Proof-of-Balanced-Work (PoBW) invention and his Janushash algorithm specifically resulted from hard work and a long continuous refinement process. For weeks I remember we had discussions about how to improve the algorithm and to find a balance for the parameters for CPU and GPU efficiency.
 
 <br/><br/>
 <h1>First Listings</h1>
@@ -67,3 +67,10 @@ After several failed attempts to create a browser extension, we met DJ (a.k.a. C
 
 Using BalkyBot's great Figma design we implemented a new version of the website at https://warthog.network/, it is a work-in-progress and we are actively working on improvements.
 At this point I want to thank everybody for your great support and trust in the Warthog project and our vision of a fair and decentralized cryptocurrency. I wish all of you a wonderful new year! Stay tuned for many interesting Warthog news and innovations in the next year 2025!
+
+<br/><br/>
+<h1>Additional Listings and AMA</h1>
+
+===========================
+
+Community member Mr. One organized a free listing at Bit.com exchange and Slixe from the Xelis project helped us to get a special deal to get listed on CoinEx exchange. The latter required 12k WART donation from the community. It was wonderful to see that in a joint effort we were able to collect this sum and get listed. These listings and the written AMA given by Shifu in the Bit.com Telegram group exposed Warthog to an even wider audience.
