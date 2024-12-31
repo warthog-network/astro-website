@@ -19,8 +19,10 @@ import Group from '../BalkyImages/Group 5.svg';
         );
         color: white;
     }
+    header{
+        padding-left: 12rem;
+    }
     h1 {
-    
         font-size: 4rem;
         margin-bottom: 3rem;
         font-weight: 600;
@@ -33,21 +35,24 @@ import Group from '../BalkyImages/Group 5.svg';
     }
 
     h2 {
-        font-size: 1.8rem;
+        font-size: 1rem;
         font-weight: bold;
         display: flex;
         padding-right: 2rem;
     }
     .UniqueFeatures-Grid {
         font-family: "Montserrat";
-        line-height: 3rem;
-        padding: 2rem;
+        line-height: 2rem;
+        padding: 1rem;
+       
+        padding-left: 15rem;
+        padding-right: 15rem;
         display: grid;
         grid-template-columns: 1fn 2fn;
         grid-template-areas: "tokenomics features";
     }
     .tokenomics {
-       
+       width: 20rem;
         margin-top: 3rem;
         grid-area: tokenomics;
     }
@@ -62,10 +67,16 @@ import Group from '../BalkyImages/Group 5.svg';
         grid-template-areas: "list1 list2";
     }
     .list1 {
+        min-width: 17rem;
         grid-area: list1;
        
     }
+    .list1 > p {
+       max-width: 25rem;
+       
+    }
     .list2 {
+        min-width: 17rem;
         grid-area: list2;
        
     }
@@ -78,7 +89,7 @@ import Group from '../BalkyImages/Group 5.svg';
     }
     header {
         padding-top: 2rem;
-        padding-left: 2rem;
+        padding-left: 15rem;
     }
     p {
         padding-right: 1rem;
@@ -92,7 +103,7 @@ import Group from '../BalkyImages/Group 5.svg';
     @media screen and (max-width: 1224px) {
         .UniqueFeatures-Grid {
             font-family: "Montserrat";
-            line-height: 3rem;
+            line-height: 2rem;
             padding: 2rem;
             display: grid;
             grid-template-columns: 1fn 2fn;
@@ -101,7 +112,10 @@ import Group from '../BalkyImages/Group 5.svg';
                 "features";
         }
 
-    
+        header {
+        padding-top: 2rem;
+        padding-left: 2rem;
+    }
     }
     @media screen and (max-width: 1024px) {
         .UniqueFeatures-Grid {
@@ -115,6 +129,7 @@ import Group from '../BalkyImages/Group 5.svg';
                 "features";
         }
         .list1 {
+            
         grid-area: list1;
         line-height: 2rem;
     }
@@ -156,7 +171,7 @@ import Group from '../BalkyImages/Group 5.svg';
 </style>
 
 <div class="UniqueFeatures">
-    <header>
+    <header class="header">
         <p class="token">TOKEN</p>
         <h1 class="flex">
             What makes us unique?

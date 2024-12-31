@@ -4,6 +4,7 @@ import { generateArticalIdentity } from '../scripts/ArticleIdentityGenerator.js'
 import NEWS1 from '../BalkyImages/NEWS IMG1.png';
 import NEWS2 from '../BalkyImages/NEWS IMG2.png';
 import NEWS3 from '../BalkyImages/NEWS IMG3.png';
+import Arrow from '../BalkyImages/Arrow 1.png';
 const newsUpdates = await Astro.glob('../content/news/*.md');
 
 const sortedArticles = Object.values(newsUpdates).sort(
@@ -36,19 +37,43 @@ const GetArticleImage = (category) => {
   align-items: center;
 }
 @media screen and (min-width: 1024px) {
+
     .NEWS{
+      padding-left: 5rem;
       display: flex;
       flex-direction: row;
       justify-content: space-around;
   }
 
 }
+.seeall{
+  font-size: .8rem;
+        align-items: center;
+        padding: .1rem;
+        margin-left: 1rem;
+        border-radius: .3rem;
+  border-radius: 1rem;
+  border-color: black;
+  scroll-padding-right: .5rem;
+  padding-left: .5rem;
+  border-width: .1rem;
+  font-size: .8rem;
+}
 .blogpostbox{
         border-radius: .5rem;
         margin-top: 1rem;
     }
+.articles{
+  padding-left: 2rem;
+}
+@media screen and (min-width: 1024px) {
+
+  .articles{
+  padding-left: 12rem;
+}
+}
 </style>
-<h1 class=" p-2"><a href="/news">Whats New</a></h1>
+<h1 class="articles flex"> Articles <a class="seeall flex" href="/news">see all<img class="small" src={Arrow.src}/></a></h1>
 <section class="NEWS">
   {last3Articles.map((news) => (
     <a class="p-10" href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}>
