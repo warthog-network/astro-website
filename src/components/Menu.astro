@@ -35,6 +35,26 @@ const networks = [
   text-decoration-skip-ink: none;
 }
 
+.underlineText{
+   position: relative;
+   text-decoration: none;
+ }
+
+  .underlineText::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0.03rem;
+    left: 0;
+    bottom: 0;
+    background: #FDB913;
+    transition: width 0.3s ease;
+  }
+
+  .underlineText:hover::after {
+    width: 100%;
+  }
+
   @media screen and (min-width: 1024px) {
 
   .menu {
@@ -50,7 +70,7 @@ const networks = [
     <div class='menu'>
     {links.map((link) => (
             <a class="menuItem"  target={link.target} href={link.href}>
-                <p class="">{link.name}</p>
+                <p class="underlineText">{link.name}</p>
             </a>
     ))}
     </div>
