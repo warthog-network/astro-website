@@ -1,9 +1,9 @@
 ---
 import { Picture } from 'astro:assets';
 import { generateArticalIdentity } from '../scripts/ArticleIdentityGenerator.js';
-import NEWS1 from '../BalkyImages/NEWS IMG1.png';
-import NEWS2 from '../BalkyImages/NEWS IMG2.png';
-import NEWS3 from '../BalkyImages/NEWS IMG3.png';
+import NEWS1 from '../BalkyImages/NewsPost.png';
+import NEWS2 from '../BalkyImages/DevPost.png';
+import NEWS3 from '../BalkyImages/BlogPost.png';
 import Arrow from '../BalkyImages/Arrow 1.png';
 const newsUpdates = await Astro.glob('../content/news/*.md');
 
@@ -21,9 +21,9 @@ const last3Articles = sortedArticles.slice(0,3);
 const GetArticleImage = (category) => {
   switch (category) {
     case "Developer Diary":
-      return NEWS1.src;
-    case "News Update":
       return NEWS2.src;
+    case "News Update":
+      return NEWS1.src;
     case "Blog Post":
       return NEWS3.src;
   }
