@@ -1,9 +1,9 @@
 ---
 import { Picture } from 'astro:assets';
 import { generateArticalIdentity } from '../scripts/ArticleIdentityGenerator.js';
-import NEWS1 from '../BalkyImages/NEWS IMG1.png';
-import NEWS2 from '../BalkyImages/NEWS IMG2.png';
-import NEWS3 from '../BalkyImages/NEWS IMG3.png';
+import NEWS1 from '../BalkyImages/NewsPost.png';
+import NEWS2 from '../BalkyImages/DevPost.png';
+import NEWS3 from '../BalkyImages/BlogPost.png';
 import Arrow from '../BalkyImages/Arrow 1.png';
 const newsUpdates = await Astro.glob('../content/news/*.md');
 
@@ -21,9 +21,9 @@ const last3Articles = sortedArticles.slice(0,3);
 const GetArticleImage = (category) => {
   switch (category) {
     case "Developer Diary":
-      return NEWS1.src;
-    case "News Update":
       return NEWS2.src;
+    case "News Update":
+      return NEWS1.src;
     case "Blog Post":
       return NEWS3.src;
   }
@@ -62,6 +62,7 @@ const GetArticleImage = (category) => {
 .blogpostbox{
         border-radius: .5rem;
         margin-top: 1rem;
+        width: 24.25rem;
     }
 .articles{
 padding-top: 1rem;
@@ -78,7 +79,7 @@ padding-top: 1rem;
 <section class="NEWS">
   {last3Articles.map((news) => (
     <a class="p-10" href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}>
-        <p class="blogpostbox"><img class=''  src={GetArticleImage(news.frontmatter.category)} alt="logo" /></p>
+        <img class='blogpostbox'  src={GetArticleImage(news.frontmatter.category)} alt="logo" />
         <p>{news.frontmatter.category}</p>
         <p class="font-semibold">{news.frontmatter.title}</p>
     </a>

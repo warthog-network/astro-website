@@ -1,0 +1,28 @@
+---
+import '../styles.css';
+import BaseHead from '../components/BaseHeadMaxWidth.astro';
+const {title} = Astro.props;
+import Footer from "../components/FooterMaxWidth.astro";
+
+---
+
+<html lang="en">
+	
+		<BaseHead title={title}/>
+      
+	<body>
+		
+	
+        <main>
+            <slot />
+        </main>
+        
+        <footer>
+            <script>
+                import "../scripts/menu.js";
+              </script>
+              <Footer/>
+           
+        </footer>
+	</body>
+</html>

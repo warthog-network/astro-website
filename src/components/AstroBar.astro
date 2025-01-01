@@ -1,20 +1,8 @@
 ---
 import '../styles.css';
-const links = [
-    { name: 'GET STARTED', href: '/GetStarted'},
-    { name: 'NEWS', href: '/news' },
-    { name: 'DOCS', href: 'https://docs.warthog.network/', target: '_blank'},
-    { name: 'WHITEPAPER', href: '/Whitepaper'},
-    { name: 'FAQS', href: '/faqs'},
-    { name: 'EXPLORER', href: 'https://wartscan.io/', target: '_blank'}
-];
+import Menu from '../components/Menu.astro';
 
-const networks = [
-    { imgSrc: 'github.svg', href: 'https://github.com/warthog-network'},    
-    { imgSrc: 'discord.svg', href: 'https://discord.com/invite/QMDV8bGTdQ'},
-    { imgSrc: 'telegram.svg', href: 'https://t.me/warthognetwork'},
-    { imgSrc: 'twitter.svg', href: 'https://x.com/warthognetwork'},    
-];
+
 ---
 
 <style>
@@ -39,11 +27,11 @@ const networks = [
 }
 
 .logo{
-    height: 5rem;
-    min-height: 3rem;
+
+    width: 16.25rem;
   }
 
-.navlink{
+.icon{
     height: 2.5rem;
   }
 
@@ -51,81 +39,35 @@ const networks = [
   animation: fadeIn .25s ease-out forwards;
 }
 
-.underlineText{
-  
-  justify-content: center;
-   border-radius: 4rem;
-   
-   padding: .5rem;
- }
-  
-  .underlineText2{  
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    border-radius: 4rem;
-    position: relative;
-  }
-
-  .underlineText2:after {
-    
-    content: '';
-   position: absolute;
-   width: 100%;
-   height: 0.01rem;
-   left: 0;
-   bottom: 0;
-   background:yellow;
-  }
-
-  .drawline::after{
-    transform: scale(0,1);
-    transition: transform 0.3s ease;
-    transform-origin: 0% 100%;
-  }
-
-  .drawline::after{
-    transform: scale(0,1);
-    transition: transform 0.3s ease;
-    transform-origin: 0% 100%;
-  }
-
-  .drawline:hover::after{
-   transform: scale(1,1);
-  }
-
-  .expanded {
+.expanded {
   display: unset;
 }
-  @media screen and (min-width: 1024px) {
 
-  .nav-links {
-    margin-left: 5em;
-  }
+@media screen and (min-width: 1024px) {
 
-  .nav-links a {
+  .desktopMenu a {
     display: inline-block;
     padding: .5rem;
   }
 }
+
+@media screen and (max-width: 1023px) {
+    .desktopMenu {
+      display: none;
+    }
+
+    .desktopMenu a {
+      display: flex;
+      justify-content: center;
+    }
+}
 </style>
 
 
-<nav class="lg:flex" >
+<nav class="lg:flex w-full" >
     <a  class="logo animate-fadeIn" href="/"><img class="logo animate-fadeIn" src="/Images/Warthog_2024_Full Logo.svg" alt="logo"/></a>
-    <section class="lg:flex justify-center nav-links">
-       
-        <div class='lg:flex mt-3 '>
-        {links.map((link) => (
-                <a class="underlineText"  target={link.target} href={link.href}>
-                    <p class="underlineText2 drawline">{link.name}</p>
-                </a>
-        ))}
-        </div>
-        <div class='lg:flex lg:top-0 lg:right-0 lg:absolute flex justify-center'>
-            {networks.map((network) => (
-                <a class="underlineText" href={network.href}>
-                    <p class="underlineText2 drawline"><img class='navlink'  src={'/Images/' + network.imgSrc} alt="logo" /></p>
-                </a>
-            ))}
-        </div>
+    <section class="lg:flex w-full justify-between items-center desktopMenu">
+        <Menu />
+        
     </section>
 </nav>

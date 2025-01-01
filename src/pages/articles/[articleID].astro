@@ -1,13 +1,13 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from '../../layouts/BaseLayoutMaxWidth.astro';
 import { getCollection } from "astro:content";
 import { generateArticalIdentity } from '../../scripts/ArticleIdentityGenerator.js';
 import { article } from 'framer-motion/client';
-import BannerTop from "../../BalkyImages/permissionless.png";
+import BannerTop from "../../BalkyImages/WarthogTestBanner1.PNG";
 import Arrow from '../../BalkyImages/Arrow 1.png';
-import NEWS1 from '../../BalkyImages/NEWS IMG1.png';
-import NEWS2 from '../../BalkyImages/NEWS IMG2.png';
-import NEWS3 from '../../BalkyImages/NEWS IMG3.png';
+import NEWS1 from '../../BalkyImages/NewsPost.png';
+import NEWS2 from '../../BalkyImages/DevPost.png';
+import NEWS3 from '../../BalkyImages/BlogPost.png';
 
 const baseURL = 'https://astrowart.netlify.app';
 
@@ -33,15 +33,15 @@ const sortedArticles = Object.values(articles).sort(
 const GetArticleImage = (category) => {
   switch (category) {
     case "Developer Diary":
-      return NEWS1.src;
-    case "News Update":
       return NEWS2.src;
+    case "News Update":
+      return NEWS1.src;
     case "Blog Post":
       return NEWS3.src;
   }
 };
 
-const prev3Articles = sortedArticles.slice(1,4);
+const prev3Articles = sortedArticles.slice(0,3);
 const { Content: ArticleContent } = await article[0].render();
 const articleData = article[0].data;
 const articleRelativeLink = `/articles/${generateArticalIdentity(articleData.title, articleData.date, articleData.author )}`
@@ -51,36 +51,43 @@ if (!article) {
 }
 ---
 
-<style>
+<style is:global>
+    article {
+        max-width: 1440px;
+        margin: 0 auto;
+        width:100%;
+    }
     .article-grid .article-grid > * {
         box-sizing: border-box;   
     }
     .article-grid {
         display: grid;
-        grid-template-columns: 3fr 1fr;
+        grid-template-columns: 0.610fr 0.390fr;
         grid-template-areas: 'article-content article-latestStories';
         row-gap: 2rem;
         column-gap: 5rem;
         padding: 2rem 5rem;
+        
     }
     .article-latestStories {
         display: grid;
         grid-template-columns: 1fr;
-        row-gap: 1rem;
+        row-gap: 1.75rem;
+        align-self: start;
     }
     .bannerBackgroundImage {
         position: relative;
-        background-size: cover;
-        background-position: center;
-        aspect-ratio: 14/6;
+        background-size: 100% auto;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+        aspect-ratio: 12/5; 
         width: 100%;
-        min-height: 20rem;
-        max-height: 30rem;
+        filter: grayscale(20%) contrast(90%);
     }
     .title{
         color: black;
         font-family: Montserrat;
-        font-size: 3.21rem;
+        font-size: 3.11rem;
         font-weight: 600;
         line-height: 3.21rem;
         text-align: left;
@@ -131,16 +138,25 @@ if (!article) {
         margin-bottom: auto;
     }
     .content{
-        color: rgb(0, 0, 0);
+        color: #1E1E1E;
         font-family: Montserrat;
-        font-size: 0.938rem;
-        font-weight: 400;
-        line-height: 1.688rem;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-
     }
+
+    .content h1 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.688rem;
+    }
+
+    .content p {
+        font-size: 0.938rem;
+        font-weight: 400;
+        line-height: 1.688rem;
+    }
+
     .blogpost {
         margin-left: auto;
         margin-right: auto;
@@ -150,6 +166,27 @@ if (!article) {
     }
     .blogpostbox { 
         border-radius: .5rem;
+    }
+    .postCategory {
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 27px;
+        letter-spacing: 0.12em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #1E1E1E;
+    }
+    .postTitle {
+        font-family: Montserrat;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 19px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #1E1E1E;
     }
 
     @media (max-width:850px) {
@@ -201,16 +238,19 @@ if (!article) {
         <article>
             <script type="module" src="/scripts/WebShare.js"></script>
             <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}></div>
-            <div class="article-grid">
+            <div class="article-grid mt-8">
                 <div class="article-content">
                     <div class="">
-                        <div class="category">{articleData.category} /</div>
-                        <h1 class="title uppercase pt-[.05rem] pb-[1rem]">{articleData.title}</h1>
-                        <div class="subTitle pb-[2rem]">Author:{articleData.author} Released:{articleData.date}</div>
+                        <div class="category uppercase">{articleData.category} /</div>
+                        <div class="title uppercase pt-[.05rem] pb-[1rem]">{articleData.title}</div>
+                        <div class="inline-block subTitle pb-[2rem]">Author:{articleData.author} </div><div class="ms-[1.5rem] inline-block subTitle pb-[2rem]">Released:{articleData.date}</div>
                         <div class="">
                             <button onclick={`shareContent('${articleData.title}','${`Checkout the latest article from Warthog.Networt! : ${articleData.title}`}','${baseURL}${articleRelativeLink}')`} class="shareButton">SHARE<img class="smallArrow" src={Arrow.src}/></button>
                         </div>
-                        <ArticleContent class="content"/>    
+                        <div class="content">
+                            <ArticleContent/>  
+                        </div>
+                          
                     </div>
                     
                 </div>
@@ -218,8 +258,8 @@ if (!article) {
                     {prev3Articles.map((news) => (
                         <a class="blogpost flex flex-col" href={`/articles/${generateArticalIdentity(news.data.title, news.data.date, news.data.author )}`}>
                             <img class="blogpostbox"  src={GetArticleImage(news.data.category)} alt="logo" />
-                            <div class="w-fit">{news.data.category}</div>
-                            <div class="w-fit font-semibold">{news.data.title}</div>
+                            <div class="postCategory uppercase mt-2 mb-1 w-fit">{news.data.category}</div>
+                            <div class="postTitle w-fit font-semibold">{news.data.title}</div>
                         </a>
                         ))}
                 </div>
