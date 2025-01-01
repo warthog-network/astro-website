@@ -2,14 +2,16 @@
 import BaseLayout from '../../layouts/BaseLayoutMaxWidth.astro';
 import { getCollection } from "astro:content";
 import { generateArticalIdentity } from '../../scripts/ArticleIdentityGenerator.js';
-import { article } from 'framer-motion/client';
-import BannerTop from "../../BalkyImages/WarthogTestBanner1.PNG";
+import BannerTop from "../../BalkyImages/WarthogTestBanner1.jpg";
 import Arrow from '../../BalkyImages/Arrow 1.png';
 import NEWS1 from '../../BalkyImages/NewsPost.png';
 import NEWS2 from '../../BalkyImages/DevPost.png';
 import NEWS3 from '../../BalkyImages/BlogPost.png';
 
-const baseURL = 'https://astrowart.netlify.app';
+//Adding to test if it breaks menu animation
+
+
+const baseURL = 'https://warthog.network';
 
 export async function getStaticPaths() {
     const articles = await getCollection('news');
@@ -266,4 +268,5 @@ if (!article) {
             </div>
             
         </article>
+        
 </BaseLayout>
