@@ -1,0 +1,267 @@
+---
+import WhereToBuy from "../components/WhereToBuy.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "DeFi Demo";
+import "../styles.css";
+---
+
+<BaseLayout title={title}>
+  <div class="container mx-auto p-6">
+    <h1 class="text-3xl text-center text-yellow-600 mb-8">DeFi Demo</h1>
+    <div class="flex flex-col gap-6">
+        <!-- Row for Sell Control Fields and Sell Order Book -->
+        <div class="flex items-center gap-4">
+          <div class="flex flex-col justify-center w-1/3">
+            <div class="mb-4">
+              <label class="font-bold text-yellow-600" for="sellPrice">Sell Price:</label>
+              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="sellPrice" name="sellPrice" value="1.0" />
+              <label class="font-bold text-yellow-600 mt-2" for="tokenAmount">Sell Amount:</label>
+              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="tokenAmount" name="tokenAmount" />
+              <!-- <button class="bg-yellow-600 text-white rounded p-2 mt-2" id="sellButton">Add to Sell Order Book</button> -->
+            </div>
+          </div>
+          <div class="text-2xl text-yellow-600 cursor-pointer" id="sellButton">➡️</div>
+          <div class="bg-red-100 rounded-lg p-4 h-72 overflow-y-auto w-2/3">
+            <h3 class="text-lg font-bold text-red-600">Sell Order Book</h3>
+            <table class="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th class="border-b bg-yellow-300 p-2">AMOUNT</th>
+                  <th class="border-b bg-yellow-300 p-2">FILLED</th>
+                  <th class="border-b bg-yellow-300 p-2">LIMIT</th>
+                </tr>
+              </thead>
+              <tbody id="tbodySell"> </tbody>
+            </table>
+          </div>
+        </div>
+      
+        <!-- Row for Buy Control Fields and Buy Order Book -->
+        <div class="flex items-center gap-4">
+          <div class="flex flex-col justify-center w-1/3">
+            <div class="mb-4">
+              <label class="font-bold text-yellow-600" for="buyPrice">Buy Price:</label>
+              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="buyPrice" name="buyPrice" value="1.0" />
+              <label class="font-bold text-yellow-600 mt-2" for="wartAmount">Buy Amount:</label>
+              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="wartAmount" name="wartAmount" />
+              <!-- <button class="bg-yellow-600 text-white rounded p-2 mt-2" id="buyButton">Add to Buy Order Book</button> -->
+            </div>
+          </div>
+          <div class="text-2xl text-yellow-600 cursor-pointer" id="buyButton">➡️</div>
+          <div class="bg-green-100 rounded-lg p-4 h-72 overflow-y-auto w-2/3">
+            <h3 class="text-lg font-bold text-green-600">Buy Order Book</h3>
+            <table class="w-full border-collapse">
+              <thead>
+                <tr>
+                  <th class="border-b bg-yellow-300 p-2">AMOUNT</th>
+                  <th class="border-b bg-yellow-300 p-2">FILLED</th>
+                  <th class="border-b bg-yellow-300 p-2">LIMIT</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyBuy"> </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl text-center text-yellow-600 mb-4">Pool</h2>
+        <div class="bg-gray-100 rounded-lg p-4 h-72 overflow-y-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr>
+                <th class="border-b bg-yellow-300 p-2">*</th>
+                <th class="border-b bg-yellow-300 p-2">TOKEN</th>
+                <th class="border-b bg-yellow-300 p-2">WART</th>
+                <th class="border-b bg-yellow-300 p-2">PRICE</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyPool"> </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="text-2xl text-center text-yellow-600 mb-4">Buyers</h2>
+        <div class="bg-blue-100 rounded-lg p-4 h-72 overflow-y-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr>
+                <th class="border-b bg-yellow-300 p-2">*</th>
+                <th class="border-b bg-yellow-300 p-2">FROM (WART)</th>
+                <th class="border-b bg-yellow-300 p-2">TO (TOKEN)</th>
+                <th class="border-b bg-yellow-300 p-2">PRICE</th>
+              </tr>
+            </thead>
+            <tbody id="tbodyBuyers"> </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="mt-8">
+        <h2 class="text-2xl text-center text-yellow-600 mb-4">Sellers</h2>
+        <div class="bg-purple-100 rounded-lg p-4 h-72 overflow-y-auto">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr>
+                <th class="border-b bg-yellow-300 p-2">*</th>
+                <th class="border-b bg-yellow-300 p-2">FROM (TOKEN)</th>
+                <th class="border-b bg-yellow-300 p-2">TO (WART)</th>
+                <th class="border-b bg-yellow-300 p-2">PRICE</th>
+              </tr>
+            </thead>
+            <tbody id="tbodySellers"> </tbody>
+          </table>
+        </div>
+      </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let Module: any;
+        const initModule = import("../scripts/demo").then((module) => {
+          Module = {
+            onRuntimeInitialized: () => {
+              console.log("runtime initialized");
+            },
+          };
+          module.default(Module);
+        });
+        function insertRow(obj, rowarr) {
+          var row = obj.insertRow(-1);
+          for (var i = 0; i < rowarr.length; ++i) {
+            row.insertCell(i).innerText = rowarr[i];
+          }
+        }
+        function price(base, quote) {
+          if (base != 0) {
+            return quote / base;
+          }
+          return "N/A";
+        }
+        function updateData(res) {
+          console.log(res);
+          if (res["error"] != null) {
+            alert("Error" + res["error"]);
+          } else {
+            var buys = res.buys;
+            var tbodyBuy = document.getElementById("tbodyBuy");
+            tbodyBuy.innerHTML = "";
+            for (var i = 0, len = buys.length; i < len; i++) {
+              insertRow(tbodyBuy, [
+                buys[i]["amount"],
+                buys[i]["filled"],
+                buys[i]["limit"],
+              ]);
+            }
+            var sells = res.sells;
+            var tbodySell = document.getElementById("tbodySell");
+            tbodySell.innerHTML = "";
+            for (var i = 0, len = sells.length; i < len; i++) {
+              insertRow(tbodySell, [
+                sells[i]["amount"],
+                sells[i]["filled"],
+                sells[i]["limit"],
+              ]);
+            }
+          }
+          var tbodyPool = document.getElementById("tbodyPool");
+          tbodyPool.innerHTML = "";
+          insertRow(tbodyPool, [
+            "before",
+            res.poolBefore.base,
+            res.poolBefore.quote,
+            res.poolBefore.price,
+          ]);
+          insertRow(tbodyPool, [
+            "after",
+            res.poolAfter.base,
+            res.poolAfter.quote,
+            res.poolAfter.price,
+          ]);
+
+          var tbodyBuyers = document.getElementById("tbodyBuyers");
+          tbodyBuyers.innerHTML = "";
+          insertRow(tbodyBuyers, [
+            "via orders",
+            res.matched.quote,
+            res.matched.base,
+            price(res.matched.base, res.matched.quote),
+          ]);
+          if (res.toPool.isQuote) {
+            insertRow(tbodyBuyers, [
+              "via pool",
+              res.toPool.in,
+              res.toPool.out,
+              price(res.toPool.out, res.toPool.in),
+            ]);
+            var totalQuote = res.matched.quote + res.toPool.in;
+            var totalBase = res.matched.base + res.toPool.out;
+            insertRow(tbodyBuyers, [
+              "total",
+              totalQuote,
+              totalBase,
+              price(totalBase, totalQuote),
+            ]);
+          }
+
+          var tbodySellers = document.getElementById("tbodySellers");
+          tbodySellers.innerHTML = "";
+          insertRow(tbodySellers, [
+            "orders",
+            res.matched.base,
+            res.matched.quote,
+            price(res.matched.base, res.matched.quote),
+          ]);
+          if (!res.toPool.isQuote) {
+            insertRow(tbodySellers, [
+              "via pool",
+              res.toPool.in,
+              res.toPool.out,
+              price(res.toPool.in, res.toPool.out),
+            ]);
+            var totalBase = res.matched.base + res.toPool.in;
+            var totalQuote = res.matched.quote + res.toPool.out;
+            insertRow(tbodySellers, [
+              "total",
+              totalBase,
+              totalQuote,
+              price(totalBase, totalQuote),
+            ]);
+          }
+        }
+        function addSell() {
+          console.log("click add sell");
+          var str = JSON.stringify({
+            price: (document.getElementById("sellPrice") as HTMLInputElement)
+              .value,
+            amount: (document.getElementById("tokenAmount") as HTMLInputElement)
+              .value,
+          });
+          var res = JSON.parse(
+            Module.ccall("addSell", "string", ["string"], [str])
+          );
+          updateData(res);
+        }
+        function addBuy() {
+          console.log("click add buy");
+          var str = JSON.stringify({
+            price: (document.getElementById("buyPrice") as HTMLInputElement)
+              .value,
+            amount: (document.getElementById("wartAmount") as HTMLInputElement)
+              .value,
+          });
+          var res = JSON.parse(
+            Module.ccall("addBuy", "string", ["string"], [str])
+          );
+          updateData(res);
+        }
+
+        // Attach the event listener to the buttons
+        document
+          .getElementById("sellButton")
+          .addEventListener("click", addSell);
+        document.getElementById("buyButton").addEventListener("click", addBuy);
+      });
+    </script>
+  </div>
+</BaseLayout>
