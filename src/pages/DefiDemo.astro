@@ -9,111 +9,117 @@ import "../styles.css";
   <div class="container mx-auto p-6">
     <h1 class="text-3xl text-center text-yellow-600 mb-8">DeFi Demo</h1>
     <div class="flex flex-col gap-6">
-        <!-- Row for Sell Control Fields and Sell Order Book -->
-        <div class="flex items-center gap-4">
-          <div class="flex flex-col justify-center w-1/3">
-            <div class="mb-4">
-              <label class="font-bold text-yellow-600" for="sellPrice">Sell Price:</label>
-              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="sellPrice" name="sellPrice" value="1.0" />
-              <label class="font-bold text-yellow-600 mt-2" for="tokenAmount">Sell Amount:</label>
-              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="tokenAmount" name="tokenAmount" />
-              <!-- <button class="bg-yellow-600 text-white rounded p-2 mt-2" id="sellButton">Add to Sell Order Book</button> -->
-            </div>
-          </div>
-          <div class="text-2xl text-yellow-600 cursor-pointer" id="sellButton">➡️</div>
-          <div class="bg-red-100 rounded-lg p-4 h-72 overflow-y-auto w-2/3">
-            <h3 class="text-lg font-bold text-red-600">Sell Order Book</h3>
-            <table class="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th class="border-b bg-yellow-300 p-2">AMOUNT</th>
-                  <th class="border-b bg-yellow-300 p-2">FILLED</th>
-                  <th class="border-b bg-yellow-300 p-2">LIMIT</th>
-                </tr>
-              </thead>
-              <tbody id="tbodySell"> </tbody>
-            </table>
-          </div>
-        </div>
-      
-        <!-- Row for Buy Control Fields and Buy Order Book -->
-        <div class="flex items-center gap-4">
-          <div class="flex flex-col justify-center w-1/3">
-            <div class="mb-4">
-              <label class="font-bold text-yellow-600" for="buyPrice">Buy Price:</label>
-              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="buyPrice" name="buyPrice" value="1.0" />
-              <label class="font-bold text-yellow-600 mt-2" for="wartAmount">Buy Amount:</label>
-              <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="wartAmount" name="wartAmount" />
-              <!-- <button class="bg-yellow-600 text-white rounded p-2 mt-2" id="buyButton">Add to Buy Order Book</button> -->
-            </div>
-          </div>
-          <div class="text-2xl text-yellow-600 cursor-pointer" id="buyButton">➡️</div>
-          <div class="bg-green-100 rounded-lg p-4 h-72 overflow-y-auto w-2/3">
-            <h3 class="text-lg font-bold text-green-600">Buy Order Book</h3>
-            <table class="w-full border-collapse">
-              <thead>
-                <tr>
-                  <th class="border-b bg-yellow-300 p-2">AMOUNT</th>
-                  <th class="border-b bg-yellow-300 p-2">FILLED</th>
-                  <th class="border-b bg-yellow-300 p-2">LIMIT</th>
-                </tr>
-              </thead>
-              <tbody id="tbodyBuy"> </tbody>
-            </table>
-          </div>
-        </div>
+      <!-- Row for Sell Order Book -->
+      <div class="bg-red-100 rounded-lg p-4 h-72 overflow-y-auto">
+        <h3 class="text-lg font-bold text-red-600">Sell Order Book</h3>
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="border-b bg-yellow-300 p-2">LIMIT</th>
+              <th class="border-b bg-yellow-300 p-2">AMOUNT</th>
+              <th class="border-b bg-yellow-300 p-2">FILLED</th>
+            </tr>
+          </thead>
+          <tbody id="tbodySell">
+            <!-- Existing rows will be populated here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="sellPrice" name="sellPrice" value="1.0" placeholder="Sell Price"/>
+              </td>
+              <td>
+                <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="tokenAmount" name="tokenAmount" placeholder="Sell Amount" />
+              </td>
+              <td>
+                <button class="bg-yellow-600 text-white rounded p-2" id="sellButton">Add</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
       </div>
+
+      <!-- Row for Buy Order Book -->
+      <div class="bg-green-100 rounded-lg p-4 h-72 overflow-y-auto">
+        <h3 class="text-lg font-bold text-green-600">Buy Order Book</h3>
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="border-b bg-yellow-300 p-2">LIMIT</th>
+              <th class="border-b bg-yellow-300 p-2">AMOUNT</th>
+              <th class="border-b bg-yellow-300 p-2">FILLED</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyBuy">
+            <!-- Existing rows will be populated here -->
+          </tbody>
+          <tfoot>
+            <tr>
+              <td>
+                <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="buyPrice" name="buyPrice" value="1.0" placeholder="Buy Price"/>
+              </td>
+              <td>
+                <input class="border border-yellow-300 rounded p-2 w-full" type="text" id="wartAmount" name="wartAmount" placeholder="Buy Amount"/>
+              </td>
+              <td>
+                <button class="bg-yellow-600 text-white rounded p-2" id="buyButton">Add</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
 
     <div class="mt-8">
-        <h2 class="text-2xl text-center text-yellow-600 mb-4">Pool</h2>
-        <div class="bg-gray-100 rounded-lg p-4 h-72 overflow-y-auto">
-          <table class="w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="border-b bg-yellow-300 p-2">*</th>
-                <th class="border-b bg-yellow-300 p-2">TOKEN</th>
-                <th class="border-b bg-yellow-300 p-2">WART</th>
-                <th class="border-b bg-yellow-300 p-2">PRICE</th>
-              </tr>
-            </thead>
-            <tbody id="tbodyPool"> </tbody>
-          </table>
-        </div>
+      <h2 class="text-2xl text-center text-yellow-600 mb-4">Pool</h2>
+      <div class="bg-gray-100 rounded-lg p-4 h-72 overflow-y-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="border-b bg-yellow-300 p-2">*</th>
+              <th class="border-b bg-yellow-300 p-2">TOKEN</th>
+              <th class="border-b bg-yellow-300 p-2">WART</th>
+              <th class="border-b bg-yellow-300 p-2">PRICE</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyPool"> </tbody>
+        </table>
       </div>
+    </div>
 
-      <div class="mt-8">
-        <h2 class="text-2xl text-center text-yellow-600 mb-4">Buyers</h2>
-        <div class="bg-blue-100 rounded-lg p-4 h-72 overflow-y-auto">
-          <table class="w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="border-b bg-yellow-300 p-2">*</th>
-                <th class="border-b bg-yellow-300 p-2">FROM (WART)</th>
-                <th class="border-b bg-yellow-300 p-2">TO (TOKEN)</th>
-                <th class="border-b bg-yellow-300 p-2">PRICE</th>
-              </tr>
-            </thead>
-            <tbody id="tbodyBuyers"> </tbody>
-          </table>
-        </div>
+    <div class="mt-8">
+      <h2 class="text-2xl text-center text-yellow-600 mb-4">Buyers</h2>
+      <div class="bg-blue-100 rounded-lg p-4 h-72 overflow-y-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="border-b bg-yellow-300 p-2">*</th>
+              <th class="border-b bg-yellow-300 p-2">FROM (WART)</th>
+              <th class="border-b bg-yellow-300 p-2">TO (TOKEN)</th>
+              <th class="border-b bg-yellow-300 p-2">PRICE</th>
+            </tr>
+          </thead>
+          <tbody id="tbodyBuyers"> </tbody>
+        </table>
       </div>
+    </div>
 
-      <div class="mt-8">
-        <h2 class="text-2xl text-center text-yellow-600 mb-4">Sellers</h2>
-        <div class="bg-purple-100 rounded-lg p-4 h-72 overflow-y-auto">
-          <table class="w-full border-collapse">
-            <thead>
-              <tr>
-                <th class="border-b bg-yellow-300 p-2">*</th>
-                <th class="border-b bg-yellow-300 p-2">FROM (TOKEN)</th>
-                <th class="border-b bg-yellow-300 p-2">TO (WART)</th>
-                <th class="border-b bg-yellow-300 p-2">PRICE</th>
-              </tr>
-            </thead>
-            <tbody id="tbodySellers"> </tbody>
-          </table>
-        </div>
+    <div class="mt-8">
+      <h2 class="text-2xl text-center text-yellow-600 mb-4">Sellers</h2>
+      <div class="bg-purple-100 rounded-lg p-4 h-72 overflow-y-auto">
+        <table class="w-full border-collapse">
+          <thead>
+            <tr>
+              <th class="border-b bg-yellow-300 p-2">*</th>
+              <th class="border-b bg-yellow-300 p-2">FROM (TOKEN)</th>
+              <th class="border-b bg-yellow-300 p-2">TO (WART)</th>
+              <th class="border-b bg-yellow-300 p-2">PRICE</th>
+            </tr>
+          </thead>
+          <tbody id="tbodySellers"> </tbody>
+        </table>
       </div>
+    </div>
 
     <script>
       document.addEventListener("DOMContentLoaded", () => {
