@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Whitepaperimg from "../images/whitepaperimg1.png";
+import Main from '../BalkyImages/main-01.png'
+const title ="Warthog Network"
 ---
 
 <style>
@@ -57,14 +59,32 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
     .ToC{
         display: flex;
         flex-direction: column;
+        text-align: right;
+    }
+    @media (max-width: 1024px) {
+        .ToC{
+        font-size: .75rem;
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+    }
+    }
+    .WhitepaperCover{
+        width: 100%;
+        max-width: 60rem;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        border-bottom-width: 5px;
     }
 </style>
 <BaseLayout>
     <div class="newsApp">
         <div class="App">
-            <div class="shadow">
-                {/** 
-                <div class="ToC center">
+            <div class="shadow ">
+                
+                <div class=" center">
+                    <img class="WhitepaperCover shadow " src={Main.src}/>
+                    <div class="ToC">
                 <a href="#Introduction" >I. Introduction ........................................................................................................................................... 4</a>
                 <a href="#History" >I.1. History ................................................................................................................................................ 4</a>
                 <a href="#What is Warthog Network?" >I.2. What is Warthog Network? ................................................................................................ 4</a>
@@ -80,7 +100,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                 <a href="#Scriptless airdrops" >Scriptless airdrops ........................................................................................................................ 6</a>
                 <a href="#Orderbook Surface Propagation" >IV.3. Orderbook Surface Propagation (Later) .................................................................. 6</a>
                 <a href="#V. Janushash" >V. Janushash .............................................................................................................................................. 6</a>
-                <a href="#Proof of Balanced Work" >V.1. Proof of Balanced Work ........................................................................................................ 6</a>
+                <a href="#V.1. Proof of Balanced Work" >V.1. Proof of Balanced Work ........................................................................................................ 6</a>
                 <a href="#V.1. Introduction" >Introduction ..................................................................................................................................... 6</a>    
                 <a href="#V.2. Janushash" >V.2. Janushash ..................................................................................................................................... 7</a>
                 <a href="#Balancing" >Balancing ........................................................................................................................................... 7</a>
@@ -110,10 +130,10 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                 <a href="#Reward section" >A.3. Reward section ........................................................................................................................ 14</a>
                 <a href="#Transfer section" >A.4. Transfer section ....................................................................................................................... 15</a>
                 <a href="#Appendix B. Link Collection" >Appendix B. Link Collection .......................................................................................................... 16</a>
-                <a href="#Bibliography" >Bibliography ............................................................................................................................................. 16</a>    
-               
+                <a href="#Bibliography" >Bibliography ............................................................................................................................................. 16</a> 
             </div>
-            */}
+            </div>
+            
                 <header class="center">
                     <h1>Warthog Network</h1>
                     <h1 class="center">Rethinking the Blockchain</h1>
@@ -266,14 +286,14 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     level, or even at mempool and networking level, see Section
                     IV.3. for details.
                 </p>
-                <h2>IV.2. New DeFi features</h2>
+                <h2 id="New DeFi features">IV.2. New DeFi features</h2>
                 <p>TODO</p>
-                <h2>Balance cloning</h2>
-                <h2>Paying dividends to holders</h2>
-                <h2>Scriptless airdrops</h2>
+                <h2 id="Balance cloning">Balance cloning</h2>
+                <h2 id="Paying dividends to holders">Paying dividends to holders</h2>
+                <h2 id="Scriptless airdrops">Scriptless airdrops</h2>
 
                 <br />
-                <h2>IV.3. Orderbook Surface Propagation (Later)</h2>
+                <h2 id="Orderbook Surface Propagation">IV.3. Orderbook Surface Propagation (Later)</h2>
                 <p>
                     At a later stage we will focus on implementing a new method
                     to lower order fees. Nodes can inspect order prices and only
@@ -284,9 +304,9 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     possible. This idea shall be more elaborated at a later
                     stage.
                 </p>
-                <h2>V. Janushash</h2>
-                <h2>V.1. Proof of Balanced Work</h2>
-                <h3>Introduction</h3>
+                <h2 id="V. Janushash">V. Janushash</h2>
+                <h2 id="V.1. Proof of Balanced Work">V.1. Proof of Balanced Work</h2>
+                <h3 id="V.1. Introduction">Introduction</h3>
                 <p>
                     Proof of Balanced Work (PoBW) was first formulated in 2023
                     by Warthog community developer “CoinFuMasterShifu” [1] and
@@ -319,7 +339,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     algorithm.
                 </li>
 
-                <h2>V.2. Janushash</h2>
+                <h2 id="V.2. Janushash">V.2. Janushash</h2>
 
                 <p>
                     Essentially, Proof of Balanced Work algorithms are simply
@@ -329,7 +349,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                 <li>triple Sha256 (Sha256t) and</li>
                 <li>Verushash v2.2</li>
 
-                <h3>Balancing</h3>
+                <h3 id="Balancing">Balancing</h3>
                 <p>
                     Energy-efficient mining of Proof of Balanced Work algorithms
                     requires find- ing a good balance between Sha256t and
@@ -339,8 +359,8 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     balancing requirement coined the name “Proof of Balanced
                     Work”.
                 </p>
-                <h2>V.3. Hashrate Decentralization</h2>
-                <h3>Fighting Farms</h3>
+                <h2 id="Hashrate Decentralization">V.3. Hashrate Decentralization</h2>
+                <h3 id="Fighting Farms">Fighting Farms</h3>
                 <p>
                     Interestingly, the Janushash algorithm keeps away both, GPU
                     farms and CPU farms:
@@ -364,7 +384,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     cryptocurrencies, which increases decentralization of
                     hashrate.
                 </p>
-                <h3>Satoshi’s vision</h3>
+                <h3 id="Satoshi’s vision">Satoshi’s vision</h3>
                 <p>
                     Originally, Satoshi Nakamoto had an idealized hope for
                     mining being a democratized way of establishing consensus.
@@ -420,7 +440,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     mining Warthog. This democratizes mining and brings Warthog
                     closer to Satoshi’s vision.
                 </p>
-                <h2>V.4. ASIC Resistance</h2>
+                <h2 id="V.4. ASIC Resistance">V.4. ASIC Resistance</h2>
                 <p>
                     As technology advances, so does specialized mining hardware,
                     especially when potential profits are high. There is nothing
@@ -428,7 +448,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     reasons why Warthog is more robust against ASIC threats than
                     other PoW cryptocurrencies:
                 </p>
-                <h3>Inherited ASIC Resistance</h3>
+                <h3 id="Inherited ASIC Resistance">Inherited ASIC Resistance</h3>
                 <p>
                     When it comes to ASIC resistance, Proof of Balanced Work is
                     stronger than its strongest ingredient. To accelerate
@@ -445,7 +465,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     but not on FPGAs/ASICs, and the need to also require SHA256t
                     hashrate makes Janushash even more ASIC- resistant.
                 </p>
-                <h3>Detection of suspicious hashrate</h3>
+                <h3 id="Detection of suspicious hashrate">Detection of suspicious hashrate</h3>
                 <p>
                     In traditional Proof of Work networks we only have one
                     marker to analyze network hashrate, namely the network
@@ -470,7 +490,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     also mimic the hashrate ratio used by honest miners. This is
                     another unique property of Proof of Balanced Work.
                 </p>
-                <h3>Simple Algorithm Adaption</h3>
+                <h3 id="Simple Algorithm Adaption">Simple Algorithm Adaption</h3>
                 <p>
                     The fundamental reason for the favorable properties of the
                     Janushash algo- rithm is not the particular choice of the
@@ -485,13 +505,13 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     proven properties at the same time. This allows Warthog to
                     adapt quickly when needed.
                 </p>
-                <h2>V.5. Other Benefits</h2>
+                <h2 id="V.5. Other Benefits">V.5. Other Benefits</h2>
                 <p>
                     Warthog tries to revive the good old days when mining was
                     fun. The unique properties of the Janushash algorithm help
                     to achieve this goal:
                 </p>
-                <h3>Escaping one-dimensional mining boredom</h3>
+                <h3 id="Escaping one-dimensional mining boredom">Escaping one-dimensional mining boredom</h3>
                 <p>
                     In a way, traditional mining in cryptocurrency is
                     one-dimensional, the goal is simply to find the best
@@ -503,7 +523,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     endless hardware setups. Vivid discussions about the best
                     combinations bring Warthog mining to life.
                 </p>
-                <h3>Favoring the little guy</h3>
+                <h3 id="Favoring the little guy">Favoring the little guy</h3>
                 <p>
                     As explained above, established farms require substantial
                     investments in order to mine Warthog efficiently and making
@@ -519,8 +539,8 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     increased mining returns for the average gamer or miner,
                     which will in turn contribute to Warthog’s popularity.
                 </p>
-                <h2>VI. Technical Details</h2>
-                <h3>VI.1. Retarget Logic</h3>
+                <h2 id="Technical Details">VI. Technical Details</h2>
+                <h3 id="Retarget Logic">VI.1. Retarget Logic</h3>
                 <p>Similarly to Bitcoin, the warthog blockchain will scale its difficulty periodically
                     to adjust for changing hashrate. Changes in difficulty is partitioned into two
                     phases:</p>
@@ -537,7 +557,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                         <p>While in Bitcoin the difficulty change is capped by factor 4, we have imple-
                             mented a factor 2 cap because our difficulty adjustment is more frequent
                             than 2 weeks.</p>
-                            <h2>VI.2. Emission Scheme</h2>
+                            <h2 id="Emission Scheme">VI.2. Emission Scheme</h2>
                             <p>Warthog was started without any premined or reserved amount of coins on
                                 June 29, 2023. The project implements a classical halving-based emission
                                 scheme with halvings occurring every 3153600 blocks (every 2 years). The
@@ -585,7 +605,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     approximately 60/20 * 60 * 24 = 4320 blocks and 12960 WART
                     are mined before halving.
                 </p>
-                <h2>VI.3. Coin Precision</h2>
+                <h2 id="Coin Precision">VI.3. Coin Precision</h2>
                 <p>
                     The reference implementation uses the C++ data type uint64_t
                     for storing amounts of WART. This is a 64 bit unsigned
@@ -602,7 +622,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     internal integer representation indicated with label "E8"
                     (like "amountE8": 1200000000).
                 </p>
-                <h2>VI.4. One-of-a-kind chain descriptor based sync</h2>
+                <h2 id="One-of-a-kind chain descriptor based sync">VI.4. One-of-a-kind chain descriptor based sync</h2>
                 <p>
                     This project is an experiment where the developers try out
                     new things and push the boundary of what is possible in
@@ -632,7 +652,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     chain descriptor and a block range. This way we avoid
                     overhead in communication and lookup.
                 </p>
-                <h2>VI.5. SQLite backed block store</h2>
+                <h2 id="SQLite backed block store">VI.5. SQLite backed block store</h2>
                 <p>
                     SQLite is a battle-proven and well-established embedded SQL
                     database engine. Warthog nodes use SQLite as their main
@@ -653,7 +673,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     chain.db3 and can be configured via the --chain-db command
                     line option
                 </p>
-                <h2>VI.6. Account based architecture</h2>
+                <h2 id="Account based architecture">VI.6. Account based architecture</h2>
                 <p>
                     Warthog implements an account based architecture. This is
                     similar to Ethereum and different from Bitcoin's UTXO model.
@@ -664,7 +684,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     more space-efficient since a block id only requires 8 bytes
                     of storage whereas an address would require 20 bytes.
                 </p>
-                <h2>VI.7. Fee specification</h2>
+                <h2 id="Fee specification">VI.7. Fee specification</h2>
                 <p>For efficiency and compactness transaction fees are encoded as 2-byte
                     floating-point numbers (16 bits), where the first 6 bits encode the exponent
                     and the remaining 10 bits encode a 11 bit mantissa starting with an implicit
@@ -672,7 +692,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     regular amount values which use 4 bytes. A fee of value of 0 specified
                     on transaction generation will automatically transform into the minimal fee
                     value of 0.0000001 WART .</p>
-                    <h2>VII. Roadmap 2024 - 2025</h2>
+                    <h2 id="Roadmap 2024 - 2025">VII. Roadmap 2024 - 2025</h2>
                     <li>New “herominers” pool support (please aim for pool decentralization)</li>
                     <li>Collect sufficient donation funds</li>
                     <li>New website with design by BalkyBot (logo designer)</li>
@@ -696,7 +716,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                         matching</li>
                         <li>Implement protocol for exchanging orders between nodes</li>
                         <li>Change block structure to support order matching</li>
-                        <h2>VIII. Summary</h2>
+                        <h2 id="VIII. Summary">VIII. Summary</h2>
                         <p>In this whitepaper we have presented the Warthog Network crypto project
                             which stands out of the masses in terms of decentralization, technology
                             and innovation. Unique flagship features include the specifically designed
@@ -708,7 +728,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                             scriptless proportional airdrops to token holders, ICOs and more in a clean
                             and user-friendly way. With the fair initial coin distribution based purely on
                             mining and its thriving community Warthog’s future shines bright.</p>
-                <h2>Appendix A. Block Structure</h2>
+                <h2 id="Appendix A. Block Structure">Appendix A. Block Structure</h2>
                 <p>
                     The binary content of a block is a concatenation of the
                     following sections in their specified order:
@@ -723,7 +743,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     Below we describe the above sections. All numbers and id
                     values are in network byte order.
                 </p>
-                <h3>A.1. Mining section</h3>
+                <h3 id="Mining section">A.1. Mining section</h3>
                 <p>
                     This section allows miners to put 4 bytes of arbitrary data
                     to affect the merkle hash.
@@ -735,7 +755,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                         <tr><td>1-4 </td><td>arbitrary data</td></tr>
                     </table>
                 </div>
-                <h3>A.2. New address section</h3>
+                <h3 id="New address section">A.2. New address section</h3>
                 <p>
                     This section lists new addresses that receive payments in
                     this block and therefore need to be added to the state
@@ -766,7 +786,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     in the state table and are actually referenced in this
                     block. Otherwise the block is considered invalid.
                 </p>
-                <h3>A.3. Reward section</h3>
+                <h3 id="Reward section">A.3. Reward section</h3>
                 <p>
                     Mining reward is distributed to at least one reward address.
                 </p>
@@ -804,7 +824,7 @@ import Whitepaperimg from "../images/whitepaperimg1.png";
                     block is considered invalid.
                 </p>
                 <p>The total size of the mining section is 2+ r*16 bytes.</p>
-                <h3>A.4. Transfer section</h3>
+                <h3 id="Transfer section">A.4. Transfer section</h3>
                 <p>
                     The transfer section contains the transfers made in this
                     block. Its binary outline is as follows:
