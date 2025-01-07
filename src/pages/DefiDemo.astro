@@ -325,9 +325,9 @@ import "../styles.css";
           tbodyBuy.innerHTML = "";
           for (var i = 0, len = buys.length; i < len; i++) {
             insertRow(tbodyBuy, [
+              buys[i]["limit"],
               buys[i]["amount"],
               buys[i]["filled"],
-              buys[i]["limit"],
             ]);
           }
           console.log("updateData 2");
@@ -336,9 +336,9 @@ import "../styles.css";
           tbodySell.innerHTML = "";
           for (var i = 0, len = sells.length; i < len; i++) {
             insertRow(tbodySell, [
+              sells[i]["limit"],
               sells[i]["amount"],
               sells[i]["filled"],
-              sells[i]["limit"],
             ]);
           }
           var tbodyPool = document.getElementById("tbodyPool");
