@@ -221,7 +221,35 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                 </li>
             </div>
         </section>
-        <section class="section-grids bggrey">
+        <section class="section-grids  bggrey">
+            <div class="descriptions">
+                <div class="headers">
+                    <h2>Browser Extension Wallet</h2><img src={Wallet.src} />
+                </div>
+                <div>
+                    <p>
+                        Browser Extension Wallet is a GUI wallet working on Chrome and
+                        Firefox. It works with a node. You have to manually type
+                        your node IP (local or public)
+                    </p>
+                </div>
+            </div>
+
+            <div class="list">
+                <li>
+                    <a
+                        href="https://github.com/warthog-network/warthog-extension/releases"
+                        >Download</a>
+                </li>
+                <li>
+                    <a
+                        href="https://docs.warthog.network/guides/browser-extension-wallet/"
+                        >Guide</a>
+                </li>
+            </div>
+        </section>
+       
+        <section class="section-grids">
             <div class="descriptions">
                 <div class="headers">
                     <h2 id="node">NODE</h2><img src={Nodes.src} />
@@ -247,6 +275,7 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                 </li>
             </div>
         </section>
+        <div class='bggrey '>
         <section class="MiningPool">
             <div>
                 <div class="headers">
@@ -286,6 +315,7 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                 </li>
             </div>
         </section>
+    </div>
     </div>
     <div id="buying">
     <WhereToBuy />
