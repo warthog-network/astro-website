@@ -189,9 +189,18 @@ import "../styles.css";
       </div>
 
       <div
-        class="w-[20%] flex flex-col gap-4 border border-black border-dashed"
+        class="w-[20%] flex flex-col gap-4 border border-black border-dashed justify-between"
       >
-        Draw
+        <p>
+          <span class="bg-gray-300" id="sellToken">Swapped 300 Token</span> into
+          <span class="bg-green-300" id="buyWart">150 Wart</span>
+        </p>
+        <p>
+          <span class="bg-green-300" id="sellWart">Swapped 100 Wart</span> into <span
+            class="bg-gray-300"
+            id="buyToken">200 Token</span
+          >
+        </p>
       </div>
       <div class="w-[40%]">
         <div
@@ -211,7 +220,7 @@ import "../styles.css";
                   <p
                     class="flex items-center justify-between gap-2 font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
                   >
-                    *
+                    Pool Interaction
                   </p>
                 </th>
                 <th
@@ -220,7 +229,7 @@ import "../styles.css";
                   <p
                     class="flex items-center justify-between gap-2 font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
                   >
-                    TOKEN
+                    Before
                   </p>
                 </th>
                 <th
@@ -229,23 +238,14 @@ import "../styles.css";
                   <p
                     class="flex items-center justify-between gap-2 font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
                   >
-                    WART
-                  </p>
-                </th>
-                <th
-                  class="py-2 transition-colors min-w-20 cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 hover:bg-blue-gray-50"
-                >
-                  <p
-                    class="flex items-center justify-between gap-2 font-sans text-sm antialiased font-normal leading-none text-blue-gray-900 opacity-70"
-                  >
-                    PRICE
+                    After
                   </p>
                 </th>
               </tr>
             </thead>
             <tbody id="tbodyPool">
               <tr>
-                <td class="min-w-[100px]">before</td>
+                <td class="min-w-[100px]">+100 Token</td>
                 <td
                   ><input
                     id="beforeToken"
@@ -253,6 +253,10 @@ import "../styles.css";
                     class="border-black border outline-none max-w-20"
                   /></td
                 >
+                <td id="afterToken">N/A</td>
+              </tr>
+              <tr>
+                <td class="min-w-[100px]">-50 WART</td>
                 <td
                   ><input
                     id="beforeWart"
@@ -260,13 +264,12 @@ import "../styles.css";
                     class="border-black border outline-none max-w-20"
                   /></td
                 >
-                <td id="beforePrice">N/A</td>
+                <td id="afterWart">N/A</td>
               </tr>
               <tr>
-                <td>after</td>
-                <td id="afterToken">N/A</td>
-                <td id="afterWart">N/A</td>
-                <td id="afterPrice">N/A</td>
+                <td class="min-w-[100px]">[price 2.0]</td>
+                <td id="beforePrice">[price 1.6667]</td>
+                <td id="afterPrice">[price 2.4]</td>
               </tr>
             </tbody>
           </table>
@@ -352,55 +355,56 @@ import "../styles.css";
             match.poolAfter.price;
 
           console.log("updateData 3");
-          // var tbodyBuyers = document.getElementById("tbodyBuyers");
-          // tbodyBuyers.innerHTML = "";
-          // insertRow(tbodyBuyers, [
-          //   "via orders",
-          //   match.matched.quote,
-          //   match.matched.base,
-          //   price(match.matched.base, match.matched.quote),
-          // ]);
-          // if (match.toPool.isQuote) {
-          //   insertRow(tbodyBuyers, [
-          //     "via pool",
-          //     match.toPool.in,
-          //     match.toPool.out,
-          //     price(match.toPool.out, match.toPool.in),
-          //   ]);
-          //   var totalQuote = match.matched.quote + match.toPool.in;
-          //   var totalBase = match.matched.base + match.toPool.out;
-          //   insertRow(tbodyBuyers, [
-          //     "total",
-          //     totalQuote,
-          //     totalBase,
-          //     price(totalBase, totalQuote),
-          //   ]);
-          // }
 
-          // var tbodySellers = document.getElementById("tbodySellers");
-          // tbodySellers.innerHTML = "";
-          // insertRow(tbodySellers, [
-          //   "orders",
-          //   match.matched.base,
-          //   match.matched.quote,
-          //   price(match.matched.base, match.matched.quote),
-          // ]);
-          // if (!match.toPool.isQuote) {
-          //   insertRow(tbodySellers, [
-          //     "via pool",
-          //     match.toPool.in,
-          //     match.toPool.out,
-          //     price(match.toPool.in, match.toPool.out),
-          //   ]);
-          //   var totalBase = match.matched.base + match.toPool.in;
-          //   var totalQuote = match.matched.quote + match.toPool.out;
-          //   insertRow(tbodySellers, [
-          //     "total",
-          //     totalBase,
-          //     totalQuote,
-          //     price(totalBase, totalQuote),
-          //   ]);
-          // }
+          const toPool = match.toPool;
+          const filled = match.filled;
+
+          var tbodyBuyers = document.getElementById("tbodyBuyers");
+          tbodyBuyers.innerHTML = "";
+          insertRow(tbodyBuyers, [
+            "orders",
+            match.matched.quote,
+            match.matched.base,
+            match.matched.price,
+          ]);
+          if (toPool && toPool.isQuote) {
+            insertRow(tbodyBuyers, [
+              "via pool",
+              toPool.quote,
+              toPool.base,
+              toPool.price,
+            ]);
+          }
+          insertRow(tbodyBuyers, [
+            "total",
+            filled.outQuoteBuyer,
+            filled.inBaseBuyer,
+            match.filled.priceBuyer,
+          ]);
+
+          var tbodySellers = document.getElementById("tbodySellers");
+          tbodySellers.innerHTML = "";
+          insertRow(tbodySellers, [
+            "orders",
+            match.matched.base,
+            match.matched.quote,
+            match.matched.price,
+          ]);
+          if (toPool && !toPool.isQuote) {
+            insertRow(tbodySellers, [
+              "via pool",
+              toPool.base,
+              toPool.quote,
+              toPool.price,
+            ]);
+          }
+          insertRow(tbodySellers, [
+            "total",
+            filled.outBaseSeller,
+            filled.inQuoteSeller,
+            filled.priceSeller,
+          ]);
+
         }
         function addSell() {
           console.log("click add sell");
