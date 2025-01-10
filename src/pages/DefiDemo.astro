@@ -6,7 +6,7 @@ import "../styles.css";
 ---
 
 <BaseLayout title={title}>
-  <div class="container mx-auto min-h-[550px]">
+  <div class="mx-auto min-h-[550px]">
     <!-- <h1 class="text-3xl text-center text-yellow-600 mb-8">DeFi Demo</h1> -->
     <h1
       class="my-10 text-3xl text-center font-extrabold text-yellow-500 dark:text-white md:text-5xl lg:text-6xl"
@@ -18,10 +18,10 @@ import "../styles.css";
     </h1>
 
     <div
-      class="flex md:flex-row md:p-6 p-3 flex-col gap-4 min-h-full justify-between"
+      class="flex md:flex-row md:p-6 p-3 flex-col mx-auto max-w-[1440px] gap-4 min-h-full justify-between"
     >
       <!-- Order Book -->
-      <div class="flex flex-col gap-4 md:w-[33%]">
+      <div class="flex flex-col gap-4 md:w-[37%]">
         <!-- Sell Order Book -->
         <div
           class="relative flex flex-col w-[100%] h-auto text-gray-700 bg-white rounded-xl border border-[#F9B13C]"
@@ -94,7 +94,7 @@ import "../styles.css";
               <thead>
                 <tr>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer border-y border-blue-gray-100 bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -103,7 +103,7 @@ import "../styles.css";
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer border-y border-blue-gray-100 bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -112,7 +112,7 @@ import "../styles.css";
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer border-y border-blue-gray-100 bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -202,33 +202,33 @@ import "../styles.css";
 
       <!-- Swap -->
       <div
-        class="flex flex-col gap-4 border-2 border-black border-dashed justify-between rounded-xl p-4"
+        class="flex flex-col gap-4 border-2 md:w-[26%] border-black border-dashed justify-between rounded-xl p-4"
       >
-        <div class="flex justify-between items-center gap-4">
+        <div class="flex justify-between items-center gap-2 text-sm">
           <div
-            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1"
             id="sellToken"
           >
             300 Token
           </div>
           <img src="/public/Images/right-arrow.svg" class="w-8 h-8" />
           <div
-            class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1"
             id="buyWart"
           >
             150 Wart
           </div>
         </div>
-        <div class="flex justify-between items-center gap-4">
+        <div class="flex justify-between items-center gap-2 text-sm">
           <div
-            class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1"
             id="sellWart"
           >
             100 Wart
           </div>
           <img src="/public/Images/right-arrow.svg" class="w-8 h-8" />
           <div
-            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1"
             id="sellToken"
           >
             300 Token
@@ -238,124 +238,121 @@ import "../styles.css";
 
       <!-- Pool -->
       <div
-        class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[33%]"
+        class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[37%]"
       >
         <h5
           class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
         >
           Pool
         </h5>
-        <table
-          class="w-full mt-4 text-center border border-gray-600 rounded-md overflow-hidden"
+        <div
+          class="flex md:flex-col w-full mt-4 border border-gray-600 rounded-md overflow-hidden"
         >
-          <thead>
-            <tr>
-              <th
-                class="py-2 transition-colors min-w-6 cursor-pointer border-y border-blue-gray-100 bg-[#EF5831] text-white"
+          <div class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full">
+            <div
+              class="flex justify-center py-2 w-full transition-colors min-w-6 cursor-pointer bg-[#EF5831] text-white"
+            >
+              <p
+                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
               >
-                <p
-                  class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
-                >
-                  Pool Interaction
-                </p>
-              </th>
-              <th
-                class="py-2 transition-colors cursor-pointer border-y border-blue-gray-100 bg-[#EF5831] text-white"
+                Pool Interaction
+              </p>
+            </div>
+            <div
+              class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+            >
+              <p
+                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
               >
-                <p
-                  class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
-                >
-                  Before
-                </p>
-              </th>
-              <th
-                class="py-2 transition-colors cursor-pointer border-y border-blue-gray-100 bg-[#EF5831] text-white"
+                Before
+              </p>
+            </div>
+            <div
+              class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+            >
+              <p
+                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
               >
-                <p
-                  class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
-                >
-                  After
-                </p>
-              </th>
-            </tr>
-          </thead>
-          <tbody id="tbodyPool" class="border-2 rounded-md  border-red-100">
-            <tr>
-              <td class="min-w-[100px] px-4 py-2 text-sm leading-4">
-                <div
-                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2"
-                  id="sellToken"
-                >
-                  +100 Token
-                </div>
-              </td>
-              <td>
-                <input
-                  id="beforeToken"
-                  value="100"
-                  class="border-[#EF5831] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
-                />
-              </td>
-              <td class="px-4 py-2 text-sm leading-4">
-                <div
-                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2"
-                  id="afterToken"
-                >
-                  600 TOKEN
-                </div>
-              </td>
-            </tr>
-            <tr class="pt-2">
-              <td class="min-w-[100px] px-4 py-2 text-sm leading-4">
-                <div
-                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
-                >
-                  +50 WART
-                </div>
-              </td>
-              <td>
-                <input
-                  id="beforeWart"
-                  value="200"
-                  class="border-[#EF5831] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
-                />
-              </td>
-              <td class="px-4 py-2 text-sm leading-4">
-                <div
-                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
-                  id="afterWart"
-                >
-                  250 WART
-                </div>
-              </td>
-            </tr>
-            <tr class="pt-2">
-              <td class="min-w-[100px] px-4 py-2 text-sm leading-4">
-                <div
-                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
-                >
-                  N/A
-                </div>
-              </td>
-              <td class="px-4 py-2 text-sm leading-4">
-                <div
-                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
-                  id="beforePrice"
-                >
-                  N/A
-                </div>
-              </td>
-              <td class="px-4 py-2 text-sm leading-4">
-                <div
-                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
-                  id="afterPrice"
-                >
-                  N/A
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+                After
+              </p>
+            </div>
+          </div>
+          <div class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2">
+            <div class="w-full h-full justify-center flex items-center text-sm leading-4">
+              <div
+                class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2"
+                id="sellToken"
+              >
+                +100 Token
+              </div>
+            </div>
+            <div class="w-full h-full justify-center flex items-center">
+              <input
+                id="beforeToken"
+                value="100"
+                class="border-[#EF5831] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
+              />
+            </div>
+            <div class="w-full h-full justify-center flex items-center text-sm leading-4">
+              <div
+                class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2"
+                id="afterToken"
+              >
+                600 TOKEN
+              </div>
+            </div>
+          </div>
+          <div class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2">
+            <div class="w-full h-full justify-center flex items-center text-sm leading-4">
+              <div
+                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
+              >
+                +50 WART
+              </div>
+            </div>
+            <div class="w-full h-full justify-center flex items-center">
+              <input
+                id="beforeWart"
+                value="200"
+                class="border-[#033298] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
+              />
+            </div>
+            <div class="w-full h-full justify-center flex items-center text-sm leading-4">
+              <div
+                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
+                id="afterWart"
+              >
+                250 WART
+              </div>
+            </div>
+          </div>
+          <div class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:py-2 px-2">
+            <div class="w-full h-full justify-center flex items-center text-sm leading-4">
+              <div
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
+              >
+                N/A
+              </div>
+            </div>
+            <div class="w-full h-full justify-center flex items-center text-sm leading-4">
+              <div
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
+                id="beforePrice"
+              >
+                N/A
+              </div>
+            </div>
+            <div class="w-full h-full justify-center flex items-center text-sm leading-4">
+              <div
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
+                id="afterPrice"
+              >
+                N/A
+              </div>
+            </div>
+          </div>
+            
+        </div>
       </div>
     </div>
 

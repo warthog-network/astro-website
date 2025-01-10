@@ -5,7 +5,9 @@
 @tailwind utilities;
 
 
-
+* {
+  box-sizing: border-box;
+}
 .parallax-bg {
   background-attachment: scroll;
   background-size: cover;
