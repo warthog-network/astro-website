@@ -279,7 +279,7 @@ import "../styles.css";
               </th>
             </tr>
           </thead>
-          <tbody id="tbodyPool">
+          <tbody id="tbodyPool" class="border-2 rounded-md  border-red-100">
             <tr>
               <td class="min-w-[100px] px-4 py-2 text-sm leading-4">
                 <div
@@ -296,17 +296,21 @@ import "../styles.css";
                   class="border-[#EF5831] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
                 />
               </td>
-              <td id="afterToken" class="px-4 py-2 text-sm leading-4"
-                >600 TOKEN</td
-              >
+              <td class="px-4 py-2 text-sm leading-4">
+                <div
+                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2"
+                  id="afterToken"
+                >
+                  600 TOKEN
+                </div>
+              </td>
             </tr>
             <tr class="pt-2">
               <td class="min-w-[100px] px-4 py-2 text-sm leading-4">
                 <div
                   class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
-                  id="buyWart"
                 >
-                  +50 Wart
+                  +50 WART
                 </div>
               </td>
               <td>
@@ -316,20 +320,39 @@ import "../styles.css";
                   class="border-[#EF5831] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
                 />
               </td>
-              <td id="afterWart" class="px-4 py-2 text-sm leading-4"
-                >250 WART</td
-              >
+              <td class="px-4 py-2 text-sm leading-4">
+                <div
+                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
+                  id="afterWart"
+                >
+                  250 WART
+                </div>
+              </td>
             </tr>
             <tr class="pt-2">
-              <td class="min-w-[100px] px-4 py-2 text-sm leading-4"
-                >[price 2.0]</td
-              >
-              <td id="beforePrice" class="px-4 py-2 text-sm leading-4"
-                >[price 1.667]</td
-              >
-              <td id="afterPrice" class="px-4 py-2 text-sm leading-4"
-                >[price 2.4]</td
-              >
+              <td class="min-w-[100px] px-4 py-2 text-sm leading-4">
+                <div
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
+                >
+                  N/A
+                </div>
+              </td>
+              <td class="px-4 py-2 text-sm leading-4">
+                <div
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
+                  id="beforePrice"
+                >
+                  N/A
+                </div>
+              </td>
+              <td class="px-4 py-2 text-sm leading-4">
+                <div
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
+                  id="afterPrice"
+                >
+                  N/A
+                </div>
+              </td>
             </tr>
           </tbody>
         </table>
