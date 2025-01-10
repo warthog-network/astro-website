@@ -27,34 +27,41 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
 ---
 
 <BaseLayout title = {title}>
-    <script type="module" src="/scripts/WebShare.js"></script>
-    <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}>
-        <div class="bannerBackgroundContent" >
-            <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
-            <h1 class="Title uppercase">{latestNewsArticle.frontmatter.title}</h1>
-            <div class="thin" set:html={`${latestNewsArticlePreviewContent}...`}></div>
-            <section class="flex">
-                <a href={latestNewsArticleRelativeLink} class="flex aBanner">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent('${latestNewsArticle.frontmatter.title}','${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.frontmatter.title}`}','${baseURL}${latestNewsArticleRelativeLink}')`} class="flex aBanner">SHARE<img class="small" src={Arrow.src}/></button>
-            </section>    
+    <article>
+        <script type="module" src="/scripts/WebShare.js"></script>
+        <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}>
+            <div class="bannerBackgroundContent" >
+                <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
+                <h1 class="Title uppercase">{latestNewsArticle.frontmatter.title}</h1>
+                <div class="thin" set:html={`${latestNewsArticlePreviewContent}...`}></div>
+                <section class="flex">
+                    <a href={latestNewsArticleRelativeLink} class="flex aBanner">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent('${latestNewsArticle.frontmatter.title}','${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.frontmatter.title}`}','${baseURL}${latestNewsArticleRelativeLink}')`} class="flex aBanner">SHARE<img class="small" src={Arrow.src}/></button>
+                </section>    
+            </div>
         </div>
-    </div>
-   
-    <ul class="blogpostframe">
-        {sortedNewsUpdates.map((news) => (
+    
+        <ul class="blogpostframe">
+            {sortedNewsUpdates.map((news) => (
 
-        <li class="blogpostbox">
-            <a href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}><h2 class="blogpostTitle">{news.frontmatter.title}</h2></a>
-            <img class="blogimg" src={BlogImage.src}/>
-            <p><small>{news.frontmatter.date}</small></p>
-            <div set:html={news.compiledContent()}></div>
-            
-        </li>
-        ))}
-    </ul>
-<WhereToBuy/>
+            <li class="blogpostbox">
+                <a href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}><h2 class="blogpostTitle">{news.frontmatter.title}</h2></a>
+                <img class="blogimg" src={BlogImage.src}/>
+                <p><small>{news.frontmatter.date}</small></p>
+                <div set:html={`${news.compiledContent().split(`\n`).slice(0,3).join(`\n`)}...`}></div>
+                
+            </li>
+            ))}
+        </ul>
+        <WhereToBuy/>
+    </article>
 </BaseLayout>
 
 <style>
+    article {
+        max-width: 1440px;
+        margin: 0 auto;
+        width:100%;
+    }
     h1{
         margin-left: 1rem;
     }
@@ -74,13 +81,20 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
         box-shadow: 15px 17px 15px -5px;
     }
     .bannerBackgroundImage {
-        position: relative;
+        /*position: relative;
         background-size: cover;
         background-position: center calc(60%);
         aspect-ratio: 16/7;
         width: 100%;
         min-height: 20rem;
-        max-height: 30rem;
+        max-height: 30rem;*/
+        position: relative;
+        background-size: 100% auto;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+        aspect-ratio: 12/5; 
+        width: 100%;
+        filter: grayscale(20%) contrast(90%);
     }
     .bannerBackgroundImageB {
         position: relative;
