@@ -27,19 +27,24 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
 ---
 
 <BaseLayout title = {title}>
-    <article>
         <script type="module" src="/scripts/WebShare.js"></script>
-        <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}>
-            <div class="bannerBackgroundContent" >
-                <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
-                <h1 class="Title uppercase">{latestNewsArticle.frontmatter.title}</h1>
-                <div class="thin" set:html={`${latestNewsArticlePreviewContent}...`}></div>
-                <section class="flex">
-                    <a href={latestNewsArticleRelativeLink} class="flex aBanner">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent('${latestNewsArticle.frontmatter.title}','${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.frontmatter.title}`}','${baseURL}${latestNewsArticleRelativeLink}')`} class="flex aBanner">SHARE<img class="small" src={Arrow.src}/></button>
-                </section>    
-            </div>
+        <div class="BannerExpand">
+            <section>
+                <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}>
+                    <div class="bannerBackgroundContent" >
+                        <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
+                        <h1 class="Title uppercase">{latestNewsArticle.frontmatter.title}</h1>
+                        <div class="thin" set:html={`${latestNewsArticlePreviewContent}...`}></div>
+                        <section class="flex">
+                            <a href={latestNewsArticleRelativeLink} class="flex aBanner">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent('${latestNewsArticle.frontmatter.title}','${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.frontmatter.title}`}','${baseURL}${latestNewsArticleRelativeLink}')`} class="flex aBanner">SHARE<img class="small" src={Arrow.src}/></button>
+                        </section>    
+                    </div>
+                </div>
+            </section>
         </div>
-    
+        
+        
+        <section>
         <ul class="blogpostframe">
             {sortedNewsUpdates.map((news) => (
 
@@ -53,11 +58,14 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
             ))}
         </ul>
         <WhereToBuy/>
-    </article>
+    </section>
 </BaseLayout>
 
 <style>
-    article {
+    .BannerExpand {
+        background-color: rgb(12, 12, 12);
+    }
+    section {
         max-width: 1440px;
         margin: 0 auto;
         width:100%;
