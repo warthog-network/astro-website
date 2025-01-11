@@ -69,7 +69,6 @@ if (!article) {
         row-gap: 2rem;
         column-gap: 5rem;
         padding: 2rem 5rem;
-        
     }
     .article-latestStories {
         display: grid;
@@ -90,13 +89,12 @@ if (!article) {
     .title{
         color: black;
         font-family: Montserrat;
-        font-size: 3.11rem;
+        font-size: clamp(2rem, 5.6vw, 3.11rem);
         font-weight: 600;
-        line-height: 3.21rem;
+        line-height: clamp(2.1rem, 5.7vw, 3.21rem);
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
-
     }
     .subTitle{
         font-family: Montserrat;
@@ -146,6 +144,7 @@ if (!article) {
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
+        max-width: 100%;
     }
 
     .content h1 {
@@ -217,13 +216,12 @@ if (!article) {
     @media (max-width:650px) {
     
     .article-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(100%, 1fr);
         grid-template-areas:
         "article-content"
         "article-latestStories";
         row-gap: 2rem;
         padding: 2rem 1rem;
-        
     }
     .blogpost {
         max-width: 400px;
@@ -245,7 +243,6 @@ if (!article) {
             <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}></div>
             <div class="article-grid mt-8">
                 <div class="article-content">
-                    <div class="">
                         <div class="category uppercase">{articleData.category} /</div>
                         <div class="title uppercase pt-[.05rem] pb-[1rem]">{articleData.title}</div>
                         <div class="inline-block subTitle pb-[2rem]">Author:{articleData.author} </div><div class="ms-[1.5rem] inline-block subTitle pb-[2rem]">Released:{articleData.date}</div>
@@ -255,9 +252,7 @@ if (!article) {
                         <div class="content">
                             <ArticleContent/>  
                         </div>
-                          
-                    </div>
-                    
+                                              
                 </div>
                 <div class="article-latestStories">
                     {prev3Articles.map((news) => (
