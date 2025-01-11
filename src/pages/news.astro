@@ -127,11 +127,10 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
     .bannerBackgroundImage {
         display: flex;
         flex-direction: column;
-        background-size: auto;
+        background-size: auto 100%;
         background-position: center 30%;
         background-repeat: no-repeat;
         aspect-ratio: 12/5; 
-        height: 100%;
         filter: grayscale(20%) contrast(90%);
         padding-top: 1rem;
     }
@@ -225,17 +224,6 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
         color: #a6a6a6;
     }
     @media (max-width: 1024px) {
-        .bannerBackgroundImage {
-            display: flex;
-            flex-direction: column;
-            background-size: auto 100%;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-            aspect-ratio: 12/5; 
-            width: 100%;
-            filter: grayscale(20%) contrast(90%);
-            
-        }
         .bannerBackgroundContent {   
             margin-bottom:1rem;
             margin-left:1rem;
