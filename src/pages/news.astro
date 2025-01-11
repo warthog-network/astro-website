@@ -64,8 +64,11 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
                 {sortedNewsUpdates.map((news) => (
                     <a class="blogpost flex flex-col" href={`/articles/${generateArticalIdentity(news.data.title, news.data.date, news.data.author )}`}>
                         <img class="blogpostbox"  src={GetArticleImage(news.data.category)} alt="logo" />
-                        <div class="postCategory uppercase mt-2 mb-1 w-fit">{news.data.category}</div>
-                        <div class="postTitle w-fit font-semibold">{news.data.title}</div>
+                        <div class="postCategory uppercase mt-2 mb-1 w-fit">{`${news.data.category}`}</div>
+                        <div class="flex flex-row justify-between">
+                            <div class="postTitle w-fit">{`${news.data.title}`}</div><div class="postDate">{news.data.date}</div>
+                        </div>
+                        
                     </a>
                     ))}
             </div>
@@ -122,18 +125,18 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
         border-radius: .5rem;
     }
     .bannerBackgroundImage {
-        position: relative;
-        background-size: 100% auto;
+        display: flex;
+        flex-direction: column;
+        background-size: auto;
         background-position: center 30%;
         background-repeat: no-repeat;
         aspect-ratio: 12/5; 
-        width: 100%;
+        height: 100%;
         filter: grayscale(20%) contrast(90%);
+        padding-top: 1rem;
     }
     .bannerBackgroundContent {
-        position:absolute;
-        bottom:0;
-       
+        margin-top: auto;
         margin-bottom: 2rem;
         margin-left:5rem;
         margin-right:5rem;
@@ -211,22 +214,32 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
         text-decoration-skip-ink: none;
         color: #1E1E1E;
     }
+    .postDate {
+        font-family: Montserrat;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 19px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #a6a6a6;
+    }
     @media (max-width: 1024px) {
         .bannerBackgroundImage {
-        position: relative;
-        background-size: 140% auto;
-        background-position: center 30%;
-        background-repeat: no-repeat;
-        height: 24rem;
-        filter: grayscale(20%) contrast(90%);
+            display: flex;
+            flex-direction: column;
+            background-size: auto 100%;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            aspect-ratio: 12/5; 
+            width: 100%;
+            filter: grayscale(20%) contrast(90%);
+            
         }
-        .bannerBackgroundContent {
-        position:absolute;
-        bottom:0;
-       
-        margin-bottom: 1rem;
-        margin-left:1rem;
-        margin-right:1rem;
+        .bannerBackgroundContent {   
+            margin-bottom:1rem;
+            margin-left:1rem;
+            margin-right: 1rem;
         }
         .grid-blogposts {
         display: grid;
@@ -250,35 +263,11 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
     }
 
     @media (max-width: 650px) {
-        .bannerBackgroundImage {
-            position: relative;
-            background-size: 140% auto;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-            height: 18.5rem;
-            filter: grayscale(20%) contrast(90%);
-        }
-        .bannerBackgroundContent {
-            position:absolute;
-            bottom:0;
-        
-            margin-bottom: 1rem;
-            margin-left:1rem;
-            margin-right:1rem;
-        }
         .PreviewContent{
             display: none;
         }
     }
     @media (max-width: 550px) {
-        .bannerBackgroundImage {
-            position: relative;
-            background-size: 140% auto;
-            background-position: bottom 30%;
-            background-repeat: no-repeat;
-            height: 15.9rem;
-            filter: grayscale(20%) contrast(90%);
-        }
         .grid-blogposts {
             display: grid;
             grid-template-columns: 1fr;
