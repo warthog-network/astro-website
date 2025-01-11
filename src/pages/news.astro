@@ -1,7 +1,11 @@
 ---
 import { generateArticalIdentity } from '../scripts/ArticleIdentityGenerator.js';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from "astro:content";
+import BaseLayout from '../layouts/BaseLayoutMaxWidth.astro';
 import WhereToBuy from '../components/WhereToBuy.astro';
+import NEWS1 from '../BalkyImages/NewsPost.png';
+import NEWS2 from '../BalkyImages/DevPost.png';
+import NEWS3 from '../BalkyImages/BlogPost.png';
 
 const title = 'News Blog';
 const baseURL = 'https://astrowart.netlify.app';
@@ -11,119 +15,130 @@ import BlogImage from '../BalkyImages/Warthog_2024_Full Logo.svg';
 import Littlewart from '../BalkyImages/littlewart.svg';
 import Arrow from '../BalkyImages/Arrow 1.png';
 
-const newsUpdates = await Astro.glob('../content/news/*.md');
+const newsUpdates = await getCollection('news');
+
+const GetArticleImage = (category) => {
+  switch (category) {
+    case "Developer Diary":
+      return NEWS2.src;
+    case "News Update":
+      return NEWS1.src;
+    case "Blog Post":
+      return NEWS3.src;
+  }
+};
 
 const sortedNewsUpdates = Object.values(newsUpdates).sort(
     (a, b) => {
-        const dateA = new Date(a.frontmatter.date).getTime();
-        const dateB = new Date(b.frontmatter.date).getTime();
+        const dateA = new Date(a.data.date).getTime();
+        const dateB = new Date(b.data.date).getTime();
 
         return dateB - dateA;
     }
 );
 const latestNewsArticle = sortedNewsUpdates.splice(0, 1)[0];
-const latestNewsArticlePreviewContent = latestNewsArticle.compiledContent().split(`\n`).slice(0,5).join(`\n`);
-const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(latestNewsArticle.frontmatter.title, latestNewsArticle.frontmatter.date, latestNewsArticle.frontmatter.author )}`
+const latestNewsArticlePreviewContent = latestNewsArticle.body.split(`\n`).slice(0,6).join(`\n`);
+const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(latestNewsArticle.data.title, latestNewsArticle.data.date, latestNewsArticle.data.author )}`
 ---
 
 <BaseLayout title = {title}>
-    <script type="module" src="/scripts/WebShare.js"></script>
-    <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}>
-        <div class="bannerBackgroundContent" >
-            <h2 class="Latest flex">LATEST<img src={Littlewart.src}/></h2>
-            <h1 class="Title uppercase">{latestNewsArticle.frontmatter.title}</h1>
-            <div class="thin" set:html={`${latestNewsArticlePreviewContent}...`}></div>
-            <section class="flex">
-                <a href={latestNewsArticleRelativeLink} class="flex aBanner">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent('${latestNewsArticle.frontmatter.title}','${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.frontmatter.title}`}','${baseURL}${latestNewsArticleRelativeLink}')`} class="flex aBanner">SHARE<img class="small" src={Arrow.src}/></button>
-            </section>    
+        <script type="module" src="/scripts/WebShare.js"></script>
+        <div class="BannerExpand">
+            <section>
+                <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}>
+                    <div class="bannerBackgroundContent" >
+                        <div class="Latest flex">LATEST<img class="ms-2" src={Littlewart.src}/></div>
+                        <div class="Title uppercase">{latestNewsArticle.data.title}</div>
+                        <div class="PreviewContent" set:html={`${latestNewsArticlePreviewContent}...`}></div>
+                        <section class="flex">
+                            <a href={latestNewsArticleRelativeLink} class="flex ButtonLong pr-4">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent("${latestNewsArticle.data.title}","${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.data.title}`}","${baseURL}${latestNewsArticleRelativeLink}")`} class="flex Button ms-8">SHARE<img class="small" src={Arrow.src}/></button>
+                        </section>    
+                    </div>
+                </div>
+            </section>
         </div>
-    </div>
-   
-    <ul class="blogpostframe">
-        {sortedNewsUpdates.map((news) => (
-
-        <li class="blogpostbox">
-            <a href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}><h2 class="blogpostTitle">{news.frontmatter.title}</h2></a>
-            <img class="blogimg" src={BlogImage.src}/>
-            <p><small>{news.frontmatter.date}</small></p>
-            <div set:html={news.compiledContent()}></div>
-            
-        </li>
-        ))}
-    </ul>
-<WhereToBuy/>
+        
+        
+        <section>
+            <div class="grid-blogposts">
+                {sortedNewsUpdates.map((news) => (
+                    <a class="blogpost flex flex-col" href={`/articles/${generateArticalIdentity(news.data.title, news.data.date, news.data.author )}`}>
+                        <img class="blogpostbox"  src={GetArticleImage(news.data.category)} alt="logo" />
+                        <div class="postCategory uppercase mt-2 mb-1 w-fit">{news.data.category}</div>
+                        <div class="postTitle w-fit font-semibold">{news.data.title}</div>
+                    </a>
+                    ))}
+            </div>
+        <WhereToBuy/>
+    </section>
 </BaseLayout>
 
-<style>
-    h1{
-        margin-left: 1rem;
+<style >
+    /* --Keeping here to check with Balky, see how to handle expansion.
+    .BannerExpand {
+        background: rgb(31,31,33);
+        background: radial-gradient(circle, rgba(31,31,33,1) 0%, rgba(12,12,12,1) 35%, rgba(12,12,12,1) 65%, rgba(31,31,33,1) 100%); 
+    }*/
+    .Button {
+        align-items: center;
+        padding: 1.3rem;
+        padding-right: .6rem;
+        padding-left: .6rem;
+        margin-bottom: .2rem;
+        height: 2rem;
+        border-radius: 0.938rem;
+        background-color: rgb(209, 209, 209);
+        font-family: Montserrat;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: gray;
     }
-    .blogpostTitle{
-        font-weight: bold;
+    .ButtonLong {
+        align-items: center;
+        padding: 1.3rem;
+        padding-right: 3rem;
+        padding-left: .6rem;
+        margin-bottom: .2rem;
+        height: 2rem;
+        border-radius: 0.938rem;
+        background-color: rgb(209, 209, 209);
+        font-family: Montserrat;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: gray;
     }
-    .blogpostframe{
-        margin-top: 1rem;
-        padding: 1rem;
+    section {
+        max-width: 1440px;
+        margin: 0 auto;
+        width:100%;
     }
     .blogpostbox{
-        border-color: rgb(15, 15, 15);
-        border-width: .13rem;
         border-radius: .5rem;
-        margin-top: 1rem;
-        padding: 1rem;
-        box-shadow: 15px 17px 15px -5px;
     }
     .bannerBackgroundImage {
         position: relative;
-        background-size: cover;
-        background-position: center calc(60%);
-        aspect-ratio: 16/7;
-        width: 100%;
-        min-height: 20rem;
-        max-height: 30rem;
-    }
-    .bannerBackgroundImageB {
-        position: relative;
-        min-height: 20rem;
+        background-size: 100% auto;
+        background-position: center 30%;
         background-repeat: no-repeat;
-        background-size: cover;
-        width:100%;
-        max-height: 25rem;
-        aspect-ratio: 16/7;
+        aspect-ratio: 12/5; 
+        width: 100%;
+        filter: grayscale(20%) contrast(90%);
     }
     .bannerBackgroundContent {
         position:absolute;
         bottom:0;
        
         margin-bottom: 2rem;
-        margin-left:.5rem;
+        margin-left:5rem;
+        margin-right:5rem;
     }
-
-    .bannerimg{
-        object-fit: cover;
-        width:100%;
-        max-height: 25rem;
-    }
-    .blogimg{
-        text-align: center;
-        justify-content: center;
-        align-items: center;
-        object-fit: cover;
-        width:100%;
-        max-width: 30rem;
-    }
-    .Bannertext{
-        margin-top: -12rem;
-    }
-    .bold{
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 10px;
-        color: black;
-    }
-    .thin{
-        margin-left: 1rem;
+    .PreviewContent{
         margin-top: .5rem;
         margin-bottom: .75rem;
         font-family: 'Montserrat';
@@ -132,42 +147,156 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
         font-weight: 300;
         color: rgb(255, 255, 255);
     }
-    a{}
     .Latest{
-        margin-left: 1rem;
         color: white;
+        font-family: Montserrat;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 27px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+
     }
    .Title{
-        font-weight: bold;
-        font-size: 2.4rem;
         color: white;
-    }
-    .aBanner{
-        font-size: .8rem;
-        align-items: center;
-        padding: .1rem;
-        margin-left: 1rem;
-        border-radius: .3rem;
-        background-color: rgb(209, 209, 209);
+        font-family: Montserrat;
+        font-size: 3.125rem;
+        font-weight: 600;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        line-height: 3.525rem;
     }
     .small{
-    
         height: .5rem;
         width: 2rem;
     }
+    .grid-blogposts {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        row-gap: 2rem;
+        column-gap: 3rem;
+        padding: 2.8rem 5rem;
+        margin-bottom: 25rem;
+    }
+    .blogpost {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+        max-width: 400px;
+        display: inline-block;
+    }
+    .blogpostbox { 
+        border-radius: .5rem;
+    }
+    .postCategory {
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 27px;
+        letter-spacing: 0.12em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #1E1E1E;
+    }
+    .postTitle {
+        font-family: Montserrat;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 19px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #1E1E1E;
+    }
+    @media (max-width: 1024px) {
+        .bannerBackgroundImage {
+        position: relative;
+        background-size: 140% auto;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+        height: 24rem;
+        filter: grayscale(20%) contrast(90%);
+        }
+        .bannerBackgroundContent {
+        position:absolute;
+        bottom:0;
+       
+        margin-bottom: 1rem;
+        margin-left:1rem;
+        margin-right:1rem;
+        }
+        .grid-blogposts {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 2rem;
+        column-gap: 3rem;
+        padding: 2rem 1rem;
+        margin-bottom: 15rem;
+        }
+        .Title{
+            color: white;
+            font-family: Montserrat;
+            font-size: 2.8rem;
+            font-weight: 600;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            line-height: 2.7rem;
+            margin-bottom: 1rem;
+        }
+    }
+
     @media (max-width: 650px) {
-    .Bannertext{
-        margin-top: -8.5rem;
+        .bannerBackgroundImage {
+            position: relative;
+            background-size: 140% auto;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            height: 18.5rem;
+            filter: grayscale(20%) contrast(90%);
+        }
+        .bannerBackgroundContent {
+            position:absolute;
+            bottom:0;
+        
+            margin-bottom: 1rem;
+            margin-left:1rem;
+            margin-right:1rem;
+        }
+        .PreviewContent{
+            display: none;
+        }
     }
-    .thin{
-        display: none;
-        margin-left: 1.5rem;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-size: 10px;
-        font-weight: 300;
-        color: gray;
+    @media (max-width: 550px) {
+        .bannerBackgroundImage {
+            position: relative;
+            background-size: 140% auto;
+            background-position: bottom 30%;
+            background-repeat: no-repeat;
+            height: 15.9rem;
+            filter: grayscale(20%) contrast(90%);
+        }
+        .grid-blogposts {
+            display: grid;
+            grid-template-columns: 1fr;
+            row-gap: 2rem;
+            column-gap: 3rem;
+            padding: 2rem 1rem;
+            margin-bottom: 10rem;
+        }
+        .Title{
+            color: white;
+            font-family: Montserrat;
+            font-size: 2rem;
+            font-weight: 600;
+            text-align: left;
+            text-underline-position: from-font;
+            text-decoration-skip-ink: none;
+            line-height: 2.3rem;
+        }
     }
-}
 </style>
 
