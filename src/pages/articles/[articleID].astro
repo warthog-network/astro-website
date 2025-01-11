@@ -250,7 +250,7 @@ if (!article) {
                         <div class="title uppercase pt-[.05rem] pb-[1rem]">{articleData.title}</div>
                         <div class="inline-block subTitle pb-[2rem]">Author:{articleData.author} </div><div class="ms-[1.5rem] inline-block subTitle pb-[2rem]">Released:{articleData.date}</div>
                         <div class="">
-                            <button onclick={`shareContent('${articleData.title}','${`Checkout the latest article from Warthog.Networt! : ${articleData.title}`}','${baseURL}${articleRelativeLink}')`} class="shareButton">SHARE<img class="smallArrow" src={Arrow.src}/></button>
+                            <button onclick={`shareContent("${articleData.title}","${`Checkout the latest article from Warthog.Networt! : ${articleData.title}`}","${baseURL}${articleRelativeLink}")`} class="shareButton">SHARE<img class="smallArrow" src={Arrow.src}/></button>
                         </div>
                         <div class="content">
                             <ArticleContent/>  

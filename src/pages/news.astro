@@ -51,7 +51,7 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
                         <div class="Title uppercase">{latestNewsArticle.data.title}</div>
                         <div class="PreviewContent" set:html={`${latestNewsArticlePreviewContent}...`}></div>
                         <section class="flex">
-                            <a href={latestNewsArticleRelativeLink} class="flex ButtonLong pr-4">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent('${latestNewsArticle.data.title}','${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.data.title}`}','${baseURL}${latestNewsArticleRelativeLink}')`} class="flex Button ms-8">SHARE<img class="small" src={Arrow.src}/></button>
+                            <a href={latestNewsArticleRelativeLink} class="flex ButtonLong pr-4">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent("${latestNewsArticle.data.title}","${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.data.title}`}","${baseURL}${latestNewsArticleRelativeLink}")`} class="flex Button ms-8">SHARE<img class="small" src={Arrow.src}/></button>
                         </section>    
                     </div>
                 </div>
