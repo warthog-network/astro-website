@@ -64,11 +64,11 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
                 {sortedNewsUpdates.map((news) => (
                     <a class="blogpost flex flex-col" href={`/articles/${generateArticalIdentity(news.data.title, news.data.date, news.data.author )}`}>
                         <img class="blogpostbox"  src={GetArticleImage(news.data.category)} alt="logo" />
-                        <div class="postCategory uppercase mt-2 mb-1 w-fit">{`${news.data.category}`}</div>
                         <div class="flex flex-row justify-between">
-                            <div class="postTitle w-fit">{`${news.data.title}`}</div><div class="postDate">{news.data.date}</div>
+                            <div class="postCategory uppercase mt-2 mb-1 w-fit">{`${news.data.category}`}</div>
+                            <div class="postDate mt-2 mb-1 ">{news.data.date}</div>
                         </div>
-                        
+                        <div class="postTitle w-fit">{`${news.data.title}`}</div>
                     </a>
                     ))}
             </div>
@@ -215,9 +215,10 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
     }
     .postDate {
         font-family: Montserrat;
-        font-size: 15px;
-        font-weight: 500;
-        line-height: 19px;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 27px;
+        letter-spacing: 0.12em;
         text-align: left;
         text-underline-position: from-font;
         text-decoration-skip-ink: none;
