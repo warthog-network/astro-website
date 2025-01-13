@@ -1,5 +1,4 @@
 ---
-import arrowLine from 'arrow-line';
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BuyTable from "../components/BuyTable.astro";
 const title = "DeFi Demo";
@@ -209,36 +208,40 @@ import "../styles.css";
           class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm"
         >
           <div
+            id="sellTokenArrowPoint"
             class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1"
           >
-            <span id="sellToken">300</span> Token
+            <span id="sellToken">0</span> Token
           </div>
           <img
             src="/public/Images/right-arrow.svg"
             class="w-8 h-8 md:rotate-0 rotate-90"
           />
           <div
+            id="buyWartArrowPoint"
             class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1"
           >
-            <span id="buyWart">150</span> Wart
+            <span id="buyWart">0</span> Wart
           </div>
         </div>
         <div
           class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm"
         >
           <div
+            id="sellWartArrowPoint"
             class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1"
           >
-            <span id="sellWart">100</span> Wart
+            <span id="sellWart">0</span> Wart
           </div>
           <img
             src="/public/Images/right-arrow.svg"
             class="w-8 h-8 md:rotate-0 rotate-90"
           />
           <div
+            id="buyTokenArrowPoint"
             class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1"
           >
-            <span id="buyToken">300</span> Token
+            <span id="buyToken">0</span> Token
           </div>
         </div>
       </div>
@@ -293,9 +296,10 @@ import "../styles.css";
               class="w-full h-full justify-center flex items-center text-sm leading-4"
             >
               <div
+                id="poolInteractedTokenArrowPoint"
                 class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2"
               >
-                <span id="poolInteractedToken">+100</span> Token
+                <span id="poolInteractedToken">N/A</span> Token
               </div>
             </div>
             <div class="w-full h-full justify-center flex items-center">
@@ -323,9 +327,10 @@ import "../styles.css";
               class="w-full h-full justify-center flex items-center text-sm leading-4"
             >
               <div
+                id="poolInteractedWartArrowPoint"
                 class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
               >
-                <span id="poolInteractedWart">+50 WART</span>
+                <span id="poolInteractedWart">N/A</span> WART
               </div>
             </div>
             <div class="w-full h-full justify-center flex items-center">
@@ -383,7 +388,101 @@ import "../styles.css";
       </div>
     </div>
 
+    <!-- <script src="../scripts/leader-line.min.js"></script> -->
+    <script></script>
     <script>
+      import LeaderLine from "leader-line-new";
+      const arrowTokenFromSeller = new LeaderLine(
+        document.getElementById("sellTokenArrowPoint"),
+        document.getElementById("buyTokenArrowPoint")
+      );
+      const arrowTokenFromPool = new LeaderLine(
+        document.getElementById("poolInteractedTokenArrowPoint"),
+        document.getElementById("buyTokenArrowPoint")
+      );
+      console.log(`arrow`, arrowTokenFromSeller);
+      const arrowWartFromBuyer = new LeaderLine(
+        document.getElementById("sellWartArrowPoint"),
+        document.getElementById("buyWartArrowPoint"),
+        { color: "blue" }
+      );
+      const arrowWartFromPool = new LeaderLine(
+        document.getElementById("poolInteractedWartArrowPoint"),
+        document.getElementById("buyWartArrowPoint"),
+        { color: "blue" }
+      );
+      const arrowWartToPool = new LeaderLine(
+        document.getElementById("sellWartArrowPoint"),
+        document.getElementById("poolInteractedWartArrowPoint"),
+        { color: "blue" }
+      );
+      const arrowTokenToPool = new LeaderLine(
+        document.getElementById("sellTokenArrowPoint"),
+        document.getElementById("poolInteractedTokenArrowPoint")
+      );
+      arrowTokenFromSeller.hide();
+      arrowTokenFromPool.hide();
+      arrowWartFromBuyer.hide();
+      arrowWartFromPool.hide();
+      arrowWartToPool.hide();
+      arrowTokenToPool.hide();
+
+      function setValuesAndDrawLines(match) {
+        arrowTokenFromSeller.hide();
+        arrowTokenFromPool.hide();
+        arrowWartFromBuyer.hide();
+        arrowWartFromPool.hide();
+        arrowWartToPool.hide();
+        arrowTokenToPool.hide();
+
+        arrowTokenFromSeller.position();
+        arrowTokenFromPool.position();
+        arrowWartFromBuyer.position();
+        arrowWartFromPool.position();
+        arrowWartToPool.position();
+        arrowTokenToPool.position();
+
+        document.getElementById('sellToken').innerHTML = match.filled.outBaseSeller;
+        document.getElementById('buyWart').innerHTML = match.filled.inQuoteSeller;
+        document.getElementById('sellWart').innerHTML = match.filled.outQuoteBuyer;
+        document.getElementById('buyToken').innerHTML = match.filled.inBaseBuyer;
+        if( match.toPool && match.toPool.isQuote === true  ){
+          document.getElementById('poolInteractedToken').innerHTML = "-" + match.toPool.base || "0";
+          document.getElementById('poolInteractedWart').innerHTML = "+" + match.toPool.quote || "0";
+        }
+        if( match.toPool && match.toPool.isQuote === false  ){
+          document.getElementById('poolInteractedToken').innerHTML = "+" + match.toPool.base || "0";
+          document.getElementById('poolInteractedWart').innerHTML = "-" + match.toPool.quote || "0";
+        }
+
+        // matched lines
+        if( match.matched ){
+          if( match.matched.base !== "0" ){
+            arrowTokenFromSeller.middleLabel = LeaderLine.pathLabel(match.matched.base);
+            arrowTokenFromSeller.show();
+          }
+          if( match.matched.quote !== "0" ){
+            arrowWartFromBuyer.middleLabel = LeaderLine.pathLabel(match.matched.quote);
+            arrowWartFromBuyer.show();
+          }
+        }
+
+        // pool interacted lines
+        if( match.toPool && match.toPool !== null ){
+          if( match.toPool.isQuote === true ){
+            arrowTokenFromPool.middleLabel = LeaderLine.pathLabel(match.toPool.base);
+            arrowWartToPool.middleLabel = LeaderLine.pathLabel(match.toPool.quote);
+            arrowTokenFromPool.show();
+            arrowWartToPool.show();
+          }
+          if( match.toPool.isQuote === false ){
+            arrowTokenToPool.middleLabel = LeaderLine.pathLabel(match.toPool.base);
+            arrowWartFromPool.middleLabel = LeaderLine.pathLabel(match.toPool.quote);
+            arrowTokenToPool.show();
+            arrowWartFromPool.show();
+          }
+        }
+      }
       document.addEventListener("DOMContentLoaded", () => {
         let Module: any;
         const initModule = import("../scripts/demo").then((module) => {
@@ -394,6 +493,21 @@ import "../styles.css";
           };
           module.default(Module);
         });
+        const svg = document.getElementById("curveSvg");
+
+        function createPath() {
+          const path = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
+          );
+          path.setAttribute("stroke", "black");
+          path.setAttribute("stroke-width", "2");
+          path.setAttribute("fill", "none");
+          path.setAttribute("marker-end", "url(#arrowhead)");
+          svg.appendChild(path);
+          return path;
+        }
+
         function insertRow(obj, rowarr) {
           var row = obj.insertRow(-1);
           row.className = "p-4 h-9";
@@ -420,7 +534,6 @@ import "../styles.css";
         }
         function updateData(res) {
           console.log(res);
-          console.log("updateData 1");
           if (res["error"] != null) {
             alert("Error" + res["error"]);
             return;
@@ -428,7 +541,7 @@ import "../styles.css";
 
           if (!annotate_parse_errors(res.parseErrors)) return; // cannot evaluate if there are parse errors
           const match = res.match;
-          console.log(match);
+
           var buys = match.buys;
           var tbodyBuy = document.getElementById("tbodyBuy");
           tbodyBuy.innerHTML = "";
@@ -439,7 +552,6 @@ import "../styles.css";
               buys[i]["filled"],
             ]);
           }
-          console.log("updateData 2");
           var sells = match.sells;
           var tbodySell = document.getElementById("tbodySell");
           tbodySell.innerHTML = "";
@@ -460,56 +572,56 @@ import "../styles.css";
           document.getElementById("afterPrice").innerHTML =
             match.poolAfter.price;
 
-          console.log("updateData 3");
-
           const toPool = match.toPool;
           const filled = match.filled;
 
-          var tbodyBuyers = document.getElementById("tbodyBuyers");
-          tbodyBuyers.innerHTML = "";
-          insertRow(tbodyBuyers, [
-            "orders",
-            match.matched.quote,
-            match.matched.base,
-            match.matched.price,
-          ]);
-          if (toPool && toPool.isQuote) {
-            insertRow(tbodyBuyers, [
-              "via pool",
-              toPool.quote,
-              toPool.base,
-              toPool.price,
-            ]);
-          }
-          insertRow(tbodyBuyers, [
-            "total",
-            filled.outQuoteBuyer,
-            filled.inBaseBuyer,
-            match.filled.priceBuyer,
-          ]);
+          setValuesAndDrawLines(match);
 
-          var tbodySellers = document.getElementById("tbodySellers");
-          tbodySellers.innerHTML = "";
-          insertRow(tbodySellers, [
-            "orders",
-            match.matched.base,
-            match.matched.quote,
-            match.matched.price,
-          ]);
-          if (toPool && !toPool.isQuote) {
-            insertRow(tbodySellers, [
-              "via pool",
-              toPool.base,
-              toPool.quote,
-              toPool.price,
-            ]);
-          }
-          insertRow(tbodySellers, [
-            "total",
-            filled.outBaseSeller,
-            filled.inQuoteSeller,
-            filled.priceSeller,
-          ]);
+          // var tbodyBuyers = document.getElementById("tbodyBuyers");
+          // tbodyBuyers.innerHTML = "";
+          // insertRow(tbodyBuyers, [
+          //   "orders",
+          //   match.matched.quote,
+          //   match.matched.base,
+          //   match.matched.price,
+          // ]);
+          // if (toPool && toPool.isQuote) {
+          //   insertRow(tbodyBuyers, [
+          //     "via pool",
+          //     toPool.quote,
+          //     toPool.base,
+          //     toPool.price,
+          //   ]);
+          // }
+          // insertRow(tbodyBuyers, [
+          //   "total",
+          //   filled.outQuoteBuyer,
+          //   filled.inBaseBuyer,
+          //   match.filled.priceBuyer,
+          // ]);
+
+          // var tbodySellers = document.getElementById("tbodySellers");
+          // tbodySellers.innerHTML = "";
+          // insertRow(tbodySellers, [
+          //   "orders",
+          //   match.matched.base,
+          //   match.matched.quote,
+          //   match.matched.price,
+          // ]);
+          // if (toPool && !toPool.isQuote) {
+          //   insertRow(tbodySellers, [
+          //     "via pool",
+          //     toPool.base,
+          //     toPool.quote,
+          //     toPool.price,
+          //   ]);
+          // }
+          // insertRow(tbodySellers, [
+          //   "total",
+          //   filled.outBaseSeller,
+          //   filled.inQuoteSeller,
+          //   filled.priceSeller,
+          // ]);
         }
         function addSell() {
           console.log("click add sell");
