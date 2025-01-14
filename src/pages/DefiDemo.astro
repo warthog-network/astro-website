@@ -18,10 +18,10 @@ import "../styles.css";
     </h1>
 
     <div
-      class="flex md:flex-row md:p-6 p-3 flex-col mx-auto max-w-[1440px] gap-4 min-h-full justify-between"
+      class="flex md:flex-row md:p-6 p-3 flex-col mx-auto max-w-[1440px] gap-4 min-h-full justify-between overflow-auto"
     >
       <!-- Order Book -->
-      <div class="flex flex-col gap-4 md:w-[37%]">
+      <div class="flex flex-col gap-4 md:w-[40%] md:max-w-[450px]">
         <!-- Sell Order Book -->
         <div
           class="relative flex flex-col w-[100%] h-auto text-gray-700 bg-white rounded-xl border border-[#F9B13C]"
@@ -90,7 +90,7 @@ import "../styles.css";
             </div>
           </div>
           <div class="p-4">
-            <table class="w-full text-left min-w-max bg-red-300">
+            <table class="w-full text-left bg-red-300">
               <thead>
                 <tr>
                   <td
@@ -195,23 +195,55 @@ import "../styles.css";
             </div>
           </div>
           <div class="p-4">
-            <BuyTable />
+            <table class="w-full text-left bg-green-300 text-green-700">
+              <thead>
+                <tr>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Limit
+                    </p>
+                  </td>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Amount
+                    </p>
+                  </td>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Filled
+                    </p>
+                  </td>
+                </tr>
+              </thead>
+              <tbody id="tbodyBuy" class="bg-green-300"> </tbody>
+            </table>
           </div>
         </div>
       </div>
 
       <!-- Swap -->
-      <div
-        class="flex md:flex-col gap-4 border-2 md:w-[26%] border-black border-dashed justify-between rounded-xl p-4"
+      <div class="flex md:flex-col gap-4 border-2 md:w-[20%] border-black border-dashed justify-between rounded-xl p-4 md:min-w-max"
       >
         <div
-          class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm"
+          class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm overflow-auto"
         >
           <div
             id="sellTokenArrowPoint"
-            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
           >
-            <span id="sellToken">0</span> Token
+            <span id="sellToken" class="block">0</span> Token
           </div>
           <img
             src="/public/Images/right-arrow.svg"
@@ -219,9 +251,9 @@ import "../styles.css";
           />
           <div
             id="buyWartArrowPoint"
-            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
           >
-            <span id="buyWart">0</span> Wart
+            <span id="buyWart" class="block">0</span> Wart
           </div>
         </div>
         <div
@@ -229,9 +261,9 @@ import "../styles.css";
         >
           <div
             id="sellWartArrowPoint"
-            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
           >
-            <span id="sellWart">0</span> Wart
+            <span id="sellWart" class="block">0</span> Wart
           </div>
           <img
             src="/public/Images/right-arrow.svg"
@@ -239,16 +271,15 @@ import "../styles.css";
           />
           <div
             id="buyTokenArrowPoint"
-            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
           >
-            <span id="buyToken">0</span> Token
+            <span id="buyToken" class="block">0</span> Token
           </div>
         </div>
       </div>
 
       <!-- Pool -->
-      <div
-        class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[37%]"
+      <div class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[40%] md:min-w-max"
       >
         <h5
           class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
@@ -297,26 +328,30 @@ import "../styles.css";
             >
               <div
                 id="poolInteractedTokenArrowPoint"
-                class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2"
+                class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
               >
-                <span id="poolInteractedToken">N/A</span> Token
+                <span
+                  id="poolInteractedToken"
+                  class="block w-full overflow-auto">N/A</span
+                > Token
               </div>
             </div>
             <div class="w-full h-full justify-center flex items-center">
               <input
                 id="beforeToken"
                 value="100"
-                class="border-[#EF5831] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
+                class="border-[#EF5831] border-2 rounded-md outline-none px-4 py-2 text-center text-sm leading-4 sm:w-[110px] w-full h-[50px] overflow-hidden"
               />
             </div>
             <div
               class="w-full h-full justify-center flex items-center text-sm leading-4"
             >
               <div
-                class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2"
-                id="afterToken"
+                class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
               >
-                600 TOKEN
+                <span id="afterToken" class="block w-full overflow-auto"
+                  >600</span
+                > TOKEN
               </div>
             </div>
           </div>
@@ -328,26 +363,29 @@ import "../styles.css";
             >
               <div
                 id="poolInteractedWartArrowPoint"
-                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
+                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
               >
-                <span id="poolInteractedWart">N/A</span> WART
+                <span id="poolInteractedWart" class="block w-full overflow-auto"
+                  >N/A</span
+                > WART
               </div>
             </div>
             <div class="w-full h-full justify-center flex items-center">
               <input
                 id="beforeWart"
                 value="200"
-                class="border-[#033298] border-2 rounded-md outline-none max-w-20 px-4 py-2 text-center text-sm leading-4"
+                class="border-[#033298] border-2 rounded-md outline-none px-4 py-2 text-sm leading-4 sm:w-[110px] w-full h-[50px] text-center overflow-hidden"
               />
             </div>
             <div
               class="w-full h-full justify-center flex items-center text-sm leading-4"
             >
               <div
-                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2"
-                id="afterWart"
+                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
               >
-                250 WART
+                <span id="afterWart" class="block w-full overflow-auto"
+                  >250</span
+                > WART
               </div>
             </div>
           </div>
@@ -358,29 +396,34 @@ import "../styles.css";
               class="w-full h-full justify-center flex items-center text-sm leading-4"
             >
               <div
-                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
               >
-                N/A
+                <span
+                  id="poolInteractedPrice"
+                  class="block w-full overflow-auto">N/A</span
+                >
               </div>
             </div>
             <div
               class="w-full h-full justify-center flex items-center text-sm leading-4"
             >
               <div
-                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
-                id="beforePrice"
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
               >
-                N/A
+                <span id="beforePrice" class="block w-full overflow-auto"
+                  >N/A</span
+                >
               </div>
             </div>
             <div
               class="w-full h-full justify-center flex items-center text-sm leading-4"
             >
               <div
-                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2"
-                id="afterPrice"
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
               >
-                N/A
+                <span id="afterPrice" class="block w-full overflow-auto"
+                  >N/A</span
+                >
               </div>
             </div>
           </div>
@@ -442,42 +485,66 @@ import "../styles.css";
         arrowWartToPool.position();
         arrowTokenToPool.position();
 
-        document.getElementById('sellToken').innerHTML = match.filled.outBaseSeller;
-        document.getElementById('buyWart').innerHTML = match.filled.inQuoteSeller;
-        document.getElementById('sellWart').innerHTML = match.filled.outQuoteBuyer;
-        document.getElementById('buyToken').innerHTML = match.filled.inBaseBuyer;
-        if( match.toPool && match.toPool.isQuote === true  ){
-          document.getElementById('poolInteractedToken').innerHTML = "-" + match.toPool.base || "0";
-          document.getElementById('poolInteractedWart').innerHTML = "+" + match.toPool.quote || "0";
+        document.getElementById("sellToken").innerHTML =
+          match.filled.outBaseSeller;
+        document.getElementById("buyWart").innerHTML =
+          match.filled.inQuoteSeller;
+        document.getElementById("sellWart").innerHTML =
+          match.filled.outQuoteBuyer;
+        document.getElementById("buyToken").innerHTML =
+          match.filled.inBaseBuyer;
+        if (match.toPool && match.toPool.isQuote === true) {
+          document.getElementById("poolInteractedToken").innerHTML =
+            "-" + match.toPool.base || "0";
+          document.getElementById("poolInteractedWart").innerHTML =
+            "+" + match.toPool.quote || "0";
         }
-        if( match.toPool && match.toPool.isQuote === false  ){
-          document.getElementById('poolInteractedToken').innerHTML = "+" + match.toPool.base || "0";
-          document.getElementById('poolInteractedWart').innerHTML = "-" + match.toPool.quote || "0";
+        if (match.toPool && match.toPool.isQuote === false) {
+          document.getElementById("poolInteractedToken").innerHTML =
+            "+" + match.toPool.base || "0";
+          document.getElementById("poolInteractedWart").innerHTML =
+            "-" + match.toPool.quote || "0";
+        }
+        if (match.toPool) {
+          document.getElementById("poolInteractedPrice").innerHTML =
+            match.toPool.price;
         }
 
         // matched lines
-        if( match.matched ){
-          if( match.matched.base !== "0" ){
-            arrowTokenFromSeller.middleLabel = LeaderLine.pathLabel(match.matched.base);
+        if (match.matched) {
+          if (match.matched.base !== "0") {
+            arrowTokenFromSeller.middleLabel = LeaderLine.pathLabel(
+              match.matched.base
+            );
             arrowTokenFromSeller.show();
           }
-          if( match.matched.quote !== "0" ){
-            arrowWartFromBuyer.middleLabel = LeaderLine.pathLabel(match.matched.quote);
+          if (match.matched.quote !== "0") {
+            arrowWartFromBuyer.middleLabel = LeaderLine.pathLabel(
+              match.matched.quote
+            );
             arrowWartFromBuyer.show();
           }
         }
 
         // pool interacted lines
-        if( match.toPool && match.toPool !== null ){
-          if( match.toPool.isQuote === true ){
-            arrowTokenFromPool.middleLabel = LeaderLine.pathLabel(match.toPool.base);
-            arrowWartToPool.middleLabel = LeaderLine.pathLabel(match.toPool.quote);
+        if (match.toPool && match.toPool !== null) {
+          if (match.toPool.isQuote === true) {
+            arrowTokenFromPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.base
+            );
+            arrowWartToPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.quote
+            );
             arrowTokenFromPool.show();
             arrowWartToPool.show();
           }
-          if( match.toPool.isQuote === false ){
-            arrowTokenToPool.middleLabel = LeaderLine.pathLabel(match.toPool.base);
-            arrowWartFromPool.middleLabel = LeaderLine.pathLabel(match.toPool.quote);
+          if (match.toPool.isQuote === false) {
+            arrowTokenToPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.base
+            );
+            arrowWartFromPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.quote
+            );
             arrowTokenToPool.show();
             arrowWartFromPool.show();
           }
