@@ -1,0 +1,14 @@
+.AncientDays{
+border-radius: 3rem;
+width:10rem;
+}
+.AncientDays>img{
+    border-radius: 3rem;
+    width:10rem;
+    }
+
+
+.authors{
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
