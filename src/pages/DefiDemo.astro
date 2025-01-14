@@ -1,6 +1,9 @@
 ---
+import dollarSvg from "../BalkyImages/deFiDemo/dollar-minimalistic.svg";
+import priceTagSvg from "../BalkyImages/deFiDemo/price-tag.svg";
+import swapVirticalCircleSvg from "../BalkyImages/deFiDemo/swap-vertical-circle.svg";
+import rightArrowSvg from "../BalkyImages/deFiDemo/right-arrow.svg";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import BuyTable from "../components/BuyTable.astro";
 const title = "DeFi Demo";
 import "../styles.css";
 ---
@@ -42,7 +45,7 @@ import "../styles.css";
                       class="absolute grid w-8 h-8 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
                     >
                       <img
-                        src="/public/Images/dollar-minimalistic.svg"
+                        src={dollarSvg.src}
                         class="w-8 h-8"
                       />
                     </div>
@@ -61,7 +64,7 @@ import "../styles.css";
                     <div
                       class="absolute grid w-6 h-6 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
                     >
-                      <img src="/public/Images/price-tag.svg" class="w-6 h-6" />
+                      <img src={priceTagSvg.src} class="w-6 h-6" />
                     </div>
                     <input
                       class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -82,7 +85,7 @@ import "../styles.css";
                 >
                   Swap TOKEN
                   <img
-                    src="/public/Images/swap-vertical-circle.svg"
+                    src={swapVirticalCircleSvg.src}
                     class="w-6 h-6"
                   />
                 </button>
@@ -147,7 +150,7 @@ import "../styles.css";
                       class="absolute grid w-8 h-8 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
                     >
                       <img
-                        src="/public/Images/dollar-minimalistic.svg"
+                        src={dollarSvg.src}
                         class="w-8 h-8"
                       />
                     </div>
@@ -166,7 +169,7 @@ import "../styles.css";
                     <div
                       class="absolute grid w-6 h-6 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
                     >
-                      <img src="/public/Images/price-tag.svg" class="w-6 h-6" />
+                      <img src={priceTagSvg.src} class="w-6 h-6" />
                     </div>
                     <input
                       class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -187,7 +190,7 @@ import "../styles.css";
                 >
                   Swap WART
                   <img
-                    src="/public/Images/swap-vertical-circle.svg"
+                    src={swapVirticalCircleSvg.src}
                     class="w-6 h-6"
                   />
                 </button>
@@ -246,7 +249,7 @@ import "../styles.css";
             <span id="sellToken" class="block">0</span> Token
           </div>
           <img
-            src="/public/Images/right-arrow.svg"
+            src={rightArrowSvg.src}
             class="w-8 h-8 md:rotate-0 rotate-90"
           />
           <div
@@ -266,7 +269,7 @@ import "../styles.css";
             <span id="sellWart" class="block">0</span> Wart
           </div>
           <img
-            src="/public/Images/right-arrow.svg"
+            src={rightArrowSvg.src}
             class="w-8 h-8 md:rotate-0 rotate-90"
           />
           <div
