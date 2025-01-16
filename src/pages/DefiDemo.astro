@@ -1,4 +1,5 @@
 ---
+import Tutorial from "./Tutorial";
 import dollarSvg from "../BalkyImages/deFiDemo/dollar-minimalistic.svg";
 import priceTagSvg from "../BalkyImages/deFiDemo/price-tag.svg";
 import swapVirticalCircleSvg from "../BalkyImages/deFiDemo/swap-vertical-circle.svg";
@@ -9,9 +10,8 @@ import "../styles.css";
 ---
 
 <BaseLayout title={title}>
-
+  <Tutorial client:load />
   <div class="mx-auto min-h-[550px]">
-
     <!-- <h1 class="text-3xl text-center text-yellow-600 mb-8">DeFi Demo</h1> -->
     <h1
       class="my-10 text-3xl text-center font-extrabold text-yellow-500 dark:text-white md:text-5xl lg:text-6xl"
@@ -26,7 +26,9 @@ import "../styles.css";
       class="flex md:flex-row md:p-6 p-3 flex-col mx-auto max-w-[1440px] gap-4 min-h-full justify-between overflow-auto"
     >
       <!-- Order Book -->
-      <div class="flex flex-col gap-4 md:w-[40%] md:max-w-[450px] my-first-step" data-step="1" data-intro="This is Order Book, You can make your order here">
+      <div
+        class="flex flex-col gap-4 md:w-[40%] md:max-w-[450px] my-first-step step-1"
+      >
         <!-- Sell Order Book -->
         <div
           class="relative flex flex-col w-[100%] h-auto text-gray-700 bg-white rounded-xl border border-[#F9B13C]"
@@ -40,16 +42,13 @@ import "../styles.css";
               >
                 Sell Order Book
               </h5>
-              <div class="flex flex-col gap-2" data-step="2" data-intro="This is Sell Order book Input fields, You can type your sell infos here">
+              <div class="flex flex-col gap-2 step-2">
                 <div class="flex justify-between gap-2">
                   <div class="relative h-10 w-full min-w-[70px] my-second-step">
                     <div
                       class="absolute grid w-8 h-8 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
                     >
-                      <img
-                        src={dollarSvg.src}
-                        class="w-8 h-8"
-                      />
+                      <img src={dollarSvg.src} class="w-8 h-8" />
                     </div>
                     <input
                       class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -86,10 +85,7 @@ import "../styles.css";
                   id="sellButton"
                 >
                   Swap TOKEN
-                  <img
-                    src={swapVirticalCircleSvg.src}
-                    class="w-6 h-6"
-                  />
+                  <img src={swapVirticalCircleSvg.src} class="w-6 h-6" />
                 </button>
               </div>
             </div>
@@ -113,7 +109,7 @@ import "../styles.css";
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
                     >
-                      Amount
+                      Amount (TOKEN)
                     </p>
                   </td>
                   <td
@@ -122,7 +118,7 @@ import "../styles.css";
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
                     >
-                      Filled
+                      Filled (<span id="filledAmountToken">0</span>)
                     </p>
                   </td>
                 </tr>
@@ -145,16 +141,13 @@ import "../styles.css";
               >
                 Buy Order Book
               </h5>
-              <div class="flex flex-col gap-2" data-step="3" data-intro="This is Buy Order book Input fields, You can type your buy infos here">
+              <div class="flex flex-col gap-2 step-3">
                 <div class="flex justify-between gap-2">
                   <div class="relative h-10 w-full min-w-[70px]">
                     <div
                       class="absolute grid w-8 h-8 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
                     >
-                      <img
-                        src={dollarSvg.src}
-                        class="w-8 h-8"
-                      />
+                      <img src={dollarSvg.src} class="w-8 h-8" />
                     </div>
                     <input
                       class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
@@ -191,10 +184,7 @@ import "../styles.css";
                   id="buyButton"
                 >
                   Swap WART
-                  <img
-                    src={swapVirticalCircleSvg.src}
-                    class="w-6 h-6"
-                  />
+                  <img src={swapVirticalCircleSvg.src} class="w-6 h-6" />
                 </button>
               </div>
             </div>
@@ -204,7 +194,7 @@ import "../styles.css";
               <thead>
                 <tr>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -213,21 +203,21 @@ import "../styles.css";
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
                     >
-                      Amount
+                      Amount (WART)
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
                     >
-                      Filled
+                      Filled (<span id="filledAmountWart">0</span>)
                     </p>
                   </td>
                 </tr>
@@ -239,7 +229,8 @@ import "../styles.css";
       </div>
 
       <!-- Swap -->
-      <div class="flex md:flex-col gap-4 border-2 md:w-[20%] border-black border-dashed justify-between rounded-xl p-4 md:min-w-max" data-step="4" data-intro="This is Swap Section,  You can check the swap process here"
+      <div
+        class="flex md:flex-col gap-4 border-2 md:w-[20%] border-black border-dashed justify-between rounded-xl p-4 md:min-w-max bg-white step-4"
       >
         <div
           class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm overflow-auto"
@@ -250,10 +241,7 @@ import "../styles.css";
           >
             <span id="sellToken" class="block">0</span> Token
           </div>
-          <img
-            src={rightArrowSvg.src}
-            class="w-8 h-8 md:rotate-0 rotate-90"
-          />
+          <img src={rightArrowSvg.src} class="w-8 h-8 md:rotate-0 rotate-90" />
           <div
             id="buyWartArrowPoint"
             class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
@@ -270,10 +258,7 @@ import "../styles.css";
           >
             <span id="sellWart" class="block">0</span> Wart
           </div>
-          <img
-            src={rightArrowSvg.src}
-            class="w-8 h-8 md:rotate-0 rotate-90"
-          />
+          <img src={rightArrowSvg.src} class="w-8 h-8 md:rotate-0 rotate-90" />
           <div
             id="buyTokenArrowPoint"
             class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
@@ -284,7 +269,8 @@ import "../styles.css";
       </div>
 
       <!-- Pool -->
-      <div class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[40%] md:min-w-max"
+      <div
+        class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[40%] md:min-w-max"
       >
         <h5
           class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
@@ -341,7 +327,7 @@ import "../styles.css";
                 > Token
               </div>
             </div>
-            <div class="w-full h-full justify-center flex items-center" data-step="5" data-intro="This is Pool Input field for Token, You can type initial token amount here">
+            <div class="w-full h-full justify-center flex items-center step-5">
               <input
                 id="beforeToken"
                 value="100"
@@ -375,7 +361,7 @@ import "../styles.css";
                 > WART
               </div>
             </div>
-            <div class="w-full h-full justify-center flex items-center" data-step="6" data-intro="This is Pool Input field for Wart, You can type initial wart amount here">
+            <div class="w-full h-full justify-center flex items-center step-6">
               <input
                 id="beforeWart"
                 value="200"
@@ -436,7 +422,6 @@ import "../styles.css";
       </div>
     </div>
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
     <script>
       import LeaderLine from "leader-line-new";
       const arrowTokenFromSeller = new LeaderLine(
@@ -565,7 +550,6 @@ import "../styles.css";
           module.default(Module);
         });
         const svg = document.getElementById("curveSvg");
-        introJs().setOption('showProgress', true).start();
         function createPath() {
           const path = document.createElementNS(
             "http://www.w3.org/2000/svg",
@@ -579,13 +563,15 @@ import "../styles.css";
           return path;
         }
 
-        function insertRow(obj, rowarr) {
+        function insertRow(obj, rowarr, id) {
           var row = obj.insertRow(-1);
           row.className = "p-4 h-9";
           for (var i = 0; i < rowarr.length; ++i) {
             var cell = row.insertCell(i); // Create a new cell
             cell.className =
               "px-4 border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
+            if( i === rowarr.length - 1 )
+              cell.className += ' ' + id;
             cell.innerHTML = `${rowarr[i]}`; // Set the innerHTML directly
           }
         }
@@ -621,7 +607,7 @@ import "../styles.css";
               buys[i]["limit"],
               buys[i]["amount"],
               buys[i]["filled"],
-            ]);
+            ], 'filledAmountWartItem');
           }
           var sells = match.sells;
           var tbodySell = document.getElementById("tbodySell");
@@ -631,7 +617,7 @@ import "../styles.css";
               sells[i]["limit"],
               sells[i]["amount"],
               sells[i]["filled"],
-            ]);
+            ], 'filledAmountTokenItem');
           }
           var tbodyPool = document.getElementById("tbodyPool");
           document.getElementById("beforePrice").innerHTML =
@@ -643,56 +629,22 @@ import "../styles.css";
           document.getElementById("afterPrice").innerHTML =
             match.poolAfter.price;
 
-          const toPool = match.toPool;
-          const filled = match.filled;
+          var sumToken = 0;
+          var amountTokenArray = document.getElementsByClassName('filledAmountTokenItem');
+          Array.from(amountTokenArray).forEach(element => {
+            sumToken += parseFloat(element.innerHTML);
+          });
+
+          var sumWart = 0;
+          var amountWartArray = document.getElementsByClassName('filledAmountWartItem');
+          Array.from(amountWartArray).forEach(element => {
+            sumWart += parseFloat(element.innerHTML);
+          });
+
+          document.getElementById('filledAmountToken').innerHTML = sumToken.toString();
+          document.getElementById('filledAmountWart').innerHTML = sumWart.toString();
 
           setValuesAndDrawLines(match);
-
-          // var tbodyBuyers = document.getElementById("tbodyBuyers");
-          // tbodyBuyers.innerHTML = "";
-          // insertRow(tbodyBuyers, [
-          //   "orders",
-          //   match.matched.quote,
-          //   match.matched.base,
-          //   match.matched.price,
-          // ]);
-          // if (toPool && toPool.isQuote) {
-          //   insertRow(tbodyBuyers, [
-          //     "via pool",
-          //     toPool.quote,
-          //     toPool.base,
-          //     toPool.price,
-          //   ]);
-          // }
-          // insertRow(tbodyBuyers, [
-          //   "total",
-          //   filled.outQuoteBuyer,
-          //   filled.inBaseBuyer,
-          //   match.filled.priceBuyer,
-          // ]);
-
-          // var tbodySellers = document.getElementById("tbodySellers");
-          // tbodySellers.innerHTML = "";
-          // insertRow(tbodySellers, [
-          //   "orders",
-          //   match.matched.base,
-          //   match.matched.quote,
-          //   match.matched.price,
-          // ]);
-          // if (toPool && !toPool.isQuote) {
-          //   insertRow(tbodySellers, [
-          //     "via pool",
-          //     toPool.base,
-          //     toPool.quote,
-          //     toPool.price,
-          //   ]);
-          // }
-          // insertRow(tbodySellers, [
-          //   "total",
-          //   filled.outBaseSeller,
-          //   filled.inQuoteSeller,
-          //   filled.priceSeller,
-          // ]);
         }
         function addSell() {
           console.log("click add sell");
