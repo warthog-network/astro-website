@@ -9,7 +9,9 @@ import "../styles.css";
 ---
 
 <BaseLayout title={title}>
+
   <div class="mx-auto min-h-[550px]">
+
     <!-- <h1 class="text-3xl text-center text-yellow-600 mb-8">DeFi Demo</h1> -->
     <h1
       class="my-10 text-3xl text-center font-extrabold text-yellow-500 dark:text-white md:text-5xl lg:text-6xl"
@@ -24,7 +26,7 @@ import "../styles.css";
       class="flex md:flex-row md:p-6 p-3 flex-col mx-auto max-w-[1440px] gap-4 min-h-full justify-between overflow-auto"
     >
       <!-- Order Book -->
-      <div class="flex flex-col gap-4 md:w-[40%] md:max-w-[450px]">
+      <div class="flex flex-col gap-4 md:w-[40%] md:max-w-[450px] my-first-step" data-step="1" data-intro="This is Order Book, You can make your order here">
         <!-- Sell Order Book -->
         <div
           class="relative flex flex-col w-[100%] h-auto text-gray-700 bg-white rounded-xl border border-[#F9B13C]"
@@ -38,9 +40,9 @@ import "../styles.css";
               >
                 Sell Order Book
               </h5>
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col gap-2" data-step="2" data-intro="This is Sell Order book Input fields, You can type your sell infos here">
                 <div class="flex justify-between gap-2">
-                  <div class="relative h-10 w-full min-w-[70px]">
+                  <div class="relative h-10 w-full min-w-[70px] my-second-step">
                     <div
                       class="absolute grid w-8 h-8 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
                     >
@@ -57,7 +59,7 @@ import "../styles.css";
                     <label
                       class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
                     >
-                      Price
+                      Limited Price
                     </label>
                   </div>
                   <div class="relative h-10 w-full min-w-[70px]">
@@ -74,7 +76,7 @@ import "../styles.css";
                     <label
                       class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
                     >
-                      Amount
+                      Amount (TOKEN)
                     </label>
                   </div>
                 </div>
@@ -143,7 +145,7 @@ import "../styles.css";
               >
                 Buy Order Book
               </h5>
-              <div class="flex flex-col gap-2">
+              <div class="flex flex-col gap-2" data-step="3" data-intro="This is Buy Order book Input fields, You can type your buy infos here">
                 <div class="flex justify-between gap-2">
                   <div class="relative h-10 w-full min-w-[70px]">
                     <div
@@ -162,7 +164,7 @@ import "../styles.css";
                     <label
                       class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
                     >
-                      Price
+                      Limited Price
                     </label>
                   </div>
                   <div class="relative h-10 w-full min-w-[70px]">
@@ -179,7 +181,7 @@ import "../styles.css";
                     <label
                       class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
                     >
-                      Amount
+                      Amount (WART)
                     </label>
                   </div>
                 </div>
@@ -237,7 +239,7 @@ import "../styles.css";
       </div>
 
       <!-- Swap -->
-      <div class="flex md:flex-col gap-4 border-2 md:w-[20%] border-black border-dashed justify-between rounded-xl p-4 md:min-w-max"
+      <div class="flex md:flex-col gap-4 border-2 md:w-[20%] border-black border-dashed justify-between rounded-xl p-4 md:min-w-max" data-step="4" data-intro="This is Swap Section,  You can check the swap process here"
       >
         <div
           class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm overflow-auto"
@@ -339,7 +341,7 @@ import "../styles.css";
                 > Token
               </div>
             </div>
-            <div class="w-full h-full justify-center flex items-center">
+            <div class="w-full h-full justify-center flex items-center" data-step="5" data-intro="This is Pool Input field for Token, You can type initial token amount here">
               <input
                 id="beforeToken"
                 value="100"
@@ -373,7 +375,7 @@ import "../styles.css";
                 > WART
               </div>
             </div>
-            <div class="w-full h-full justify-center flex items-center">
+            <div class="w-full h-full justify-center flex items-center" data-step="6" data-intro="This is Pool Input field for Wart, You can type initial wart amount here">
               <input
                 id="beforeWart"
                 value="200"
@@ -434,8 +436,7 @@ import "../styles.css";
       </div>
     </div>
 
-    <!-- <script src="../scripts/leader-line.min.js"></script> -->
-    <script></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.7.0/intro.min.js"></script>
     <script>
       import LeaderLine from "leader-line-new";
       const arrowTokenFromSeller = new LeaderLine(
@@ -564,7 +565,7 @@ import "../styles.css";
           module.default(Module);
         });
         const svg = document.getElementById("curveSvg");
-
+        introJs().setOption('showProgress', true).start();
         function createPath() {
           const path = document.createElementNS(
             "http://www.w3.org/2000/svg",
