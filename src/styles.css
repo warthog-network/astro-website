@@ -49,7 +49,7 @@ body {
   content: 'WART';
 }
 
-/* nav styles */
+/* nav styles 
 
 .nav-links {
   display: none;
@@ -59,9 +59,9 @@ body {
   display: flex;
   justify-content: center;
 }
+*/
 
 span::-webkit-scrollbar {
   display: none;
 }
-
 

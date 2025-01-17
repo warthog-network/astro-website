@@ -130,15 +130,15 @@ import WhereToBuy from "../components/WhereToBuy.astro";
     <div>
         <header>
             <section><h3>Get started</h3></section>
-            <section><h1>WALLETS</h1><img src={Arrow.src} /></section>
-            <section><h1>NODE</h1><img src={Arrow.src} /></section>
-            <section><h1>MINING</h1><img src={Arrow.src} /></section>
-            <section><h1>BUYING</h1><img src={Arrow.src} /></section>
+             <section><h1><a href="#wallet">WALLETS</a></h1><img src={Arrow.src} /></section>
+            <section><h1><a href="#node">NODE</a></h1><img src={Arrow.src} /></section>
+            <section><h1><a href="#mining">MINING</a></h1><img src={Arrow.src} /></section>
+            <section><h1><a href="#buying">BUYING</a></h1><img src={Arrow.src} /></section>
         </header>
         <section class="section-grids">
             <div class="descriptions">
                 <div class="headers">
-                    <h2>Wart dapp (GUI)</h2><img src={Wallet.src} />
+                    <h2 id="wallet">Wart dapp (GUI)</h2><img src={Wallet.src} />
                 </div>
                 <div>
                     <p>
@@ -162,7 +162,7 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                         >Download</a>
                 </li>
                 <li>
-                    <a href="https://warthog.network/docs/guides/wart-dapp/"
+                    <a href="https://docs.warthog.network/guides/wart-dapp/"
                         >Guide</a>
                 </li>
             </div>
@@ -216,15 +216,43 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                 </li>
                 <li>
                     <a
-                        href="https://warthog.network/docs/guides/wart-wallet-cli/"
+                        href="https://docs.warthog.network/guides/wart-wallet-cli/"
                         >Guide</a>
                 </li>
             </div>
         </section>
-        <section class="section-grids bggrey">
+        <section class="section-grids  bggrey">
             <div class="descriptions">
                 <div class="headers">
-                    <h2>NODE</h2><img src={Nodes.src} />
+                    <h2>Browser Extension Wallet</h2><img src={Wallet.src} />
+                </div>
+                <div>
+                    <p>
+                        Browser Extension Wallet is a GUI wallet working on Chrome and
+                        Firefox. It works with a set of public nodes or you can manually add
+                        your node IP (local or public)
+                    </p>
+                </div>
+            </div>
+
+            <div class="list">
+                <li>
+                    <a
+                        href="https://github.com/warthog-network/warthog-extension/releases"
+                        >Download</a>
+                </li>
+                <li>
+                    <a
+                        href="https://docs.warthog.network/guides/browser-extension-wallet/"
+                        >Guide</a>
+                </li>
+            </div>
+        </section>
+       
+        <section class="section-grids">
+            <div class="descriptions">
+                <div class="headers">
+                    <h2 id="node">NODE</h2><img src={Nodes.src} />
                 </div>
                 <div>
                     <p>
@@ -242,15 +270,16 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                         >Download</a>
                 </li>
                 <li>
-                    <a href="https://warthog.network/docs/guides/node/"
+                    <a href="https://docs.warthog.network/guides/node/"
                         >Guide</a>
                 </li>
             </div>
         </section>
+        <div class='bggrey '>
         <section class="MiningPool">
             <div>
                 <div class="headers">
-                    <h2>Mining</h2><img src={GPU.src} />
+                    <h2 id="mining">Mining</h2><img src={GPU.src} />
                 </div>
                 <h1>MINING GUIDE</h1>
                 <p class="MiningPool-text">
@@ -259,11 +288,11 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                 <div class="headers">
                     <a
                         class="MiningPool-text"
-                        href="https://warthog.network/docs/guides/mining-quickstart/"
+                        href="https://docs.warthog.network/guides/mining-quickstart/"
                         >ENGLISH</a>
                     <a
                         class="MiningPool-text"
-                        href="https://warthog.network/docs/guides/mining-quickstart_fr/"
+                        href="https://docs.warthog.network/guides/mining-quickstart_fr/"
                         >FRENCH</a>
                 </div>
             </div>
@@ -281,11 +310,14 @@ import WhereToBuy from "../components/WhereToBuy.astro";
                 </li><li>
                     <a
                         class="MiningPool-text"
-                        href="https://warthog.network/docs/links/#pools">
+                        href="https://docs.warthog.network/links/#pools">
                         DOCS</a>
                 </li>
             </div>
         </section>
     </div>
-    <WhereToBuy/>
+    </div>
+    <div id="buying">
+    <WhereToBuy />
+</div>
 </BaseLayout>

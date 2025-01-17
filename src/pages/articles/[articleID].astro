@@ -1,0 +1,270 @@
+---
+import BaseLayout from '../../layouts/BaseLayoutMaxWidth.astro';
+import { getCollection } from "astro:content";
+import { generateArticalIdentity } from '../../scripts/ArticleIdentityGenerator.js';
+import BannerTop from "../../BalkyImages/WarthogTestBanner1.jpg";
+import Arrow from '../../BalkyImages/Arrow 1.png';
+import NEWS1 from '../../BalkyImages/NewsPost.png';
+import NEWS2 from '../../BalkyImages/DevPost.png';
+import NEWS3 from '../../BalkyImages/BlogPost.png';
+
+//Adding to test if it breaks menu animation
+
+
+const baseURL = 'https://warthog.network';
+
+export async function getStaticPaths() {
+    const articles = await getCollection('news');
+    return articles.map(({data}) => ({
+        params: { articleID: generateArticalIdentity(data.title, data.date, data.author) }, // d.data.title, d.data.date, d.data.author  'my title', '3/30/2024', 'web' generateArticalIdentity()
+    }));    
+}
+
+const { articleID } = Astro.params;
+const article = await getCollection('news', ({ data }) => generateArticalIdentity(data.title, data.date, data.author) === articleID);
+const articles = await getCollection('news');
+const sortedArticles = Object.values(articles).sort(
+    (a, b) => {
+        const dateA = new Date(a.data.date).getTime();
+        const dateB = new Date(b.data.date).getTime();
+
+        return dateB - dateA;
+    }
+);
+
+const GetArticleImage = (category) => {
+  switch (category) {
+    case "Developer Diary":
+      return NEWS2.src;
+    case "News Update":
+      return NEWS1.src;
+    case "Blog Post":
+      return NEWS3.src;
+  }
+};
+
+const prev3Articles = sortedArticles.slice(0,3);
+const { Content: ArticleContent } = await article[0].render();
+const articleData = article[0].data;
+const articleRelativeLink = `/articles/${generateArticalIdentity(articleData.title, articleData.date, articleData.author )}`
+
+if (!article) {
+    throw new Error(`No article found for ArticleID: ${articleID}`);
+}
+---
+
+<style is:global>
+    article {
+        max-width: 1440px;
+        margin: 0 auto;
+        width:100%;
+    }
+    .article-grid .article-grid > * {
+        box-sizing: border-box;   
+    }
+    .article-grid {
+        display: grid;
+        grid-template-columns: 0.610fr 0.390fr;
+        grid-template-areas: 'article-content article-latestStories';
+        row-gap: 2rem;
+        column-gap: 5rem;
+        padding: 2rem 5rem;
+    }
+    .article-latestStories {
+        display: grid;
+        grid-template-columns: 1fr;
+        row-gap: 1.75rem;
+        align-self: start;
+        justify-self: end;
+    }
+    .bannerBackgroundImage {
+        position: relative;
+        background-size: 100% auto;
+        background-position: center 30%;
+        background-repeat: no-repeat;
+        aspect-ratio: 12/5; 
+        width: 100%;
+        filter: grayscale(20%) contrast(90%);
+    }
+    .title{
+        color: black;
+        font-family: Montserrat;
+        font-size: clamp(2rem, 5.6vw, 3.11rem);
+        font-weight: 600;
+        line-height: clamp(2.1rem, 5.7vw, 3.21rem);
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    }
+    .subTitle{
+        font-family: Montserrat;
+        font-size: .75rem;
+        font-weight: 400;
+        line-height: 1.125rem;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    }
+    .category{
+        font-family: Montserrat;
+        font-size: 0.938rem;
+        font-weight: 600;
+        line-height: 1.688rem;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+    }   
+    .shareButton{
+        align-items: center;
+        padding: .1rem;
+        padding-right: .6rem;
+        padding-left: .6rem;
+        margin-bottom: 2.2rem;
+        height: 2rem;
+        border-radius: .3rem;
+        background-color: rgb(209, 209, 209);
+        font-family: Montserrat;
+        font-size: 0.875rem;
+        font-weight: 700;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: gray;
+    }
+    .smallArrow{
+        display: inline;
+        height: .5rem;
+        width: 2rem;
+        margin-top: auto;
+        margin-bottom: auto;
+    }
+    .content{
+        color: #1E1E1E;
+        font-family: Montserrat;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        max-width: 100%;
+    }
+
+    .content h1 {
+        font-size: 1.05rem;
+        font-weight: 600;
+        line-height: 1.688rem;
+    }
+
+    .content p {
+        font-size: 0.938rem;
+        font-weight: 400;
+        line-height: 1.688rem;
+    }
+
+    .blogpost {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1rem;
+        max-width: 400px;
+        display: inline-block;
+    }
+    .blogpostbox { 
+        border-radius: .5rem;
+    }
+    .postCategory {
+        font-family: Montserrat;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 27px;
+        letter-spacing: 0.12em;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #1E1E1E;
+    }
+    .postTitle {
+        font-family: Montserrat;
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 19px;
+        text-align: left;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+        color: #1E1E1E;
+    }
+
+    @media (max-width:1050px) {
+    
+        .article-grid {
+            grid-template-columns: 1fr;
+            grid-template-areas:
+            "article-content"
+            "article-latestStories";
+            row-gap: 2rem;
+            padding: 2rem 1rem;
+            
+        }
+        .blogpost {
+            max-width: 300px;
+        }
+        .article-latestStories {
+            grid-template-columns: 1fr 1fr 1fr;
+            column-gap: 1rem;
+            justify-self: center;
+        }
+    
+    }
+
+    @media (max-width:650px) {
+    
+    .article-grid {
+        grid-template-columns: minmax(100%, 1fr);
+        grid-template-areas:
+        "article-content"
+        "article-latestStories";
+        row-gap: 2rem;
+        padding: 2rem 1rem;
+    }
+    .blogpost {
+        max-width: 400px;
+    }
+    .article-latestStories {
+        grid-template-columns: 1fr;
+        row-gap: .5rem;
+        justify-self: center;
+    }
+
+}
+
+
+</style>
+
+<BaseLayout title = {articleData.title}>
+        <article>
+            <script type="module" src="/scripts/WebShare.js"></script>
+            <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}></div>
+            <div class="article-grid mt-8">
+                <div class="article-content">
+                        <div class="category uppercase">{articleData.category} /</div>
+                        <div class="title uppercase pt-[.05rem] pb-[1rem]">{articleData.title}</div>
+                        <div class="inline-block subTitle pb-[2rem]">Author:{articleData.author} </div><div class="ms-[1.5rem] inline-block subTitle pb-[2rem]">Released:{articleData.date}</div>
+                        <div class="">
+                            <button onclick={`shareContent("${articleData.title}","${`Checkout the latest article from Warthog.Networt! : ${articleData.title}`}","${baseURL}${articleRelativeLink}")`} class="shareButton">SHARE<img class="smallArrow" src={Arrow.src}/></button>
+                        </div>
+                        <div class="content">
+                            <ArticleContent/>  
+                        </div>
+                                              
+                </div>
+                <div class="article-latestStories">
+                    {prev3Articles.map((news) => (
+                        <a class="blogpost flex flex-col" href={`/articles/${generateArticalIdentity(news.data.title, news.data.date, news.data.author )}`}>
+                            <img class="blogpostbox"  src={GetArticleImage(news.data.category)} alt="logo" />
+                            <div class="postCategory uppercase mt-2 mb-1 w-fit">{news.data.category}</div>
+                            <div class="postTitle w-fit font-semibold">{news.data.title}</div>
+                        </a>
+                        ))}
+                </div>
+            </div>
+            
+        </article>
+        
+</BaseLayout>

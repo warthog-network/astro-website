@@ -3,6 +3,7 @@
 
 <style>
     h1{ 
+        margin-top: .75rem;
         font-size:1.3rem;
         font-weight: 100;
         font-style: bold;
@@ -26,6 +27,8 @@
         max-width: 100%;
     }
     .blanket{
+        padding-left: 12rem;
+        padding-right: 12rem;
         align-items: center;
         justify-content: center;
         background: radial-gradient(
@@ -35,10 +38,40 @@
         );
            color: white;
     }
+    @media (max-width:1224px){
+        .blanket{
+        padding-left: 2rem;
+        padding-right: 2rem;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+           color: white;
+    }
+        
+    }
+    @media (max-width:824px){
+        .blanket{
+        padding-left: 0rem;
+        padding-right: 0rem;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+            circle at 24.1% 68.8%,
+            rgb(50, 50, 50) 0%,
+            rgb(0, 0, 0) 99.4%
+        );
+           color: white;
+    }
+        
+    }
     .RoadMap{
   flex-wrap: wrap;
   gap: 3rem;
-  padding: 1rem;
+  padding: .1rem;
   justify-content: space-around;
         color: white;
     }
@@ -50,10 +83,10 @@
     section{
         display: flex;
         flex-wrap: wrap;
-        padding: 3rem;
+        padding: 1rem;
     }
 li{
-    padding: 1rem;
+    padding: .35rem;
     max-width: 20rem;
     min-width: 15rem;
 }

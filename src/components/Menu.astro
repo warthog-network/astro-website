@@ -1,0 +1,85 @@
+---
+const links = [
+    { name: 'GET STARTED', href: '/GetStarted'},
+    { name: 'NEWS', href: '/news' },
+    { name: 'DOCS', href: 'https://docs.warthog.network/', target: '_blank'},
+    { name: 'WHITEPAPER', href: '/Whitepaper'},
+    { name: 'FAQS', href: '/faqs'},
+    { name: 'EXPLORER', href: 'https://wartscan.io/', target: '_blank'},
+    { name: 'DEFI DEMO', href: '/DefiDemo' },
+];
+
+const networks = [
+    { imgSrc: 'github_gray.svg', href: 'https://github.com/warthog-network'},    
+    { imgSrc: 'discord_gray.svg', href: 'https://discord.com/invite/QMDV8bGTdQ'},
+    { imgSrc: 'telegram_gray.svg', href: 'https://t.me/warthognetwork'},
+    { imgSrc: 'twitter_gray.svg', href: 'https://x.com/warthognetwork'},    
+];
+---
+
+    <style>
+.menu{
+    height: 2.5rem;
+}
+
+.icon{
+    height: 1.875rem;
+    margin: 4px;
+  }
+
+.menuItem {
+  font-family: Montserrat;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+}
+
+.underlineText{
+   position: relative;
+   text-decoration: none;
+ }
+
+  .underlineText::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0.03rem;
+    left: 0;
+    bottom: 0;
+    background: #FDB913;
+    transition: width 0.3s ease;
+  }
+
+  .underlineText:hover::after {
+    width: 100%;
+  }
+
+  @media screen and (min-width: 1024px) {
+
+  .menu {
+    margin-left: 2rem;
+    min-width: 493px;
+  }
+
+  .menu a {
+    display: inline-block;
+    padding: .5rem;
+  }
+}
+    </style>
+    <div class='menu'>
+    {links.map((link) => (
+            <a class="menuItem"  target={link.target} href={link.href}>
+                <p class="underlineText">{link.name}</p>
+            </a>
+    ))}
+    </div>
+    <div class='lg:flex flex justify-center '>
+      {networks.map((network) => (
+          <a href={network.href}>
+              <p><img class='icon'  src={'/Images/' + network.imgSrc} alt="logo" /></p>
+          </a>
+      ))}
+  </div>

@@ -33,7 +33,7 @@ import DunesMobile from '../BalkyImages/dune-colorful-abstract-digital-art-4k-wa
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fn 2fn;
+  grid-template-columns: 1fr 2fr;
   grid-template-areas: 
   'hero-text hero-img';
 }
@@ -105,7 +105,6 @@ import DunesMobile from '../BalkyImages/dune-colorful-abstract-digital-art-4k-wa
   .heroCutoutNew {
 display: none;
   }
-
 }
 
 
@@ -118,7 +117,7 @@ display: none;
   .hero-grid {
     position: relative;
     display: grid;
-    grid-template-columns: 1fn ;
+    grid-template-columns: 1fr ;
     grid-template-areas: 
     'hero-text' 
     'hero-img';
@@ -126,7 +125,7 @@ display: none;
   .hero-img-btn {
     position: absolute;
     bottom: 30%;
-    right: 25%;
+    right: 27%;
     background-color: gold;
     color: rgb(0, 0, 0);
     font-size: 16px;
@@ -207,8 +206,8 @@ display: none;
 <div class="hero-grid pt-4">
     <div class="hero-grid-text pl-2">
         <div class="article-link">
-            <span class="bold">How our tech is better?</span><span class="thin">Read our article</span>
-        </div>
+            <span class="bold">How our tech is better?</span><a href='/news'class="thin">Read our article</a>
+        </div>  
         <div class="pt-2">
             <div class="hero-text-title-bold">Rethinking</div> 
             <div class="hero-text-title">The Blockchain</div>
@@ -224,7 +223,7 @@ display: none;
     <div class="hero-grid-img">
        <img class="heroCutoutNew" src ={Dunes.src}  />  
        <img class="dunes2" src={DunesMobile.src}/>  
-      <a href='https://xeggex.com/market/WART_USDT' class="hero-img-btn">where to buy</a>
+      <a href='/#wheretobuy' class="hero-img-btn">where to buy</a>
     </div>
    
 

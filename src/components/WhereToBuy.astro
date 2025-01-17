@@ -1,85 +1,121 @@
 ---
-import Xeggex from '../BalkyImages/wheretobuyimgs/xeggex.png';
-import Discord from '../BalkyImages/wheretobuyimgs/discord.svg';
+import Xeggex from '../BalkyImages/wheretobuyimgs/Xeggex X Only.svg';
+import CoinEx from '../BalkyImages/wheretobuyimgs/coinex.svg';
+import BitCom from '../BalkyImages/wheretobuyimgs/bit.png';
 import Exibitron from '../BalkyImages/wheretobuyimgs/exibitron.png';
 import Tradeogre from '../BalkyImages/wheretobuyimgs/tradeogre.png';
-import Caldera from '../BalkyImages/wheretobuyimgs/caldera.png';
+import LinkBox from '../BalkyImages/LinkBox.svg';
+
+const icons = [
+    {Visible: true, Name:"Xeggex exchange", ImgSrc: Xeggex.src, Url:"https://xeggex.com/market/WART_USDT"},
+    {Visible: true, Name:"CoinEx exchange", ImgSrc: CoinEx.src, Url:"https://www.coinex.com/en/exchange/WART-USDT"},
+    {Visible: true, Name:"Bit.com exchange", ImgSrc: BitCom.src, Url:"https://www.bit.com/spot?pair=WART-USDT"},
+    {Visible: true, Name:"Exbitron exchange", ImgSrc: Exibitron.src, Url:"https://app.exbitron.com/login/?returnUrl=%2Ftrade%2F%3Fmarket%3Dwart-usdt"},
+    {Visible: true, Name:"Tradeogre exchange", ImgSrc: Tradeogre.src, Url:"https://tradeogre.com/exchange/WART-USDT"}
+];
+
 
 ---
 
 
 <style>
-  h1{
-    font-weight: bold;
-    font-size: 3rem;
-    text-align: center;
-  }
 
-  a{
-    margin-bottom: 1rem;
-    text-align: center;
-    color: white;
-    display: block;
-    border-radius: .5rem;
-    width: 7rem;
-    background-color: black;
-    padding: 1rem;
-  }
-    .NEWS{
-      height: 60rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-@media screen and (min-width: 1024px) {
-    .NEWS{
-      height: 20rem;
-      align-items: center;
+  section {
+        max-width: 1440px;
+        margin: 0 auto;
+        width:100%;
+    }
+    .icon-box {
       display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-  }
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 3rem;
+    }
 
-}
-@media screen and (min-width: 1024px) {
-    .NEWS{
-      height: 20rem;
-      align-items: center;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-  }
-
-  a{
-    margin-bottom: 1rem;
-    text-align: center;
-    color: white;
-    display: block;
+    .icon-box-item{
+      text-align: center;
+      color: white;
+      display: block;
+      width: 9.375rem;
+      height: 12.8rem;
+    }
+  
+  .icon-shape{
+    padding-left: .8rem;
+    padding-right: .8rem;
     border-radius: .5rem;
-    width: 10rem;
-    background-color: black;
-    padding: 1rem;
+    width: 9.375rem;
+    height: 9.375rem;
+    background-color: #1E1E1E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-img{
+    max-height: 80px;
+  }
+
+  .icon-txt{
+    margin-top: .4rem;
+    color:black;
+    font-family: Montserrat;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.25rem;
+    text-align: left;
+    text-underline-position: from-font;
+    text-decoration-skip-ink: none;
+
+  }
+
+  .icon-linkbox{
+    width: 0.938rem;
+    height: 0.938rem;
+  }
+
+  .NEWS{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+  }
+  .title{
+      text-align: center;
+      margin-bottom: 3.5rem;
+      font-family: Montserrat;
+      font-size: 3.125rem;
+      font-weight: 700;
+      line-height: 3.809rem;
+      text-underline-position: from-font;
+      text-decoration-skip-ink: none;
+
+  }
+
+@media screen and (max-width: 968px) {
+  .icon-box {
+    max-width: 700px;
+    margin: 0 auto;
   }
 }
 </style>
-<h1 class="">Where to Buy?</h1>
-<section class="NEWS">
-    
- <a class="p-10" href='https://xeggex.com/market/WART_USDT'>
-        <img class=''  src={Xeggex.src} alt="logo" /><p class="">Xeggex</p>
- </a>
- <a class="p-10" href='https://discord.com/login?redirect_to=%2Fchannels%2F1126486458698584107%2F1133081739816861716'>
-   <img class=''  src={Discord.src} alt="logo" /> <p class="">Discord P2P trade</p>
-</a>
 
-<a class="p-10" href='https://app.exbitron.com/login/?returnUrl=%2Ftrade%2F%3Fmarket%3Dwart-usdt'>
-   <img class=''  src={Exibitron.src} alt="logo" /> <p class="">Exbitron exchange</p>
-</a>
-<a class="p-10" href='https://tradeogre.com/exchange/WART-USDT'>
-  <img class=''  src={Tradeogre.src} alt="logo" /><p class="">Tradeogre exchange</p>
-</a>
-<a class="p-10" href='https://discord.com/channels/1126486458698584107/1205481571109445633'>
-  <img class=''  src={Caldera.src} alt="logo" /><p class="">Discord Caldera bot</p>
-</a>
+<section id="wheretobuy" class="NEWS">
+    <div class="title">Where to Buy?</div>
+    <div class="icon-box">
+      {icons.filter((icon) => icon.Visible)
+      .map((icon) => (
+        <a class="icon-box-item" href={icon.Url}>
+          <div class="icon-shape">
+            <img class="icon-img" src={icon.ImgSrc} alt="logo" />
+          </div>
+          <div class="flex relative">
+            <div class="icon-txt">{icon.Name}</div>
+            <img class="icon-linkbox absolute bottom-0 right-0 mb-[.07rem]" src={LinkBox.src}/>
+          </div>
+        </a>  
+      ))}
+      
+    </div>    
 </section>

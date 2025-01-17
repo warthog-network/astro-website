@@ -11,6 +11,7 @@ import Group from '../BalkyImages/Group 5.svg';
 
 <style>
     .UniqueFeatures {
+        text-shadow: 5px 1px 5px  rgb(0, 0, 0);
         background: radial-gradient(
             circle at 24.1% 68.8%,
             rgb(50, 50, 50) 0%,
@@ -18,8 +19,10 @@ import Group from '../BalkyImages/Group 5.svg';
         );
         color: white;
     }
+    header{
+        padding-left: 12rem;
+    }
     h1 {
-        
         font-size: 4rem;
         margin-bottom: 3rem;
         font-weight: 600;
@@ -32,20 +35,24 @@ import Group from '../BalkyImages/Group 5.svg';
     }
 
     h2 {
-        font-size: 1.8rem;
-  font-weight: bold;
+        font-size: 1rem;
+        font-weight: bold;
         display: flex;
         padding-right: 2rem;
     }
     .UniqueFeatures-Grid {
         font-family: "Montserrat";
-        line-height: 3rem;
-        padding: 2rem;
+        line-height: 2rem;
+        padding: 1rem;
+       
+        padding-left: 15rem;
+        padding-right: 15rem;
         display: grid;
         grid-template-columns: 1fn 2fn;
         grid-template-areas: "tokenomics features";
     }
     .tokenomics {
+       width: 20rem;
         margin-top: 3rem;
         grid-area: tokenomics;
     }
@@ -53,16 +60,25 @@ import Group from '../BalkyImages/Group 5.svg';
         grid-area: features;
     }
     .featuresGrid {
+      
         padding: 2rem;
         display: grid;
         grid-template-columns: 1fn 1fn;
         grid-template-areas: "list1 list2";
     }
     .list1 {
+        min-width: 17rem;
         grid-area: list1;
+       
+    }
+    .list1 > p {
+       max-width: 25rem;
+       
     }
     .list2 {
+        min-width: 17rem;
         grid-area: list2;
+       
     }
     img {
         padding-left: 1rem;
@@ -73,21 +89,21 @@ import Group from '../BalkyImages/Group 5.svg';
     }
     header {
         padding-top: 2rem;
-        padding-left: 2rem;
+        padding-left: 15rem;
     }
     p {
         padding-right: 1rem;
         font-size: 0.8rem;
     }
     .tokenp {
-        margin-top: 2rem;
-        line-height: 1.8rem;
+        margin-bottom: 1rem;
+        line-height: 1.5rem;
         max-width: 20rem;
     }
     @media screen and (max-width: 1224px) {
         .UniqueFeatures-Grid {
             font-family: "Montserrat";
-            line-height: 3rem;
+            line-height: 2rem;
             padding: 2rem;
             display: grid;
             grid-template-columns: 1fn 2fn;
@@ -96,7 +112,10 @@ import Group from '../BalkyImages/Group 5.svg';
                 "features";
         }
 
-    
+        header {
+        padding-top: 2rem;
+        padding-left: 2rem;
+    }
     }
     @media screen and (max-width: 1024px) {
         .UniqueFeatures-Grid {
@@ -107,23 +126,52 @@ import Group from '../BalkyImages/Group 5.svg';
             grid-template-columns: 1fn 2fn;
             grid-template-areas:
                 "tokenomics"
-
                 "features";
         }
+        .list1 {
+            
+        grid-area: list1;
+        line-height: 2rem;
+    }
+    .list1 > h2 {
+        margin-top: .75rem;
+        font-size: 1rem;
+    }
+    .list1 > p {
+        line-height: 1rem;
+    }
+    .list2 {
+        grid-area: list2;
+        line-height: 2rem;
+    }
+    .list2 > h2 {
+        margin-top: .75rem;
+        font-size: 1rem;
+    }
+    .list2 > p {
+        line-height: 1rem;
+    }
         .featuresGrid {
-        padding: 2rem;
+        padding: .1rem;
         display: grid;
         grid-template-columns: 1fn 1fn;
         grid-template-areas: 
         "list1" 
         "list2";
     }
+    h1 {
+        
+        font-size: 1.6rem;
+        margin-bottom: 3rem;
+        font-weight: 600;
+    }
+    
 }
 
 </style>
 
 <div class="UniqueFeatures">
-    <header>
+    <header class="header">
         <p class="token">TOKEN</p>
         <h1 class="flex">
             What makes us unique?
@@ -146,7 +194,7 @@ import Group from '../BalkyImages/Group 5.svg';
             <features-list class="list1">
          
                 <h2>No Pre-mine <img src={Goal.src} /></h2>
-                <p class="">Project was fairly launched on Bitcointalk</p>
+                <p >Project was fairly launched on Bitcointalk</p>
 
                 <h2>Written from scratch <img src={Sprout.src} /></h2>
                 <p>This project is NOT a fork/copy of anything else</p>
@@ -156,7 +204,7 @@ import Group from '../BalkyImages/Group 5.svg';
                     funds
                 </p>
             </features-list>
-            <features-list>
+            <features-list class="list2">
                 <h2>Modern Codebase <img src={Programming.src} /></h2>
                 <p>Using modern C++20 and tools like clanged, meson, ninja</p>
                 <h2>100% mineable <img src={Trolly.src} /></h2>

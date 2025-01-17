@@ -9,11 +9,13 @@ import Browers from '../BalkyImages/Rev.Featureimgs/BROWERS.svg'
 <style>
    
    p{
-    color: white;
+    text-shadow: 5px 10px 7px rgb(10, 10, 10);
+    color: rgb(255, 255, 255);
     font-size: .8rem;
    }
     h1 {
-        color: white;
+        text-shadow: 5px 10px 7px rgb(10, 10, 10);
+        color: rgb(255, 255, 255);
         font-size: 4rem;
         margin-bottom: 3rem;
         font-weight: 2rem;
@@ -31,6 +33,7 @@ img{
 }
 
 .rev-grid {
+    gap: .1rem;
   display: grid;
   grid-template-columns: 1fn 2fn;
   grid-template-areas: 
@@ -42,7 +45,7 @@ img{
   grid-area: rev-title;
 }
 .rev-tech {
-   
+    text-shadow: 5px 10px 7px rgb(10, 10, 10);
     margin-left: 10rem;
     margin-top: 10rem;
     max-width: 40rem;
@@ -50,28 +53,40 @@ img{
  align-items: center;
   grid-area: rev-tech;
 }
-@media screen and (max-width: 1064px){
+.sweepin{
+    padding-left: 1.5rem;
+}
+@media screen and (max-width: 1040px){
+    .sweepin{
+        
+       
+    padding-left: 0rem;
+}
     .rev-grid {
         align-items: center;
   display: inline-block;
 }
 .rev-title {
-    
+   
     color: aqua;
     margin-left: 2rem;
   max-width: 2rem;
   grid-area: rev-title;
 }
 .rev-tech {
+    
+    text-shadow: 5px 10px 7px rgb(10, 10, 10);
 max-width: 40rem;
 margin-top: -1rem;
 margin-left: -1rem;
 }
 img{
+    
     width: 5rem;
     padding: 1rem;
 }
 h1 {
+    text-shadow: 5px 10px 7px rgb(10, 10, 10);
         color: white;
         font-size: 2.5rem;
         margin-bottom: 3rem;
@@ -102,8 +117,8 @@ h1 {
                 join:  "one machine one vote"</p></div>
             </section>
         <section class="flex"><img src={Browers.src}/><div>
-            <h2 >In-browser node</h2>
-            <p>Using bleeding edge technology like OPFS and SQLite's recent support for it, 
+            <h2 class="sweepin">In-browser node</h2>
+            <p class="sweepin">Using bleeding edge technology like OPFS and SQLite's recent support for it, 
                 we are the first cryptocurrency project which successfully ported full 
                 nodes to the browser - including chain store! Chain is not deleted when 
                 you close the browser.</p></div>
