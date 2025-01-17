@@ -7,41 +7,41 @@ const Tutorial = () => {
   const steps = [
     {
       target: ".step-1",
-      content: "This is Order Book, You can make your order here",
+      content: "This is order book. You can insert individual orders to swap between TOKEN and WART.",
     },
     {
       target: ".step-2",
-      content: "This is Sell Order book Input fields, You can type your sell infos here",
+      content: "This is the sellers' part of the order book. You can add limit swaps from TOKEN to WART here.",
     },
     {
       target: ".step-3",
-      content: "This is Buy Order book Input fields, You can type your buy infos here",
+      content: "This is the buyers' part of the order book. You can add limit swaps from WART to WART here. An important difference to traditional order books is that the quantity for buying is specified in WART (quote currency) and not in TOKEN (base currency).",
     },
     {
-        target: ".step-4",
-        content: "This is Swap Section,  You can check the swap process here",
-      },
-      {
-        target: ".step-5",
-        content: "This is Pool Input field for Token, You can type initial token amount here",
-      },
-      {
-        target: ".step-6",
-        content: "This is Pool Input field for Wart, You can type initial wart amount here",
-      },
+      target: ".step-4",
+      content: "This is swap section, where the TOKEN and WART flow between buyers, sellers and the pool is visualized.",
+    },
+    {
+      target: ".step-5",
+      content: "This is pool input field specifying the TOKEN amount of pool liquidity.",
+    },
+    {
+      target: ".step-6",
+      content: "This is pool input field specifying the WART amount of pool liquidity.",
+    },
   ];
 
   return (
     <Joyride
-      steps={steps}
-      run={run}
-      continuous
-      showSkipButton
-      styles={{
-        options: {
-          zIndex: 10000,
-        },
-      }}
+    steps={steps}
+    run={run}
+    continuous
+    showSkipButton
+    styles={{
+      options: {
+        zIndex: 10000,
+      },
+    }}
     />
   );
 };
