@@ -18,56 +18,64 @@ const networks = [
 ---
 
     <style>
-.menu{
-    height: 2.5rem;
-}
+      .menu{
+          
+          height: 2.5rem;
+          align-items: center;
+      }
 
-.icon{
-    height: 1.875rem;
-    margin: 4px;
-  }
+      .icon{
+          height: 1.875rem;
+          margin: 4px;
+        }
 
-.menuItem {
-  font-family: Montserrat;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17.07px;
-  text-underline-position: from-font;
-  text-decoration-skip-ink: none;
-}
+      .menuItem {
+        font-family: Montserrat;
+        font-size: clamp(0.727rem, 1.079vw, 0.875rem);
+        font-weight: 400;
+        line-height: 1.067rem;
+        text-underline-position: from-font;
+        text-decoration-skip-ink: none;
+      }
 
-.underlineText{
-   position: relative;
-   text-decoration: none;
- }
+      .underlineText{
+        position: relative;
+        text-decoration: none;
+      }
 
-  .underlineText::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 0.03rem;
-    left: 0;
-    bottom: 0;
-    background: #FDB913;
-    transition: width 0.3s ease;
-  }
+        .underlineText::after {
+          content: '';
+          position: absolute;
+          width: 0;
+          height: 1px;
+          left: 0;
+          bottom: 0;
+          background: #FDB913;
+          transition: width 0.3s ease;
+        }
 
-  .underlineText:hover::after {
-    width: 100%;
-  }
+        .underlineText:hover::after {
+          width: 100%;
+        }
 
-  @media screen and (min-width: 1024px) {
+      @media screen and (min-width: 1024px) {
+        .menu {
+          min-width: 493px;
+          margin-left: auto;
+          margin-right: auto;
+        }
 
-  .menu {
-    margin-left: 2rem;
-    min-width: 493px;
-  }
+        .menu a {
+          display: inline-block;
+          padding: .5rem;
+        }
+      }
 
-  .menu a {
-    display: inline-block;
-    padding: .5rem;
-  }
-}
+      @media screen and (min-width: 1100px) {
+        .menu {
+          margin-left: 2rem;
+        }
+      }
     </style>
     <div class='menu'>
     {links.map((link) => (
