@@ -1,0 +1,796 @@
+---
+import dollarSvg from "../BalkyImages/deFiDemo/dollar-minimalistic.svg";
+import priceTagSvg from "../BalkyImages/deFiDemo/price-tag.svg";
+import QA from "../components/QA.jsx"
+import swapVirticalCircleSvg from "../BalkyImages/deFiDemo/swap-vertical-circle.svg";
+import rightArrowSvg from "../BalkyImages/deFiDemo/right-arrow.svg";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Joyride from "react-joyride";
+const title = "DeFi Demo";
+import "../styles.css";
+
+// Tutorial must be in same file because the steps are specific to this file. When we 
+// have more tutorials we will be confused. So I inserted it into this file and 
+// deleted the Tutorial.jsx file.
+
+  const steps = [
+    {
+      target: ".step-1",
+      content: "This is order book. You can insert individual orders to swap between TOKEN and WART.",
+    },
+    {
+      target: ".step-2",
+      content: "This is the sellers' part of the order book. You can add limit swaps from TOKEN to WART here.",
+    },
+    {
+      target: ".step-3",
+      content: "This is the buyers' part of the order book. You can add limit swaps from WART to WART here. An important difference to traditional order books is that the quantity for buying is specified in WART (quote currency) and not in TOKEN (base currency).",
+    },
+    {
+      target: ".step-4",
+      content: "This is swap section, where the TOKEN and WART flow between buyers, sellers and the pool is visualized.",
+    },
+    {
+      target: ".step-5",
+      content: "This is pool input field specifying the TOKEN amount of pool liquidity.",
+    },
+    {
+      target: ".step-6",
+      content: "This is pool input field specifying the WART amount of pool liquidity.",
+    },
+  ];
+---
+
+<BaseLayout title={title}>
+    <Joyride
+    client:load
+    steps={steps}
+    continuous
+    showSkipButton
+    styles={{
+      options: {
+        zIndex: 10000,
+      },
+    }}
+    />
+  <div class="mx-auto min-h-[550px]">
+    <!-- <h1 class="text-3xl text-center text-yellow-600 mb-8">DeFi Demo</h1> -->
+    <h1
+      class="my-10 text-3xl text-center font-extrabold text-yellow-500 dark:text-white md:text-5xl lg:text-6xl"
+    >
+      <span
+        class="text-transparent bg-clip-text bg-gradient-to-r to-[#FDB913] from-[#F25C05]"
+        >DeFi Demo</span
+      >
+    </h1>
+
+    <div
+      class="flex md:flex-row md:p-6 p-3 flex-col mx-auto max-w-[1440px] gap-4 min-h-full justify-between overflow-auto"
+    >
+      <!-- Order Book -->
+      <div
+        class="flex flex-col gap-4 md:w-[40%] md:max-w-[450px] my-first-step step-1"
+      >
+        <!-- Sell Order Book -->
+        <div
+          class="relative flex flex-col w-[100%] h-auto text-gray-700 bg-white rounded-xl border border-[#F9B13C]"
+        >
+          <div
+            class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white rounded-none bg-clip-border"
+          >
+            <div class="flex flex-col gap-2">
+              <h5
+                class="block font-montserrat text-lg leading-5 antialiased font-semibold tracking-normal text-blue-gray-900"
+              >
+                Sell Order Book
+              </h5>
+              <div class="flex flex-col gap-2 step-2">
+                <div class="flex justify-between gap-2">
+                  <div class="relative h-10 w-full min-w-[70px] my-second-step">
+                    <div
+                      class="absolute grid w-8 h-8 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
+                    >
+                      <img src={dollarSvg.src} class="w-8 h-8" />
+                    </div>
+                    <input
+                      class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                      placeholder=" "
+                      id="sellPrice"
+                    />
+                    <label
+                      class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                    >
+                      Limited Price
+                    </label>
+                  </div>
+                  <div class="relative h-10 w-full min-w-[70px]">
+                    <div
+                      class="absolute grid w-6 h-6 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
+                    >
+                      <img src={priceTagSvg.src} class="w-6 h-6" />
+                    </div>
+                    <input
+                      class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                      placeholder=" "
+                      id="tokenAmount"
+                    />
+                    <label
+                      class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                    >
+                      Amount (TOKEN)
+                    </label>
+                  </div>
+                </div>
+                <button
+                  class="flex select-none justify-center items-center gap-3 rounded-lg bg-gray-900 py-3 px-4 text-center text-base border-white border font-montserrat align-middle font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  type="button"
+                  id="sellButton"
+                >
+                  Swap TOKEN
+                  <img src={swapVirticalCircleSvg.src} class="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <table class="w-full text-left bg-red-300">
+              <thead>
+                <tr>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Limit
+                    </p>
+                  </td>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Amount (TOKEN)
+                    </p>
+                  </td>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Filled (<span id="filledAmountToken">0</span>)
+                    </p>
+                  </td>
+                </tr>
+              </thead>
+              <tbody id="tbodySell" class="text-red-700"> </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Buy Order Book -->
+        <div
+          class="relative flex flex-col w-[100%] h-auto text-gray-700 bg-white rounded-xl border border-[#F9B13C]"
+        >
+          <div
+            class="relative mx-4 mt-4 overflow-hidden text-gray-700 bg-white rounded-none bg-clip-border"
+          >
+            <div class="flex flex-col gap-2">
+              <h5
+                class="block font-montserrat text-lg leading-5 antialiased font-semibold tracking-normal text-blue-gray-900"
+              >
+                Buy Order Book
+              </h5>
+              <div class="flex flex-col gap-2 step-3">
+                <div class="flex justify-between gap-2">
+                  <div class="relative h-10 w-full min-w-[70px]">
+                    <div
+                      class="absolute grid w-8 h-8 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
+                    >
+                      <img src={dollarSvg.src} class="w-8 h-8" />
+                    </div>
+                    <input
+                      class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                      placeholder=" "
+                      id="buyPrice"
+                    />
+                    <label
+                      class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                    >
+                      Limited Price
+                    </label>
+                  </div>
+                  <div class="relative h-10 w-full min-w-[70px]">
+                    <div
+                      class="absolute grid w-6 h-6 top-2/4 right-3 -translate-y-2/4 place-items-center text-blue-gray-500"
+                    >
+                      <img src={priceTagSvg.src} class="w-6 h-6" />
+                    </div>
+                    <input
+                      class="peer h-full w-full rounded-[7px] border border-blue-gray-200 bg-transparent px-3 py-2.5 !pr-9 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-gray-900 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                      placeholder=" "
+                      id="wartAmount"
+                    />
+                    <label
+                      class="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none !overflow-visible truncate text-[11px] font-normal leading-tight text-gray-500 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[3.75] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-gray-900 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-gray-900 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-gray-900 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500"
+                    >
+                      Amount (WART)
+                    </label>
+                  </div>
+                </div>
+                <button
+                  class="flex select-none justify-center items-center gap-3 rounded-lg bg-gray-900 py-3 px-4 text-center text-base border-white border font-montserrat align-middle font-medium text-white shadow-md shadow-gray-900/10 transition-all hover:shadow-lg hover:shadow-gray-900/20 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  type="button"
+                  id="buyButton"
+                >
+                  Swap WART
+                  <img src={swapVirticalCircleSvg.src} class="w-6 h-6" />
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="p-4">
+            <table class="w-full text-left bg-green-300 text-green-700">
+              <thead>
+                <tr>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Limit
+                    </p>
+                  </td>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Amount (WART)
+                    </p>
+                  </td>
+                  <td
+                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      Filled (<span id="filledAmountWart">0</span>)
+                    </p>
+                  </td>
+                </tr>
+              </thead>
+              <tbody id="tbodyBuy" class="bg-green-300"> </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Swap -->
+      <div
+        class="flex md:flex-col gap-4 border-2 md:w-[20%] border-black border-dashed justify-between rounded-xl p-4 md:min-w-max bg-white step-4"
+      >
+        <div
+          class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm overflow-auto"
+        >
+          <div
+            id="sellTokenArrowPoint"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+          >
+            <span id="sellToken" class="block">0</span> TOKEN
+          </div>
+          <img src={rightArrowSvg.src} class="w-8 h-8 md:rotate-0 rotate-90" />
+          <div
+            id="buyWartArrowPoint"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+          >
+            <span id="buyWart" class="block">0</span> WART
+          </div>
+        </div>
+        <div
+          class="flex md:flex-row flex-col justify-between items-center gap-2 text-sm"
+        >
+          <div
+            id="sellWartArrowPoint"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+          >
+            <span id="sellWart" class="block">0</span> WART
+          </div>
+          <img src={rightArrowSvg.src} class="w-8 h-8 md:rotate-0 rotate-90" />
+          <div
+            id="buyTokenArrowPoint"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+          >
+            <span id="buyToken" class="block">0</span> TOKEN
+          </div>
+        </div>
+      </div>
+
+      <!-- Pool -->
+      <div
+        class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[40%] md:min-w-max"
+      >
+        <h5
+          class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
+        >
+          Pool
+        </h5>
+        <div
+          class="flex md:flex-col w-full mt-4 border border-gray-600 rounded-md overflow-hidden"
+        >
+          <div
+            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full"
+          >
+            <div
+              class="flex justify-center py-2 w-full transition-colors min-w-6 cursor-pointer bg-[#EF5831] text-white"
+            >
+              <p
+                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+              >
+                Pool Interaction
+              </p>
+            </div>
+            <div
+              class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+            >
+              <p
+                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+              >
+                Before
+              </p>
+            </div>
+            <div
+              class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+            >
+              <p
+                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+              >
+                After
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2"
+          >
+            <div
+              class="w-full h-full justify-center flex items-center text-sm leading-4"
+            >
+              <div
+                id="poolInteractedTokenArrowPoint"
+                class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
+              >
+                <span
+                  id="poolInteractedToken"
+                  class="block w-full overflow-auto">N/A</span
+                > Token
+              </div>
+            </div>
+            <div class="w-full h-full justify-center flex items-center text-input text-wart step-5">
+              <input
+                id="beforeToken"
+                value="100"
+                class="border-[#EF5831] border-2 rounded-md outline-none px-4 pt-2 pb-[26px] text-center text-sm leading-4 sm:w-[110px] w-full h-[50px] overflow-hidden"
+              />
+            </div>
+            <div
+              class="w-full h-full justify-center flex items-center text-sm leading-4"
+            >
+              <div
+                class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
+              >
+                <span id="afterToken" class="block w-full overflow-auto"
+                  >600</span
+                > TOKEN
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2"
+          >
+            <div
+              class="w-full h-full justify-center flex items-center text-sm leading-4"
+            >
+              <div
+                id="poolInteractedWartArrowPoint"
+                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
+              >
+                <span id="poolInteractedWart" class="block w-full overflow-auto"
+                  >N/A</span
+                > WART
+              </div>
+            </div>
+            <div class="w-full h-full justify-center flex items-center text-input text-wart step-6">
+              <input
+                id="beforeWart"
+                value="200"
+                class="border-[#033298] border-2 rounded-md outline-none px-4 text-sm leading-4 sm:w-[110px] w-full h-[50px] text-center overflow-hidden pt-2 pb-[26px]"
+              />
+            </div>
+            <div
+              class="w-full h-full justify-center flex items-center text-sm leading-4"
+            >
+              <div
+                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
+              >
+                <span id="afterWart" class="block w-full overflow-auto"
+                  >250</span
+                > WART
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:py-2 px-2"
+          >
+            <div
+              class="w-full h-full justify-center flex items-center text-sm leading-4"
+            >
+              <div
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
+              >
+                <span
+                  id="poolInteractedPrice"
+                  class="block w-full overflow-auto">N/A</span
+                >
+              </div>
+            </div>
+            <div
+              class="w-full h-full justify-center flex items-center text-sm leading-4"
+            >
+              <div
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
+              >
+                <span id="beforePrice" class="block w-full overflow-auto"
+                  >N/A</span
+                >
+              </div>
+            </div>
+            <div
+              class="w-full h-full justify-center flex items-center text-sm leading-4"
+            >
+              <div
+                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
+              >
+                <span id="afterPrice" class="block w-full overflow-auto"
+                  >N/A</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2>Questions and Answers</h2>
+      <QA question="What is this?">
+    Warthog is implementing a completely new DeFi model supporting a matching engine, which, in a one-of-a-kind way combines <em>two</em> sources of liquidity in a fair and sandwich-proof way: 
+    <ul>
+      <li>discrete liquidity in the form of order books</li>
+      <li>continuous liquidity in the form of a liquidity pool</li>
+    </ul>
+      </QA>
+      <QA question='What do you mean by "sandwich-proof"?'>
+        Sandwich attacks are one of the most dreaded DeFi attacks. They are part of a bigger problem called <em>front-running</em> which is inherently caused by that fact that in current DeFi designs reordering of transactions has an effect on their fill price. This is highly unfair against traders because their transactions are regularly sandwiched (front-run and back-run) by exploiters of this design. For example they buy before normal buy orders are executed, and sell immediately afterwards, essentially doing arbitrage trading within a block and causing financial loss to their victims. Reordering of Warthog's transactions won't have any effect such that sandwich attacks are not possible.
+      </QA>
+      <QA question="What is a matching engine?">
+          Simply put, in TradFi (Traditional Finance) a <em>matching engine</em> is a program or routine that matches buy and sell orders. It is responsible for deciding which orders are matched and deducting fees. In Warthog we do not only match buy and sell orders, but also pool liquidity.
+      </QA>
+      <QA question='What are "WART" and "TOKEN"?'>
+          WART is the native currency in Warthog. In this demo it acts as the quote currency. TOKEN acts as a generic placeholder for any Warthog tradable token (a feature that we are working on) that takes the role of the base currency.
+      </QA>
+      <QA question="What are base and quote currencies?">
+        In finance terms, when talking about trading a currency pair, the currency that you are trading, i.e. buying or selling, is called <em>base currency</em>, whereas the other, the one with respect to which you are expressing the price, is called <em>quote currency</em>. In this example TOKEN is the base currency since we are refering buy/sell terms to TOKEN, and WART is the quote currency since we are expressing the prices in WART.
+      </QA>
+      <QA question="What are the orange, blue and yellow colors expressing?">
+        For easier visualization we use the following color-codes:
+        <ul>
+          <li>Orage: TOKEN amount</li>
+          <li>Blue: WART amount</li>
+          <li>Yellow: Price</li>
+        </ul>
+      </QA>
+      <QA question="Why is the buy order amount measured in WART but not in TOKEN despite I am buying TOKEN?">
+        In DeFi trades are specified as swaps, i.e. the input amount is specified for both trade directions 
+        <ul>
+          <li>When you swap from WART to TOKEN the WART to be swapped is specified.</li>
+          <li>When you swap from TOKEN to WART the WART to be swapped is specified.</li>
+        </ul>
+        If we create an order book with TOKEN base currency out of these swaps, the buy orders are swaps that specify the WART amount to be swapped into TOKEN in contrast to traditional order books which would instead specify the TOKEN amount to buy with WART.
+      </QA>
+      <QA question="How does matching work in Warthog?">
+        The matching mechanism that we invented at Warthog works by finding a price <em>p</em> at which the situation between buy and sell orders is saturated, i.e.
+        <ol>
+          <li>Buys are saturated: Either all swaps from WART to TOKEN at current limit price or above are filled, or additional swaps would move the price down below a limit swap that was partially matched already.</li>
+          <li>Sells are saturated: Either all swaps from TOKEN to WART at current limit price or below are filled, or additional swaps would move the price up above a limit swap that was partially matched already.</li>
+          <li>Some buy or sell pressure goes to the pool to move the price to <em>p</em></li>
+        </ol>
+        There exists only one such price and our algorithm determines this price.
+      </QA>
+    </div>
+    <script>
+      import LeaderLine from "leader-line-new";
+      const arrowTokenFromSeller = new LeaderLine(
+        document.getElementById("sellTokenArrowPoint"),
+        document.getElementById("buyTokenArrowPoint")
+      );
+      const arrowTokenFromPool = new LeaderLine(
+        document.getElementById("poolInteractedTokenArrowPoint"),
+        document.getElementById("buyTokenArrowPoint")
+      );
+      console.log(`arrow`, arrowTokenFromSeller);
+      const arrowWartFromBuyer = new LeaderLine(
+        document.getElementById("sellWartArrowPoint"),
+        document.getElementById("buyWartArrowPoint"),
+        { color: "blue" }
+      );
+      const arrowWartFromPool = new LeaderLine(
+        document.getElementById("poolInteractedWartArrowPoint"),
+        document.getElementById("buyWartArrowPoint"),
+        { color: "blue" }
+      );
+      const arrowWartToPool = new LeaderLine(
+        document.getElementById("sellWartArrowPoint"),
+        document.getElementById("poolInteractedWartArrowPoint"),
+        { color: "blue" }
+      );
+      const arrowTokenToPool = new LeaderLine(
+        document.getElementById("sellTokenArrowPoint"),
+        document.getElementById("poolInteractedTokenArrowPoint")
+      );
+      arrowTokenFromSeller.hide();
+      arrowTokenFromPool.hide();
+      arrowWartFromBuyer.hide();
+      arrowWartFromPool.hide();
+      arrowWartToPool.hide();
+      arrowTokenToPool.hide();
+
+      function setValuesAndDrawLines(match) {
+        arrowTokenFromSeller.hide();
+        arrowTokenFromPool.hide();
+        arrowWartFromBuyer.hide();
+        arrowWartFromPool.hide();
+        arrowWartToPool.hide();
+        arrowTokenToPool.hide();
+
+        arrowTokenFromSeller.position();
+        arrowTokenFromPool.position();
+        arrowWartFromBuyer.position();
+        arrowWartFromPool.position();
+        arrowWartToPool.position();
+        arrowTokenToPool.position();
+
+        document.getElementById("sellToken").innerHTML =
+          match.filled.outBaseSeller;
+        document.getElementById("buyWart").innerHTML =
+          match.filled.inQuoteSeller;
+        document.getElementById("sellWart").innerHTML =
+          match.filled.outQuoteBuyer;
+        document.getElementById("buyToken").innerHTML =
+          match.filled.inBaseBuyer;
+        if (match.toPool && match.toPool.isQuote === true) {
+          document.getElementById("poolInteractedToken").innerHTML =
+            "-" + match.toPool.base || "0";
+          document.getElementById("poolInteractedWart").innerHTML =
+            "+" + match.toPool.quote || "0";
+        }
+        if (match.toPool && match.toPool.isQuote === false) {
+          document.getElementById("poolInteractedToken").innerHTML =
+            "+" + match.toPool.base || "0";
+          document.getElementById("poolInteractedWart").innerHTML =
+            "-" + match.toPool.quote || "0";
+        }
+        if (match.toPool) {
+          document.getElementById("poolInteractedPrice").innerHTML =
+            match.toPool.price;
+        }
+
+        // matched lines
+        if (match.matched) {
+          if (match.matched.base !== "0") {
+            arrowTokenFromSeller.middleLabel = LeaderLine.pathLabel(
+              match.matched.base
+            );
+            arrowTokenFromSeller.show();
+          }
+          if (match.matched.quote !== "0") {
+            arrowWartFromBuyer.middleLabel = LeaderLine.pathLabel(
+              match.matched.quote
+            );
+            arrowWartFromBuyer.show();
+          }
+        }
+
+        // pool interacted lines
+        if (match.toPool && match.toPool !== null) {
+          if (match.toPool.isQuote === true) {
+            arrowTokenFromPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.base
+            );
+            arrowWartToPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.quote
+            );
+            arrowTokenFromPool.show();
+            arrowWartToPool.show();
+          }
+          if (match.toPool.isQuote === false) {
+            arrowTokenToPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.base
+            );
+            arrowWartFromPool.middleLabel = LeaderLine.pathLabel(
+              match.toPool.quote
+            );
+            arrowTokenToPool.show();
+            arrowWartFromPool.show();
+          }
+        }
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        let Module: any;
+        const initModule = import("../scripts/demo").then((module) => {
+          Module = {
+            onRuntimeInitialized: () => {
+              console.log("runtime initialized");
+            },
+          };
+          module.default(Module);
+        });
+        const svg = document.getElementById("curveSvg");
+        function createPath() {
+          const path = document.createElementNS(
+            "http://www.w3.org/2000/svg",
+            "path"
+          );
+          path.setAttribute("stroke", "black");
+          path.setAttribute("stroke-width", "2");
+          path.setAttribute("fill", "none");
+          path.setAttribute("marker-end", "url(#arrowhead)");
+          svg.appendChild(path);
+          return path;
+        }
+
+        function insertRow(obj, rowarr, id) {
+          var row = obj.insertRow(-1);
+          row.className = "p-4 h-9";
+          for (var i = 0; i < rowarr.length; ++i) {
+            var cell = row.insertCell(i); // Create a new cell
+            cell.className =
+              "px-4 border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
+            if( i === rowarr.length - 1 )
+              cell.className += ' ' + id;
+            cell.innerHTML = `${rowarr[i]}`; // Set the innerHTML directly
+          }
+        }
+        function price(base, quote) {
+          if (base != 0) {
+            return quote / base;
+          }
+          return "N/A";
+        }
+        function annotate_parse_errors({ poolToken, poolWart }) {
+          document.getElementById("beforeToken").style.backgroundColor =
+            poolToken ? "red" : "white";
+          document.getElementById("beforeWart").style.backgroundColor = poolWart
+            ? "red"
+            : "white";
+          return !poolToken && !poolWart; // true if both don't have parse errors
+        }
+        function updateData(res) {
+          console.log(res);
+          if (res["error"] != null) {
+            alert("Error" + res["error"]);
+            return;
+          }
+
+          if (!annotate_parse_errors(res.parseErrors)) return; // cannot evaluate if there are parse errors
+          const match = res.match;
+
+          var buys = match.buys;
+          var tbodyBuy = document.getElementById("tbodyBuy");
+          tbodyBuy.innerHTML = "";
+          for (var i = 0, len = buys.length; i < len; i++) {
+            insertRow(tbodyBuy, [
+              buys[i]["limit"],
+              buys[i]["amount"],
+              buys[i]["filled"],
+            ], 'filledAmountWartItem');
+          }
+          var sells = match.sells;
+          var tbodySell = document.getElementById("tbodySell");
+          tbodySell.innerHTML = "";
+          for (var i = 0, len = sells.length; i < len; i++) {
+            insertRow(tbodySell, [
+              sells[i]["limit"],
+              sells[i]["amount"],
+              sells[i]["filled"],
+            ], 'filledAmountTokenItem');
+          }
+          var tbodyPool = document.getElementById("tbodyPool");
+          document.getElementById("beforePrice").innerHTML =
+            match.poolBefore.price;
+          document.getElementById("afterToken").innerHTML =
+            match.poolAfter.base;
+          document.getElementById("afterWart").innerHTML =
+            match.poolAfter.quote;
+          document.getElementById("afterPrice").innerHTML =
+            match.poolAfter.price;
+
+          var sumToken = 0;
+          var amountTokenArray = document.getElementsByClassName('filledAmountTokenItem');
+          Array.from(amountTokenArray).forEach(element => {
+            sumToken += parseFloat(element.innerHTML);
+          });
+
+          var sumWart = 0;
+          var amountWartArray = document.getElementsByClassName('filledAmountWartItem');
+          Array.from(amountWartArray).forEach(element => {
+            sumWart += parseFloat(element.innerHTML);
+          });
+
+          document.getElementById('filledAmountToken').innerHTML = sumToken.toString();
+          document.getElementById('filledAmountWart').innerHTML = sumWart.toString();
+
+          setValuesAndDrawLines(match);
+        }
+        function addSell() {
+          console.log("click add sell");
+          var str = JSON.stringify({
+            price: (document.getElementById("sellPrice") as HTMLInputElement)
+              .value,
+            amount: (document.getElementById("tokenAmount") as HTMLInputElement)
+              .value,
+          });
+
+          console.log("add Sell 1");
+          var res = JSON.parse(
+            Module.ccall("addSell", "string", ["string"], [str])
+          );
+          console.log("add Sell 2");
+          updateData(res);
+        }
+        function addBuy() {
+          console.log("click add buy");
+          var str = JSON.stringify({
+            price: (document.getElementById("buyPrice") as HTMLInputElement)
+              .value,
+            amount: (document.getElementById("wartAmount") as HTMLInputElement)
+              .value,
+          });
+          var res = JSON.parse(
+            Module.ccall("addBuy", "string", ["string"], [str])
+          );
+          updateData(res);
+        }
+        function editPool() {
+          console.log("Edit Pool Function");
+          var str = JSON.stringify({
+            token: (document.getElementById("beforeToken") as HTMLInputElement)
+              .value,
+            wart: (document.getElementById("beforeWart") as HTMLInputElement)
+              .value,
+          });
+          console.log(str);
+          var res = JSON.parse(
+            Module.ccall("editPool", "string", ["string"], [str])
+          );
+          console.log(res);
+          updateData(res);
+        }
+
+        // Attach the event listener to the buttons
+        document
+          .getElementById("sellButton")
+          .addEventListener("click", addSell);
+        document.getElementById("buyButton").addEventListener("click", addBuy);
+        document
+          .getElementById("beforeToken")
+          .addEventListener("input", editPool);
+        document
+          .getElementById("beforeWart")
+          .addEventListener("input", editPool);
+      });
+    </script>
+  </div>
+</BaseLayout>

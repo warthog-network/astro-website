@@ -1,16 +1,18 @@
 ---
 import { Picture } from 'astro:assets';
 import { generateArticalIdentity } from '../scripts/ArticleIdentityGenerator.js';
+import { getCollection } from "astro:content";
 import NEWS1 from '../BalkyImages/NewsPost.png';
 import NEWS2 from '../BalkyImages/DevPost.png';
 import NEWS3 from '../BalkyImages/BlogPost.png';
 import Arrow from '../BalkyImages/Arrow 1.png';
-const newsUpdates = await Astro.glob('../content/news/*.md');
+
+const newsUpdates = await getCollection('news');
 
 const sortedArticles = Object.values(newsUpdates).sort(
     (a, b) => {
-        const dateA = new Date(a.frontmatter.date).getTime();
-        const dateB = new Date(b.frontmatter.date).getTime();
+        const dateA = new Date(a.data.date).getTime();
+        const dateB = new Date(b.data.date).getTime();
 
         return dateB - dateA;
     }
@@ -78,10 +80,10 @@ padding-top: 1rem;
 <h1 class="articles flex"> Articles <a class="seeall flex" href="/news">see all<img class="small" src={Arrow.src}/></a></h1>
 <section class="NEWS">
   {last3Articles.map((news) => (
-    <a class="p-10" href={`/articles/${generateArticalIdentity(news.frontmatter.title, news.frontmatter.date, news.frontmatter.author )}`}>
-        <img class='blogpostbox'  src={GetArticleImage(news.frontmatter.category)} alt="logo" />
-        <p>{news.frontmatter.category}</p>
-        <p class="font-semibold">{news.frontmatter.title}</p>
+    <a class="p-10" href={`/articles/${generateArticalIdentity(news.data.title, news.data.date, news.data.author )}`}>
+        <img class='blogpostbox'  src={GetArticleImage(news.data.category)} alt="logo" />
+        <p>{news.data.category}</p>
+        <p class="font-semibold">{news.data.title}</p>
     </a>
     ))}
 </section>
