@@ -279,16 +279,16 @@ import "../styles.css";
         >
           <div
             id="sellTokenArrowPoint"
-            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[80px] h-[50px] text-center overflow-hidden"
           >
-            <span id="sellToken" class="block">0</span> TOKEN
+            <span id="sellToken" class="block w-full overflow-auto">0</span> TOKEN
           </div>
           <img src={rightArrowSvg.src} class="w-8 h-8 md:rotate-0 rotate-90" />
           <div
             id="buyWartArrowPoint"
-            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[80px] h-[50px] text-center overflow-hidden"
           >
-            <span id="buyWart" class="block">0</span> WART
+            <span id="buyWart" class="block w-full overflow-auto">0</span> WART
           </div>
         </div>
         <div
@@ -296,169 +296,261 @@ import "../styles.css";
         >
           <div
             id="sellWartArrowPoint"
-            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+            class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-1 w-[80px] h-[50px] text-center overflow-hidden"
           >
-            <span id="sellWart" class="block">0</span> WART
+            <span id="sellWart" class="block w-full overflow-auto">0</span> WART
           </div>
           <img src={rightArrowSvg.src} class="w-8 h-8 md:rotate-0 rotate-90" />
           <div
             id="buyTokenArrowPoint"
-            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[110px] h-[50px] text-center overflow-hidden"
+            class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-1 w-[80px] h-[50px] text-center overflow-hidden"
           >
-            <span id="buyToken" class="block">0</span> TOKEN
+            <span id="buyToken" class="block w-full overflow-auto">0</span> TOKEN
           </div>
         </div>
       </div>
 
-      <!-- Pool -->
+      <!-- Pool & Summary -->
       <div
-        class="relative mt-4 overflow-hidden text-gray-700 bg-white md:w-[40%] md:min-w-max"
+        class="flex flex-col gap-2 overflow-hidden text-gray-700 bg-white md:w-[40%] md:min-w-max"
       >
-        <h5
-          class="block font-sans text-2xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
-        >
-          Pool
-        </h5>
-        <div
-          class="flex md:flex-col w-full mt-4 border border-gray-600 rounded-md overflow-hidden"
-        >
+        <!-- pool table -->
+        <div>
+          <h5
+            class="block font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
+          >
+            Pool
+          </h5>
           <div
-            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full"
+            class="flex md:flex-col w-full mt-1 border border-gray-600 rounded-md overflow-hidden"
           >
             <div
-              class="flex justify-center py-2 w-full transition-colors min-w-6 cursor-pointer bg-[#EF5831] text-white"
+              class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full"
             >
-              <p
-                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+              <div
+                class="flex justify-center py-2 w-full transition-colors min-w-6 cursor-pointer bg-[#EF5831] text-white"
               >
-                Pool Interaction
-              </p>
+                <p
+                  class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+                >
+                  Pool Interaction
+                </p>
+              </div>
+              <div
+                class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+              >
+                <p
+                  class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+                >
+                  Before
+                </p>
+              </div>
+              <div
+                class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+              >
+                <p
+                  class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+                >
+                  After
+                </p>
+              </div>
+              <div
+                class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+              >
+                <p
+                  class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+                >
+                  Explanation
+                </p>
+              </div>
             </div>
             <div
-              class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+              class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2"
             >
-              <p
-                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
-                Before
-              </p>
+                <div
+                  id="poolInteractedTokenArrowPoint"
+                  class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                >
+                  <span
+                    id="poolInteractedToken"
+                    class="block w-full overflow-auto">N/A</span
+                  > TOKEN
+                </div>
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-input text-wart token step-5"
+                id="parentBeforeToken"
+              >
+                <input
+                  id="beforeToken"
+                  value="100"
+                  class="border-[#EF5831] border-2 rounded-md outline-none px-4 pt-2 pb-[26px] text-center text-sm leading-4 sm:w-[80px] w-full h-[50px] overflow-hidden"
+                />
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                >
+                  <span id="afterToken" class="block w-full overflow-auto"
+                    >600</span
+                  > TOKEN
+                </div>
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] place-content-center text-center overflow-hidden"
+                >
+                  <span id="afterToken" class="block w-full overflow-auto"
+                    >TOKEN</span
+                  >
+                </div>
+              </div>
             </div>
             <div
-              class="flex justify-center py-2 w-full transition-colors cursor-pointer bg-[#EF5831] text-white"
+              class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2"
             >
-              <p
-                class="items-center justify-between gap-2 antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px]"
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
-                After
-              </p>
+                <div
+                  id="poolInteractedWartArrowPoint"
+                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                >
+                  <span
+                    id="poolInteractedWart"
+                    class="block w-full overflow-auto">N/A</span
+                  > WART
+                </div>
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-input text-wart wart step-6"
+                id="parentBeforeWart"
+              >
+                <input
+                  id="beforeWart"
+                  value="200"
+                  class="border-[#033298] border-2 rounded-md outline-none px-4 text-sm leading-4 sm:w-[80px] w-full h-[50px] text-center overflow-hidden pt-2 pb-[26px]"
+                />
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                >
+                  <span id="afterWart" class="block w-full overflow-auto"
+                    >250</span
+                  > WART
+                </div>
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center place-content-center overflow-hidden"
+                >
+                  <span id="afterWart" class="block w-full overflow-auto"
+                    >WART</span
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:py-2 px-2"
+            >
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                >
+                  <span
+                    id="poolInteractedPrice"
+                    class="block w-full overflow-auto">N/A</span
+                  >
+                </div>
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                >
+                  <span id="beforePrice" class="block w-full overflow-auto"
+                    >N/A</span
+                  >
+                </div>
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                >
+                  <span id="afterPrice" class="block w-full overflow-auto"
+                    >N/A</span
+                  >
+                </div>
+              </div>
+              <div
+                class="w-full h-full justify-center flex items-center text-sm leading-4"
+              >
+                <div
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                >
+                  <span id="afterPrice" class="block w-full overflow-auto"
+                    >PRICE</span
+                  >
+                </div>
+              </div>
             </div>
           </div>
-          <div
-            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2"
-          >
-            <div
-              class="w-full h-full justify-center flex items-center text-sm leading-4"
+        </div>
+
+        <!-- new table -->
+        <div class="flex flex-col gap-2">
+          <div>
+            <h5
+            class="block font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
             >
-              <div
-                id="poolInteractedTokenArrowPoint"
-                class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
-              >
-                <span
-                  id="poolInteractedToken"
-                  class="block w-full overflow-auto">N/A</span
-                > Token
-              </div>
-            </div>
-            <div class="w-full h-full justify-center flex items-center text-input text-wart step-5">
-              <input
-                id="beforeToken"
-                value="100"
-                class="border-[#EF5831] border-2 rounded-md outline-none px-4 pt-2 pb-[26px] text-center text-sm leading-4 sm:w-[110px] w-full h-[50px] overflow-hidden"
-              />
-            </div>
-            <div
-              class="w-full h-full justify-center flex items-center text-sm leading-4"
-            >
-              <div
-                class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
-              >
-                <span id="afterToken" class="block w-full overflow-auto"
-                  >600</span
-                > TOKEN
-              </div>
-            </div>
+              Buyer Swaps
+            </h5>
+            <table class="w-full">
+              <thead>
+                <tr>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#64bc3b]">*</th>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#64bc3b]">FROM (WART)</th>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#64bc3b]">TO (TOKEN)</th>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#64bc3b]">PRICE</th>
+                </tr>
+              </thead>
+              <tbody id="tbodyBuyers"> </tbody>
+            </table>
           </div>
-          <div
-            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:pt-2 px-2"
-          >
-            <div
-              class="w-full h-full justify-center flex items-center text-sm leading-4"
+          <div>
+            <h5
+            class="block font-sans text-lg antialiased font-semibold leading-snug tracking-normal text-blue-gray-900"
             >
-              <div
-                id="poolInteractedWartArrowPoint"
-                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
-              >
-                <span id="poolInteractedWart" class="block w-full overflow-auto"
-                  >N/A</span
-                > WART
-              </div>
-            </div>
-            <div class="w-full h-full justify-center flex items-center text-input text-wart step-6">
-              <input
-                id="beforeWart"
-                value="200"
-                class="border-[#033298] border-2 rounded-md outline-none px-4 text-sm leading-4 sm:w-[110px] w-full h-[50px] text-center overflow-hidden pt-2 pb-[26px]"
-              />
-            </div>
-            <div
-              class="w-full h-full justify-center flex items-center text-sm leading-4"
-            >
-              <div
-                class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden"
-              >
-                <span id="afterWart" class="block w-full overflow-auto"
-                  >250</span
-                > WART
-              </div>
-            </div>
-          </div>
-          <div
-            class="flex md:flex-row flex-col gap-0 text-center overflow-auto w-full items-center justify-between md:py-2 px-2"
-          >
-            <div
-              class="w-full h-full justify-center flex items-center text-sm leading-4"
-            >
-              <div
-                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
-              >
-                <span
-                  id="poolInteractedPrice"
-                  class="block w-full overflow-auto">N/A</span
-                >
-              </div>
-            </div>
-            <div
-              class="w-full h-full justify-center flex items-center text-sm leading-4"
-            >
-              <div
-                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
-              >
-                <span id="beforePrice" class="block w-full overflow-auto"
-                  >N/A</span
-                >
-              </div>
-            </div>
-            <div
-              class="w-full h-full justify-center flex items-center text-sm leading-4"
-            >
-              <div
-                class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[110px] h-[50px] text-center overflow-hidden place-content-center"
-              >
-                <span id="afterPrice" class="block w-full overflow-auto"
-                  >N/A</span
-                >
-              </div>
-            </div>
+              Seller Swaps
+            </h5>
+            <table class="w-full text-start">
+              <thead>
+                <tr>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#ef5831]">*</th>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#ef5831]">FROM (TOKEN)</th>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#ef5831]">TO (WART)</th>
+                  <th class="antialiased leading-4 font-inter p-[10px] font-bold text-white text-[15px] bg-[#ef5831]">PRICE</th>
+                </tr>
+              </thead>
+              <tbody id="tbodySellers"> </tbody>
+            </table>
           </div>
         </div>
       </div>
@@ -658,8 +750,7 @@ import "../styles.css";
             var cell = row.insertCell(i); // Create a new cell
             cell.className =
               "px-4 border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
-            if( i === rowarr.length - 1 )
-              cell.className += ' ' + id;
+            if (i === rowarr.length - 1) cell.className += " " + id;
             cell.innerHTML = `${rowarr[i]}`; // Set the innerHTML directly
           }
         }
@@ -691,22 +782,43 @@ import "../styles.css";
           var tbodyBuy = document.getElementById("tbodyBuy");
           tbodyBuy.innerHTML = "";
           for (var i = 0, len = buys.length; i < len; i++) {
-            insertRow(tbodyBuy, [
-              buys[i]["limit"],
-              buys[i]["amount"],
-              buys[i]["filled"],
-            ], 'filledAmountWartItem');
+            insertRow(
+              tbodyBuy,
+              [buys[i]["limit"], buys[i]["amount"], buys[i]["filled"]],
+              "filledAmountWartItem"
+            );
           }
           var sells = match.sells;
           var tbodySell = document.getElementById("tbodySell");
           tbodySell.innerHTML = "";
           for (var i = 0, len = sells.length; i < len; i++) {
-            insertRow(tbodySell, [
-              sells[i]["limit"],
-              sells[i]["amount"],
-              sells[i]["filled"],
-            ], 'filledAmountTokenItem');
+            insertRow(
+              tbodySell,
+              [sells[i]["limit"], sells[i]["amount"], sells[i]["filled"]],
+              "filledAmountTokenItem"
+            );
           }
+
+          // summary part
+          const toPool = match.toPool;
+          const filled = match.filled;
+
+          var tbodyBuyers = document.getElementById("tbodyBuyers")
+          tbodyBuyers.innerHTML=""
+          insertRow(tbodyBuyers,["orders",match.matched.quote, match.matched.base, match.matched.price], '');
+          if (toPool && toPool.isQuote){
+              insertRow(tbodyBuyers,["via pool",toPool.quote, toPool.base, toPool.price], '');
+          }
+          insertRow(tbodyBuyers,["total",filled.outQuoteBuyer, filled.inBaseBuyer, match.filled.priceBuyer], '');
+
+          var tbodySellers = document.getElementById("tbodySellers")
+          tbodySellers.innerHTML=""
+          insertRow(tbodySellers,["orders", match.matched.base, match.matched.quote, match.matched.price], '');
+          if (toPool && !toPool.isQuote){
+              insertRow(tbodySellers,["via pool", toPool.base, toPool.quote, toPool.price], '');
+          }
+          insertRow(tbodySellers,["total",filled.outBaseSeller, filled.inQuoteSeller, filled.priceSeller], '');
+
           var tbodyPool = document.getElementById("tbodyPool");
           document.getElementById("beforePrice").innerHTML =
             match.poolBefore.price;
@@ -718,19 +830,25 @@ import "../styles.css";
             match.poolAfter.price;
 
           var sumToken = 0;
-          var amountTokenArray = document.getElementsByClassName('filledAmountTokenItem');
-          Array.from(amountTokenArray).forEach(element => {
+          var amountTokenArray = document.getElementsByClassName(
+            "filledAmountTokenItem"
+          );
+          Array.from(amountTokenArray).forEach((element) => {
             sumToken += parseFloat(element.innerHTML);
           });
 
           var sumWart = 0;
-          var amountWartArray = document.getElementsByClassName('filledAmountWartItem');
-          Array.from(amountWartArray).forEach(element => {
+          var amountWartArray = document.getElementsByClassName(
+            "filledAmountWartItem"
+          );
+          Array.from(amountWartArray).forEach((element) => {
             sumWart += parseFloat(element.innerHTML);
           });
 
-          document.getElementById('filledAmountToken').innerHTML = sumToken.toString();
-          document.getElementById('filledAmountWart').innerHTML = sumWart.toString();
+          document.getElementById("filledAmountToken").innerHTML =
+            sumToken.toString();
+          document.getElementById("filledAmountWart").innerHTML =
+            sumWart.toString();
 
           setValuesAndDrawLines(match);
         }
@@ -742,7 +860,7 @@ import "../styles.css";
             amount: (document.getElementById("tokenAmount") as HTMLInputElement)
               .value,
           });
-
+          editPool();
           console.log("add Sell 1");
           var res = JSON.parse(
             Module.ccall("addSell", "string", ["string"], [str])
@@ -758,6 +876,7 @@ import "../styles.css";
             amount: (document.getElementById("wartAmount") as HTMLInputElement)
               .value,
           });
+          editPool();
           var res = JSON.parse(
             Module.ccall("addBuy", "string", ["string"], [str])
           );
@@ -790,6 +909,16 @@ import "../styles.css";
         document
           .getElementById("beforeWart")
           .addEventListener("input", editPool);
+        document
+          .getElementById("parentBeforeToken")
+          .addEventListener("click", () =>
+            document.getElementById("beforeToken").focus()
+          );
+        document
+          .getElementById("parentBeforeWart")
+          .addEventListener("click", () =>
+            document.getElementById("beforeWart").focus()
+          );
       });
     </script>
   </div>
