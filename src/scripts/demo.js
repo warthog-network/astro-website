@@ -1650,15 +1650,11 @@ var wasmImports = {
   /** @export */
   invoke_iijj,
   /** @export */
-  invoke_j,
-  /** @export */
   invoke_ji,
   /** @export */
   invoke_jiii,
   /** @export */
   invoke_jiiii,
-  /** @export */
-  invoke_jjj,
   /** @export */
   invoke_v,
   /** @export */
@@ -1706,8 +1702,6 @@ var ___cxa_can_catch = createExportWrapper('__cxa_can_catch', 3);
 var ___cxa_get_exception_ptr = createExportWrapper('__cxa_get_exception_ptr', 1);
 var dynCall_ji = Module['dynCall_ji'] = createExportWrapper('dynCall_ji', 2);
 var dynCall_iijj = Module['dynCall_iijj'] = createExportWrapper('dynCall_iijj', 6);
-var dynCall_j = Module['dynCall_j'] = createExportWrapper('dynCall_j', 1);
-var dynCall_jjj = Module['dynCall_jjj'] = createExportWrapper('dynCall_jjj', 5);
 var dynCall_iij = Module['dynCall_iij'] = createExportWrapper('dynCall_iij', 4);
 var dynCall_jiii = Module['dynCall_jiii'] = createExportWrapper('dynCall_jiii', 4);
 var dynCall_vij = Module['dynCall_vij'] = createExportWrapper('dynCall_vij', 4);
@@ -1916,28 +1910,6 @@ function invoke_iijj(index,a1,a2,a3,a4,a5) {
   var sp = stackSave();
   try {
     return dynCall_iijj(index,a1,a2,a3,a4,a5);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_j(index) {
-  var sp = stackSave();
-  try {
-    return dynCall_j(index);
-  } catch(e) {
-    stackRestore(sp);
-    if (!(e instanceof EmscriptenEH)) throw e;
-    _setThrew(1, 0);
-  }
-}
-
-function invoke_jjj(index,a1,a2,a3,a4) {
-  var sp = stackSave();
-  try {
-    return dynCall_jjj(index,a1,a2,a3,a4);
   } catch(e) {
     stackRestore(sp);
     if (!(e instanceof EmscriptenEH)) throw e;

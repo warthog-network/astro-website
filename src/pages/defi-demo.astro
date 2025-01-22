@@ -860,7 +860,7 @@ import "../styles.css";
             amount: (document.getElementById("tokenAmount") as HTMLInputElement)
               .value,
           });
-
+          editPool();
           console.log("add Sell 1");
           var res = JSON.parse(
             Module.ccall("addSell", "string", ["string"], [str])
@@ -876,6 +876,7 @@ import "../styles.css";
             amount: (document.getElementById("wartAmount") as HTMLInputElement)
               .value,
           });
+          editPool();
           var res = JSON.parse(
             Module.ccall("addBuy", "string", ["string"], [str])
           );
