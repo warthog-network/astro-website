@@ -387,15 +387,17 @@ import { getContainerRenderer } from "@astrojs/react";
                   > TOKEN
                 </div>
               </div>
-              <div
-                class="w-full h-full justify-center flex items-center text-input text-wart token step-5"
-                id="parentBeforeToken"
-              >
-                <input
-                  id="beforeToken"
-                  value="100"
-                  class="border-[#EF5831] border-2 rounded-md outline-none px-4 pt-2 pb-[26px] text-center text-sm leading-4 sm:w-[80px] w-full h-[50px] overflow-hidden"
-                />
+              <div class="w-full h-full content-center">
+                <div
+                  class="sm:w-[80px] w-full h-[50px] mx-auto rounded-md justify-center flex items-center text-input text-wart token step-5"
+                  id="parentBeforeToken"
+                >
+                  <input
+                    id="beforeToken"
+                    value="100"
+                    class="border-[#EF5831] border-2 rounded-md outline-none px-4 pt-2 pb-[26px] text-center text-sm leading-4 sm:w-[80px] w-full h-[50px] overflow-hidden bg-transparent z-50"
+                  />
+                </div>
               </div>
               <div
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
@@ -436,15 +438,17 @@ import { getContainerRenderer } from "@astrojs/react";
                   > WART
                 </div>
               </div>
-              <div
-                class="w-full h-full justify-center flex items-center text-input text-wart wart step-6"
-                id="parentBeforeWart"
-              >
-                <input
-                  id="beforeWart"
-                  value="200"
-                  class="border-[#033298] border-2 rounded-md outline-none px-4 text-sm leading-4 sm:w-[80px] w-full h-[50px] text-center overflow-hidden pt-2 pb-[26px]"
-                />
+              <div class="w-full h-full content-center">
+                <div
+                  class="sm:w-[80px] w-full h-[50px] mx-auto rounded-md justify-center flex items-center text-input text-wart wart step-6"
+                  id="parentBeforeWart"
+                >
+                  <input
+                    id="beforeWart"
+                    value="200"
+                    class="border-[#033298] border-2 rounded-md outline-none px-4 pt-2 pb-[26px] text-center text-sm leading-4 sm:w-[80px] w-full h-[50px] overflow-hidden bg-transparent z-50"
+                  />
+                </div>
               </div>
               <div
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
@@ -758,7 +762,7 @@ import { getContainerRenderer } from "@astrojs/react";
             cell.className =
               "px-4 border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
             if (i === rowarr.length - 1) cell.className += " " + id;
-            cell.innerHTML = `${rowarr[i]}`; // Set the innerHTML directly
+            cell.innerHTML = `<span class="inline-block max-w-[75px] overflow-scroll">${rowarr[i]}</span>`; // Set the innerHTML directly
           }
         }
         function price(base, quote) {
@@ -768,9 +772,9 @@ import { getContainerRenderer } from "@astrojs/react";
           return "N/A";
         }
         function annotate_parse_errors({ poolToken, poolWart }) {
-          document.getElementById("beforeToken").style.backgroundColor =
+          document.getElementById("parentBeforeToken").style.backgroundColor =
             poolToken ? "red" : "white";
-          document.getElementById("beforeWart").style.backgroundColor = poolWart
+          document.getElementById("parentBeforeWart").style.backgroundColor = poolWart
             ? "red"
             : "white";
           return !poolToken && !poolWart; // true if both don't have parse errors
@@ -915,16 +919,6 @@ import { getContainerRenderer } from "@astrojs/react";
         document
           .getElementById("beforeWart")
           .addEventListener("input", editPool);
-        document
-          .getElementById("parentBeforeToken")
-          .addEventListener("click", () =>
-            document.getElementById("beforeToken").focus()
-          );
-        document
-          .getElementById("parentBeforeWart")
-          .addEventListener("click", () =>
-            document.getElementById("beforeWart").focus()
-          );
       });
     </script>
   </div>
