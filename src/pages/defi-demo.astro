@@ -1,6 +1,7 @@
 ---
 import priceTagSvg from "../BalkyImages/deFiDemo/price-tag.svg";
 import coinStackSvg from "../BalkyImages/deFiDemo/coin-stack-svgrepo-com.svg";
+import deleteSvg from "../BalkyImages/deFiDemo/delete-svgrepo-com.svg";
 import QA from "../components/QA.jsx"
 import swapVirticalCircleSvg from "../BalkyImages/deFiDemo/swap-vertical-circle.svg";
 import rightArrowSvg from "../BalkyImages/deFiDemo/right-arrow.svg";
@@ -44,6 +45,8 @@ import { getContainerRenderer } from "@astrojs/react";
       content: "You can control the pool WART liquidity here.",
     },
   ];
+
+  export const deleteSvgPath = deleteSvg.src;
 ---
 
 <BaseLayout title={title}>
@@ -144,7 +147,7 @@ import { getContainerRenderer } from "@astrojs/react";
               <thead>
                 <tr>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -153,7 +156,7 @@ import { getContainerRenderer } from "@astrojs/react";
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -162,12 +165,21 @@ import { getContainerRenderer } from "@astrojs/react";
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
                     >
                       Filled (<span id="filledAmountToken">0</span>)
+                    </p>
+                  </td>
+                  <td
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#EF5831] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      *
                     </p>
                   </td>
                 </tr>
@@ -243,7 +255,7 @@ import { getContainerRenderer } from "@astrojs/react";
               <thead>
                 <tr>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -252,7 +264,7 @@ import { getContainerRenderer } from "@astrojs/react";
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
@@ -261,12 +273,21 @@ import { getContainerRenderer } from "@astrojs/react";
                     </p>
                   </td>
                   <td
-                    class="px-4 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
                   >
                     <p
                       class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
                     >
                       Filled (<span id="filledAmountWart">0</span>)
+                    </p>
+                  </td>
+                  <td
+                    class="px-2 py-2 transition-colors cursor-pointer bg-[#64bc3b] hover:bg-blue-gray-50"
+                  >
+                    <p
+                      class="items-center justify-between gap-2 text-white text-sm antialiased font-semibold leading-4 font-montserrat"
+                    >
+                      *
                     </p>
                   </td>
                 </tr>
@@ -379,7 +400,7 @@ import { getContainerRenderer } from "@astrojs/react";
               >
                 <div
                   id="poolInteractedTokenArrowPoint"
-                  class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                  class="bg-[#F25C05] m-w-[200px] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden"
                 >
                   <span
                     id="poolInteractedToken"
@@ -403,7 +424,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden"
                 >
                   <span id="afterToken" class="block w-full overflow-auto"
                     >600</span
@@ -414,7 +435,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] place-content-center text-center overflow-hidden"
+                  class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] place-content-center text-center overflow-hidden"
                 >
                   <span id="afterToken" class="block w-full overflow-auto"
                     >TOKEN</span
@@ -430,7 +451,7 @@ import { getContainerRenderer } from "@astrojs/react";
               >
                 <div
                   id="poolInteractedWartArrowPoint"
-                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden"
                 >
                   <span
                     id="poolInteractedWart"
@@ -454,7 +475,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden"
+                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden"
                 >
                   <span id="afterWart" class="block w-full overflow-auto"
                     >250</span
@@ -465,7 +486,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center place-content-center overflow-hidden"
+                  class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center place-content-center overflow-hidden"
                 >
                   <span id="afterWart" class="block w-full overflow-auto"
                     >WART</span
@@ -480,7 +501,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
                 >
                   <span
                     id="poolInteractedPrice"
@@ -492,7 +513,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
                 >
                   <span id="beforePrice" class="block w-full overflow-auto"
                     >N/A</span
@@ -503,7 +524,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
                 >
                   <span id="afterPrice" class="block w-full overflow-auto"
                     >N/A</span
@@ -514,7 +535,7 @@ import { getContainerRenderer } from "@astrojs/react";
                 class="w-full h-full justify-center flex items-center text-sm leading-4"
               >
                 <div
-                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-4 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
+                  class="bg-yellow-400 text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden place-content-center"
                 >
                   <span id="afterPrice" class="block w-full overflow-auto"
                     >PRICE</span
@@ -615,6 +636,7 @@ import { getContainerRenderer } from "@astrojs/react";
     </div>
     <script>
       import LeaderLine from "leader-line-new";
+import { deleteSvgPath } from "./defi-demo.astro";
       const arrowTokenFromSeller = new LeaderLine(
         document.getElementById("sellTokenArrowPoint"),
         document.getElementById("buyTokenArrowPoint")
@@ -756,14 +778,50 @@ import { getContainerRenderer } from "@astrojs/react";
 
         function insertRow(obj, rowarr, id) {
           var row = obj.insertRow(-1);
-          row.className = "p-4 h-9";
+          row.className = "p-2 h-9";
           for (var i = 0; i < rowarr.length; ++i) {
             var cell = row.insertCell(i); // Create a new cell
             cell.className =
-              "px-4 border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
+              "px-2 border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
             if (i === rowarr.length - 1) cell.className += " " + id;
-            cell.innerHTML = `<span class="inline-block max-w-[75px] overflow-scroll">${rowarr[i]}</span>`; // Set the innerHTML directly
+            cell.innerHTML = `<span class="inline-block max-w-[48px] overflow-scroll">${rowarr[i]}</span>`; // Set the innerHTML directly
           }
+        }
+        function insertOrderbookEntry(obj,base,rowarr, id){
+          var row = obj.insertRow(-1);
+          const rowIndex = row.rowIndex;
+
+          row.className = "p-2 h-9";
+          for (var i = 0; i < rowarr.length; ++i) {
+            var cell = row.insertCell(i); // Create a new cell
+            cell.className =
+              "px-2 border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
+            if (i === rowarr.length - 1)
+              cell.innerHTML = `<span class="flex items-center max-w-[48px] overflow-scroll ${id}">${rowarr[i]}</span>`; // Set the innerHTML directly
+            else
+              cell.innerHTML = `<span class="flex items-center max-w-[48px] overflow-scroll">${rowarr[i]}</span>`; // Set the innerHTML directly
+          }
+
+          var lastCell = row.insertCell(rowarr.length);
+          lastCell.className =
+              "border-b border-blue-gray-50 font-sans text-sm antialiased font-normal leading-normal";
+
+          var img = document.createElement('img');
+          img.className = "w-6 h-6 cursor-pointer"
+          img.src = deleteSvgPath;
+          img.onclick = function(){
+              deleteOrder(base,rowIndex - 1);
+          };
+          lastCell.appendChild(img);
+        }
+        function deleteOrder(base, index){
+            var str = JSON.stringify({
+               base: base,
+               index: index
+            });
+            var res = JSON.parse(Module.ccall("deleteOrder","string",["string"],[str]))
+            console.log(res);
+            updateData(res);
         }
         function price(base, quote) {
           if (base != 0) {
@@ -793,21 +851,23 @@ import { getContainerRenderer } from "@astrojs/react";
           var tbodyBuy = document.getElementById("tbodyBuy");
           tbodyBuy.innerHTML = "";
           for (var i = 0, len = buys.length; i < len; i++) {
-            insertRow(
-              tbodyBuy,
-              [buys[i]["limit"], buys[i]["amount"], buys[i]["filled"]],
-              "filledAmountWartItem"
-            );
+            // insertRow(
+            //   tbodyBuy,
+            //   [buys[i]["limit"], buys[i]["amount"], buys[i]["filled"]],
+            //   "filledAmountWartItem"
+            // );
+            insertOrderbookEntry(tbodyBuy, false, [buys[i]["limit"], buys[i]["amount"], buys[i]["filled"]], "filledAmountWartItem");
           }
           var sells = match.sells;
           var tbodySell = document.getElementById("tbodySell");
           tbodySell.innerHTML = "";
           for (var i = 0, len = sells.length; i < len; i++) {
-            insertRow(
-              tbodySell,
-              [sells[i]["limit"], sells[i]["amount"], sells[i]["filled"]],
-              "filledAmountTokenItem"
-            );
+            // insertRow(
+            //   tbodySell,
+            //   [sells[i]["limit"], sells[i]["amount"], sells[i]["filled"]],
+            //   "filledAmountTokenItem"
+            // );
+            insertOrderbookEntry(tbodySell,true, [sells[i]["limit"], sells[i]["amount"], sells[i]["filled"]], "filledAmountTokenItem");
           }
 
           // summary part
