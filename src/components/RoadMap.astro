@@ -2,12 +2,6 @@
 ---
 
 <style>
-    h1{ 
-        margin-top: .75rem;
-        font-size:1.3rem;
-        font-weight: 100;
-        font-style: bold;
-    }
     .h12{ 
         font-size:1.3rem;
         font-weight: 800;
@@ -69,11 +63,11 @@
         
     }
     .RoadMap{
-  flex-wrap: wrap;
-  gap: 3rem;
-  padding: .1rem;
-  justify-content: space-around;
-        color: white;
+      flex-wrap: wrap;
+      gap: 3rem;
+      padding: .1rem;
+      justify-content: space-around;
+      color: white;
     }
     .sectionline{
         border-bottom: dotted;
@@ -96,11 +90,12 @@ li{
 }
 </style>
 <div class="blanket">
-  <h1  class="title">Roadmap</h1>
+  <h2  class="text-5xl py-3">Roadmap</h2>
+  <h2  class="text-s underline"><a href="https://docs.warthog.network/roadmap/" target="_blank">See completed milestones »</a></h2>
   <div class="RoadMap">
     <section class="road">
       <div>
-        <h1>Q1 2025</h1>
+        <h3 class = "mt-3 text-lg font-semibold">Q1 2025</h3>
         <li>
           Research Sandwich-Proof DeFi
         </li>
@@ -113,7 +108,7 @@ li{
         <li>Add nice UI for Browser Nodes</li>
       </div>
       <div>
-        <h1>Q2 2025</h1>
+        <h3 class = "mt-3 text-lg font-semibold">Q2 2025</h3>
         <li>Add infrastructure for Browser Nodes</li>
         <li>Add documentation for Browser Nodes</li>
         <li>Implement light-weight DeFi</li>
@@ -122,27 +117,17 @@ li{
         <li>Enable Sandwich-Proof DeFi in testnet</li>
       </div>
       <div>
-        <h1>
-          Q3 2025
-        </h1>
+        <h3 class = "mt-3 text-lg font-semibold">Q3 2025</h3>
         <li>Enable P2P Browser Node communication using WebRTC</li>
         <li>Add token support in mainnet</li>
         <li>Add "Copy Balance" feature for newly created tokens in Testnet</li>
       </div>
-
-    </section>
-    <div class="sectionline"></div>
-    <section>
       <div>
-        <h1 class="h12">
-          Q4 2025
-        </h1>
+        <h3 class = "mt-3 text-lg font-semibold">Q4 2025</h3>
         <li>Add Dividend payout feature for tokens</li>
       </div>
       <div>
-        <h1 class="h12">
-          2026
-        </h1>
+        <h3 class = "mt-3 text-lg font-semibold">2026</h3>
         <li>Research on atomic swaps and assess feasibility of implementation in Warthog</li>
       </div>
     </section>
