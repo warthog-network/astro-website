@@ -7,6 +7,7 @@ import Profile from '../BalkyImages/004-profile.svg';
 import Programming from '../BalkyImages/006-programming.svg';
 import Trolly from '../BalkyImages/005-trolley.svg';
 import Group from '../BalkyImages/Group 5.svg';
+import ContentDiv from "../components/ContentDiv.jsx";
 ---
 
 <style>
@@ -18,9 +19,6 @@ import Group from '../BalkyImages/Group 5.svg';
             rgb(0, 0, 0) 99.4%
         );
         color: white;
-    }
-    header{
-        padding-left: 12rem;
     }
     h1 {
         font-size: 4rem;
@@ -45,8 +43,6 @@ import Group from '../BalkyImages/Group 5.svg';
         line-height: 2rem;
         padding: 1rem;
        
-        padding-left: 15rem;
-        padding-right: 15rem;
         display: grid;
         grid-template-columns: 1fn 2fn;
         grid-template-areas: "tokenomics features";
@@ -89,7 +85,6 @@ import Group from '../BalkyImages/Group 5.svg';
     }
     header {
         padding-top: 2rem;
-        padding-left: 15rem;
     }
     p {
         padding-right: 1rem;
@@ -171,6 +166,7 @@ import Group from '../BalkyImages/Group 5.svg';
 </style>
 
 <div class="UniqueFeatures">
+  <ContentDiv>
     <header class="header">
         <p class="innovation">INNOVATION</p>
         <h1 class="flex">
@@ -214,4 +210,5 @@ import Group from '../BalkyImages/Group 5.svg';
             </features-list>
         </section>
     </div>
+  </ContentDiv>
 </div>
