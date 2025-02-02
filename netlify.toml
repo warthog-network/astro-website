@@ -1,2 +1,5 @@
 [[headers]]
-"X-Frame-Options"="SAMEORIGIN","X-Content-Type-options"="nosniff"
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-options="nosniff"
