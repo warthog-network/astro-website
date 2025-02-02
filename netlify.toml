@@ -1,3 +1,2 @@
 [[headers]]
-X-Frame-Options= "SAMEORIGIN"
-X-Content-Type-options= "nosniff"
+{"X-Frame-Options":"SAMEORIGIN","X-Content-Type-options":"nosniff"}
