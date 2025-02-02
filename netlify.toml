@@ -1,5 +1,5 @@
 [[headers]]
   for = "/*"
   [headers.values]
-    X-Frame-Options = "ALLOW"
+    X-Frame-Options = "SAMEORIGIN"
     
