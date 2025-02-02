@@ -1,5 +1,5 @@
 [[headers]]
-  for = "/*"
+  for = "https://docs.google.com/gview?url=https://github.com/warthog-network/whitepaper/releases/download/build/main.pdf&embedded=true"
   [headers.values]
     X-Frame-Options = "SAMEORIGIN"
-    X-Content-Type-options="nosniff"
+    
