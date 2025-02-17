@@ -48,7 +48,7 @@ const latestNewsArticleRelativeLink = `/articles/${generateArticalIdentity(lates
                 <div class="bannerBackgroundImage" style={`background-image: url(${BannerTop.src})`}>
                     <div class="bannerBackgroundContent" >
                         <div class="Latest flex">LATEST<img class="ms-2" src={Littlewart.src}/></div>
-                        <div class="Title uppercase">{latestNewsArticle.data.title}</div>
+                        <div class="Title uppercase"><a href={latestNewsArticleRelativeLink}>{latestNewsArticle.data.title}</a></div>
                         <div class="PreviewContent" set:html={`${latestNewsArticlePreviewContent}...`}></div>
                         <section class="flex">
                             <a href={latestNewsArticleRelativeLink} class="flex ButtonLong pr-4">READ FULL ARTICLE<img class="small" src={Arrow.src}/></a><button onclick={`shareContent("${latestNewsArticle.data.title}","${`Checkout the latest article from Warthog.Networt! : ${latestNewsArticle.data.title}`}","${baseURL}${latestNewsArticleRelativeLink}")`} class="flex Button ms-8">SHARE<img class="small" src={Arrow.src}/></button>

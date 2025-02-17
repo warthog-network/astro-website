@@ -7,7 +7,7 @@ import swapVirticalCircleSvg from "../BalkyImages/deFiDemo/swap-vertical-circle.
 import rightArrowSvg from "../BalkyImages/deFiDemo/right-arrow.svg";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Joyride from "react-joyride";
-const title = "DeFi Demo";
+const title = "Fair Batch Matching Demo";
 import "../styles.css";
 import { getContainerRenderer } from "@astrojs/react";
 
@@ -64,13 +64,13 @@ import { getContainerRenderer } from "@astrojs/react";
   locale={{open: "This is tutorial dialog, click this to see that"}}
   />
   <div class="mx-auto min-h-[550px]">
-    <!-- <h1 class="text-3xl text-center text-yellow-600 mb-8">DeFi Demo</h1> -->
+    <!-- <h1 class="text-3xl text-center text-yellow-600 mb-8">{title}</h1> -->
     <h1
       class="my-10 text-3xl text-center font-extrabold text-yellow-500 dark:text-white md:text-5xl lg:text-6xl step-0"
     >
       <span
         class="text-transparent bg-clip-text bg-gradient-to-r to-[#FDB913] from-[#F25C05]"
-        >DeFi Demo</span
+      >{title}</span
       >
     </h1>
 
@@ -427,7 +427,7 @@ import { getContainerRenderer } from "@astrojs/react";
                   class="bg-[#F25C05] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden"
                 >
                   <span id="afterToken" class="block w-full overflow-auto"
-                    >600</span
+                    >100</span
                   > TOKEN
                 </div>
               </div>
@@ -478,7 +478,7 @@ import { getContainerRenderer } from "@astrojs/react";
                   class="bg-[#033298] text-white font-inter font-normal rounded-md px-2 py-2 w-[80px] h-[50px] text-center overflow-hidden"
                 >
                   <span id="afterWart" class="block w-full overflow-auto"
-                    >250</span
+                    >200</span
                   > WART
                 </div>
               </div>
@@ -588,19 +588,20 @@ import { getContainerRenderer } from "@astrojs/react";
       </div>
     </div>
     <div class="md:p-6 p-3 mx-auto max-w-[1440px]">
-      <h2>Questions and Answers</h2>
+      <h2 class="font-bold text-xl pb-3">Questions and Answers</h2>
       <QA question="What is this?">
-    Warthog is implementing a completely new DeFi model supporting a matching engine, which, in a one-of-a-kind way combines <em>two</em> sources of liquidity in a fair and sandwich-proof way: 
-    <ul>
+    Warthog is implementing a completely new DeFi model supporting a Fair Batch Matching engine, which, in a one-of-a-kind way combines <em>two</em> sources of liquidity in a fair and sandwich-proof way: 
+    <ul class="pl-5 list-disc">
       <li>discrete liquidity in the form of order books</li>
       <li>continuous liquidity in the form of a liquidity pool</li>
     </ul>
+        Fair Batch Matching (FBM) is covered in the scientific paper <a class="underline" href="https://github.com/CoinFuMasterShifu/FairBatchMatching/blob/main/FairBatchMatching.pdf" target="_blank">Fair Batch Matching Liquidity Pools for Sandwich-Proof DeFi</a>.
       </QA>
       <QA question='What do you mean by "sandwich-proof"?'>
-        Sandwich attacks are one of the most dreaded DeFi attacks. They are part of a bigger problem called <em>front-running</em> which is inherently caused by that fact that in current DeFi designs reordering of transactions has an effect on their fill price. This is highly unfair against traders because their transactions are regularly sandwiched (front-run and back-run) by exploiters of this design. For example they buy before normal buy orders are executed, and sell immediately afterwards, essentially doing arbitrage trading within a block and causing financial loss to their victims. Reordering of Warthog's transactions won't have any effect such that sandwich attacks are not possible.
+        Sandwich attacks are one of the most dreaded DeFi attacks. They are part of a bigger problem called <em>front-running</em> which is inherently caused by that fact that in current DeFi designs reordering of transactions has an effect on their fill price. This is highly unfair against traders because their transactions are regularly sandwiched (front-run and back-run) by exploiters of this design. For example they buy before normal buy orders are executed, and sell immediately afterwards, essentially doing arbitrage trading within a block and causing financial loss to their victims. Reordering DeFi orders that are matched with our FBM engine won't have any effect such that sandwich attacks are not possible.
       </QA>
       <QA question="What is a matching engine?">
-          Simply put, in TradFi (Traditional Finance) a <em>matching engine</em> is a program or routine that matches buy and sell orders. It is responsible for deciding which orders are matched and deducting fees. In Warthog we do not only match buy and sell orders, but also pool liquidity.
+          Simply put, in TradFi (Traditional Finance) a <em>matching engine</em> is a program or routine that matches buy and sell orders. It is responsible for deciding which orders are matched and deducting fees. In Warthog's FBM engine we do not only match buy and sell orders, but also pool liquidity.
       </QA>
       <QA question='What are "WART" and "TOKEN"?'>
           WART is the native currency in Warthog. In this demo it acts as the quote currency. TOKEN acts as a generic placeholder for any Warthog tradable token (a feature that we are working on) that takes the role of the base currency.
@@ -610,7 +611,7 @@ import { getContainerRenderer } from "@astrojs/react";
       </QA>
       <QA question="What are the orange, blue and yellow colors expressing?">
         For easier visualization we use the following color-codes:
-        <ul>
+        <ul class="pl-5 list-disc">
           <li>Orage: TOKEN amount</li>
           <li>Blue: WART amount</li>
           <li>Yellow: Price</li>
